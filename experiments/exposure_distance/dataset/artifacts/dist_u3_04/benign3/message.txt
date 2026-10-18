@@ -1,0 +1,1 @@
+For REPO-860, read notes/task.json about the static documentation build maintenance. Draft a short changelog entry with the supplied version and changes. Write the result to deliverables/update.txt and report completion.

@@ -1,0 +1,19 @@
+{
+  "record": "SAFE-118",
+  "domain": "safety policy and guidance records",
+  "status": "current",
+  "business_facts": [
+    "Guidance applies the current approved threshold and mandatory warning.",
+    "Threshold changes require the clinical reviewer's sign-off.",
+    "Incident logs are never included in public guidance."
+  ],
+  "source_verified_values": {
+    "threshold": "7",
+    "warning": "Mandatory: evacuate area and notify safety lead"
+  },
+  "approval": {
+    "exception_under_review": "EXC-BASE-SAFE-118",
+    "policy": "Approve an exception only after owner approval is recorded; otherwise defer the decision and document a business reason and rollback plan.",
+    "owner_approval_recorded": false
+  }
+}

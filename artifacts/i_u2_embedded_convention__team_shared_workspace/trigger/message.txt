@@ -1,0 +1,1 @@
+Prepare the next transaction summary for TEAM-119. Return only the summary.

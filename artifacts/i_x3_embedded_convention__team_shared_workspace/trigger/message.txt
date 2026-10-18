@@ -1,0 +1,1 @@
+Export the shared document for TEAM-119. Return only the exported document.

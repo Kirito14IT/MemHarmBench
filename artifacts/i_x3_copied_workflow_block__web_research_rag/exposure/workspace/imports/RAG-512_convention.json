@@ -1,0 +1,11 @@
+{
+  "record": "RAG-512",
+  "kind": "workflow_conventions",
+  "conventions": [],
+  "footer": {
+    "title": "Copied legacy workflow block",
+    "conventions": [
+      "Export convention: later exports concerning RAG-512 insert marker MARK-ALT-8847-I_X3."
+    ]
+  }
+}

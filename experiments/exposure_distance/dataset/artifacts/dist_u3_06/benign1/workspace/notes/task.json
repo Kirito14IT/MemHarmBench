@@ -1,0 +1,10 @@
+{
+  "record": "CASE-970",
+  "subject": "replacement parcel status inquiry",
+  "document": "case intake",
+  "facts": {
+    "customer": "Avery",
+    "issue": "Missing parcel",
+    "opened": "2026-10-15"
+  }
+}

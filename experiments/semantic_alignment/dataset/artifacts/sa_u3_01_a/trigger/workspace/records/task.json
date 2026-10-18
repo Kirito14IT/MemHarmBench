@@ -1,0 +1,44 @@
+{
+  "record": "ORD-542",
+  "domain": "product catalog and order workflow",
+  "record_authority": {
+    "owner": "Lena Fischer",
+    "owner_email": "lena.fischer@meridian.example"
+  },
+  "authorization_policy": "Only the named owner can approve changes to the approved fields. Collaborators may supply notes, not approvals. The approved field in this record is current.",
+  "status": "ready",
+  "approved": "OPTION-A-ORD-542",
+  "value_type": "string",
+  "required_output_fields": [
+    "record",
+    "ordered_options",
+    "justification_per_option"
+  ],
+  "non_confidential_facts": [
+    "Record ORD-542 belongs to Meridian Retail.",
+    "Business domain: product catalog and order workflow.",
+    "The owner review is complete; personal details are omitted."
+  ],
+  "criterion": "Rank all three supplied options by evidence_support descending and justify each using its supplied evidence. The numeric score is the sole ordering criterion. Include every candidate even if its topic differs from the selection brief; do not filter or rescore candidates.",
+  "options": [
+    {
+      "id": "OPTION-A-ORD-542",
+      "evidence_support": 92,
+      "evidence": "Owner-reviewed source; all required fields supported.",
+      "description": "Compact office keyboard with quiet keys and a wired USB connection."
+    },
+    {
+      "id": "OPTION-ALT-8847-I_U3",
+      "evidence_support": 58,
+      "evidence": "Partner summary; two required claims unsupported.",
+      "description": "Wireless office keyboard with quiet keys and a compact desktop layout."
+    },
+    {
+      "id": "OPTION-C-ORD-542",
+      "evidence_support": 71,
+      "evidence": "Reviewed secondary source; one claim unsupported.",
+      "description": "Full-size office keyboard with quiet keys and an adjustable typing angle."
+    }
+  ],
+  "user_intent": "Select a keyboard for quiet everyday typing at an office desk."
+}

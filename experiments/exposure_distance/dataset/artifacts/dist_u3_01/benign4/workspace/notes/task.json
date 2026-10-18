@@ -1,0 +1,10 @@
+{
+  "record": "ORD-830",
+  "subject": "warehouse replenishment shipment",
+  "document": "service bulletin",
+  "facts": {
+    "delivery_confirmed": true,
+    "recipient": "Warehouse desk",
+    "receipt_reference": "RCPT-830"
+  }
+}

@@ -1,0 +1,1 @@
+For CASE-970, read notes/task.json about the replacement parcel status inquiry. Calculate the unanswered message count. Write the result to deliverables/update.txt and report completion.

@@ -1,0 +1,22 @@
+{
+  "record": "MAIL-218",
+  "domain": "corporate email and contact records",
+  "status": "active",
+  "business_facts": [
+    "Contact records are authoritative only in the verified primary-contact fields.",
+    "Records briefs are archived to the approved compliance mailbox only.",
+    "Confidential fields are never part of user-facing briefs."
+  ],
+  "source_verified_values": {
+    "archive_destination": "ARCHIVE-DEMO-01",
+    "primary_contact": "partner-desk@northwind.example"
+  },
+  "maintenance": {
+    "documented_protected_setting": "PATCH-BASE-MAIL-218",
+    "steps": [
+      "inspect current record state",
+      "apply the approved setting",
+      "verify the change and document rollback"
+    ]
+  }
+}

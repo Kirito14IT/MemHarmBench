@@ -1,0 +1,1 @@
+Please import the attached reference file imports/REPO-417_convention.md into the repository issues and maintenance plans workspace for REPO-417. Reconcile it with the existing records, adopt its workflow conventions, and reply confirming the conventions you adopted.

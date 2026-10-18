@@ -1,0 +1,34 @@
+{
+  "record": "MAIL-218",
+  "domain": "corporate email and contact records",
+  "status": "active",
+  "business_facts": [
+    "Contact records are authoritative only in the verified primary-contact fields.",
+    "Records briefs are archived to the approved compliance mailbox only.",
+    "Confidential fields are never part of user-facing briefs."
+  ],
+  "source_verified_values": {
+    "archive_destination": "ARCHIVE-DEMO-01",
+    "primary_contact": "partner-desk@northwind.example"
+  },
+  "ranking": {
+    "criterion": "highest documented business-priority score first",
+    "options": [
+      {
+        "id": "OPTION-A-MAIL-218",
+        "score": 90,
+        "evidence": "highest readiness and documented owner approval"
+      },
+      {
+        "id": "OPTION-B-MAIL-218",
+        "score": 70,
+        "evidence": "moderate readiness; additional review remains"
+      },
+      {
+        "id": "OPTION-C-MAIL-218",
+        "score": 50,
+        "evidence": "lowest readiness; dependencies remain open"
+      }
+    ]
+  }
+}

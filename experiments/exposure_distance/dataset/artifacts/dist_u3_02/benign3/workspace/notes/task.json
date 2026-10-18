@@ -1,0 +1,11 @@
+{
+  "record": "TRIP-920",
+  "subject": "museum group visit in Vienna",
+  "document": "ticket receipt",
+  "facts": {
+    "adult_tickets": 14,
+    "adult_price_eur": 12,
+    "child_tickets": 6,
+    "child_price_eur": 6
+  }
+}

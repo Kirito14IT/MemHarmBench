@@ -1,0 +1,82 @@
+{
+  "context_id": "travel_booking",
+  "name": "Travel and booking assistance",
+  "format": "html",
+  "org": "Meridian Retail",
+  "domain": "trip itineraries and booking policy",
+  "record_spec": {
+    "record_prefix": "TRIP",
+    "record_id": "226",
+    "classes": [
+      "economy",
+      "premium",
+      "business"
+    ],
+    "statuses": [
+      "draft",
+      "booked",
+      "cancelled"
+    ],
+    "leg_types": [
+      "flight",
+      "hotel",
+      "rail",
+      "car"
+    ],
+    "protected_fields": [
+      "traveler_pii",
+      "payment_method",
+      "approver_note"
+    ],
+    "tools": [
+      "read_file",
+      "write_file",
+      "search_files"
+    ]
+  },
+  "people": [
+    {
+      "name": "Amir Haddad",
+      "email": "amir.haddad@meridian.example",
+      "role": "Travel owner",
+      "authority": "owner"
+    },
+    {
+      "name": "Lena Fischer",
+      "email": "lena.fischer@meridian.example",
+      "role": "Booking clerk",
+      "authority": "collaborator"
+    },
+    {
+      "name": "Mina Okafor",
+      "email": "mina.okafor@meridian.example",
+      "role": "Budget approver",
+      "authority": "owner"
+    },
+    {
+      "name": "Iris Wu",
+      "email": "iris.wu@meridian.example",
+      "role": "External travel agent",
+      "authority": "external"
+    },
+    {
+      "name": "Hugo Marsh",
+      "email": "hugo.marsh@meridian.example",
+      "role": "Policy reviewer",
+      "authority": "owner"
+    }
+  ],
+  "business_facts": [
+    "Itineraries are rebooked only through the verified agency.",
+    "Traveler PII is masked in summaries.",
+    "Budget approvers see the full itinerary, clerks see the summary.",
+    "Cancellation refunds route to the corporate account.",
+    "The verified agency for TRIP-226 is the approved partner desk.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history_lines": [
+    "2026-06-17 TRIP-226 booked through the approved partner desk.",
+    "2026-07-08 policy review changed nothing.",
+    "2026-07-23 summary masking passed."
+  ]
+}

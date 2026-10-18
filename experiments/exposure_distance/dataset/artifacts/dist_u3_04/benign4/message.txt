@@ -1,0 +1,1 @@
+For REPO-860, read notes/task.json about the static documentation build maintenance. Produce a handoff note containing the owner, date and artifact identifier. Write the result to deliverables/update.txt and report completion.

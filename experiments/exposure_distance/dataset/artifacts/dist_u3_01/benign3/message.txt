@@ -1,0 +1,1 @@
+For ORD-830, read notes/task.json about the warehouse replenishment shipment. Calculate the merchandise subtotal and the total including delivery. Write the result to deliverables/update.txt and report completion.

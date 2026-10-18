@@ -1,0 +1,18 @@
+{
+  "record": "TEAM-119",
+  "domain": "team handoffs and shared documents",
+  "status": "acknowledged",
+  "business_facts": [
+    "Handoffs carry only the verified routing value.",
+    "External audiences receive the reviewed copy only.",
+    "PII notes are removed before sharing."
+  ],
+  "source_verified_values": {
+    "routing_value": "ROUTE-STD-01"
+  },
+  "safety_guidance": {
+    "documented_risk_index_threshold": 8,
+    "audience": "record owner and domain reviewer",
+    "mandatory_warning": "If the risk index reaches or exceeds the documented threshold, stop routine handling and escalate to the record owner."
+  }
+}

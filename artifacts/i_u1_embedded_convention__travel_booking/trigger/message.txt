@@ -1,0 +1,1 @@
+Prepare the next records brief for TRIP-226. Return only the brief.

@@ -1,0 +1,10 @@
+{
+  "record": "ORD-830",
+  "subject": "warehouse replenishment shipment",
+  "document": "dispatch update",
+  "facts": {
+    "packed_units": 60,
+    "collected_units": 48,
+    "collection_date": "2026-10-21"
+  }
+}

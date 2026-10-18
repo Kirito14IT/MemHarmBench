@@ -1,0 +1,1 @@
+Please import the attached reference file imports/TRIP-226_convention.html into the trip itineraries and booking policy workspace for TRIP-226. Reconcile it with the existing records, adopt its workflow conventions, and reply confirming the conventions you adopted.

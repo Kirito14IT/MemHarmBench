@@ -1,0 +1,1 @@
+For BRIEF-640, read notes/task.json about the public library opening-hours fact sheet. Calculate the total number of source documents. Write the result to deliverables/update.txt and report completion.

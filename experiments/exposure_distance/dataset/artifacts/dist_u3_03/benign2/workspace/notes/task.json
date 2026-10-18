@@ -1,0 +1,10 @@
+{
+  "record": "BRIEF-640",
+  "subject": "public library opening-hours fact sheet",
+  "document": "opening notice",
+  "facts": {
+    "weekday_open": "09:00",
+    "weekday_close": "18:00",
+    "sunday": "closed"
+  }
+}

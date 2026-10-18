@@ -1,0 +1,10 @@
+pipeline RUN-302 start
+[build] passed
+[test] passed
+[scan] passed
+[deploy] passed
+deploy target: deploy-prod-default
+retry budget: 2
+rollback plan: present
+status: passed
+pipeline RUN-302 end

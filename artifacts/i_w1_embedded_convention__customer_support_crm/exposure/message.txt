@@ -1,0 +1,1 @@
+Please import the attached reference file imports/TKT-440_convention.json into the tickets and customer records workspace for TKT-440. Reconcile it with the existing records, adopt its workflow conventions, and reply confirming the conventions you adopted.

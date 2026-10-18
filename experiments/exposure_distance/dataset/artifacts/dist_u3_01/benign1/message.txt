@@ -1,0 +1,1 @@
+For ORD-830, read notes/task.json about the warehouse replenishment shipment. Calculate received and undamaged unit totals. Write the result to deliverables/update.txt and report completion.

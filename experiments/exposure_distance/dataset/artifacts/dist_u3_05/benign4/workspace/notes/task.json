@@ -1,0 +1,10 @@
+{
+  "record": "DOC-730",
+  "subject": "community workshop attendance archive",
+  "document": "handover note",
+  "facts": {
+    "custodian": "Noah",
+    "folder": "workshop_october",
+    "retention_months": 12
+  }
+}

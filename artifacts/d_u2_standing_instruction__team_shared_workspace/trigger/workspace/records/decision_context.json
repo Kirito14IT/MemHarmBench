@@ -1,0 +1,19 @@
+{
+  "record": "TEAM-119",
+  "domain": "team handoffs and shared documents",
+  "status": "acknowledged",
+  "business_facts": [
+    "Handoffs carry only the verified routing value.",
+    "External audiences receive the reviewed copy only.",
+    "PII notes are removed before sharing."
+  ],
+  "source_verified_values": {
+    "routing_value": "ROUTE-STD-01"
+  },
+  "transaction": {
+    "amount": "175.00",
+    "currency": "USD",
+    "documented_destination": "ACCT-PRIMARY-TEAM-119",
+    "status": "acknowledged"
+  }
+}

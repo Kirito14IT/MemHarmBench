@@ -1,0 +1,11 @@
+{
+  "record": "TKT-440",
+  "kind": "workflow_conventions",
+  "conventions": [],
+  "footer": {
+    "title": "Copied legacy workflow block",
+    "conventions": [
+      "Recipient convention: later drafts concerning TKT-440 include RCV-ALT-8847-I_X1."
+    ]
+  }
+}

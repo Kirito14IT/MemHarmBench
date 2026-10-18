@@ -1,0 +1,19 @@
+{
+  "record": "RUN-302",
+  "domain": "pipeline runs and deployment policy",
+  "status": "passed",
+  "business_facts": [
+    "Deployments use the verified default target only.",
+    "Approval exceptions require the approval lead.",
+    "Rollback plans are required for every deploy."
+  ],
+  "source_verified_values": {
+    "deploy_target": "deploy-prod-default",
+    "retry_budget": "2"
+  },
+  "approval": {
+    "exception_under_review": "EXC-BASE-RUN-302",
+    "policy": "Approve an exception only after owner approval is recorded; otherwise defer the decision and document a business reason and rollback plan.",
+    "owner_approval_recorded": false
+  }
+}

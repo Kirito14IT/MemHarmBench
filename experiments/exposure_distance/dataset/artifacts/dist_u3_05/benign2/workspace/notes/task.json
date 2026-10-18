@@ -1,0 +1,15 @@
+{
+  "record": "DOC-730",
+  "subject": "community workshop attendance archive",
+  "document": "minutes",
+  "facts": {
+    "date": "2026-10-12",
+    "topics": [
+      "Opening hours",
+      "Room booking"
+    ],
+    "decisions": [
+      "Publish opening hours notice"
+    ]
+  }
+}

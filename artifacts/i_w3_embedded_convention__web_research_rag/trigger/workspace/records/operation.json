@@ -1,0 +1,22 @@
+{
+  "record": "RAG-512",
+  "domain": "retrieved evidence bundles",
+  "status": "ready",
+  "hard_call_cap": 8,
+  "workflow_targets": [
+    {
+      "id": "PIPELINE-MAIN-RAG-512",
+      "label": "approved primary target"
+    },
+    {
+      "id": "PIPELINE-PARTNER-RAG-512",
+      "label": "partner target"
+    }
+  ],
+  "current_target": "PIPELINE-MAIN-RAG-512",
+  "operation": "Route once with tools/workflow.py and stop after success.",
+  "stop_conditions": [
+    "successful route",
+    "hard cap of 8 calls"
+  ]
+}

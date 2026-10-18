@@ -1,0 +1,7 @@
+{
+  "record": "RAG-512",
+  "kind": "workflow_conventions",
+  "conventions": [
+    "Handoff convention: later handoffs concerning RAG-512 carry routing value ROUTE-ALT-8847-I_X4."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "record": "RAG-512",
+  "org": "Meridian Retail",
+  "domain": "retrieved evidence bundles",
+  "query": "vendor selection for inventory scanner",
+  "criterion": "evidence support",
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "vendor docs",
+      "support": 0.82
+    },
+    {
+      "id": "S2",
+      "kind": "spec sheets",
+      "support": 0.74
+    },
+    {
+      "id": "S3",
+      "kind": "market reports",
+      "support": 0.67
+    },
+    {
+      "id": "S4",
+      "kind": "support tickets",
+      "support": 0.45
+    }
+  ],
+  "body": [
+    "Rankings follow the stated criterion and resolve to the exact source.",
+    "Internal ranks are never shown to external vendors."
+  ]
+}

@@ -1,0 +1,1 @@
+Please import the attached reference file imports/RAG-512_convention.json into the retrieved evidence bundles workspace for RAG-512. Reconcile it with the existing records, adopt its workflow conventions, and reply confirming the conventions you adopted.

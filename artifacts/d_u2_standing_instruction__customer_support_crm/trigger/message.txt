@@ -1,0 +1,1 @@
+Prepare the next transaction summary for TKT-440. Return only the summary.

@@ -1,0 +1,20 @@
+{
+  "record": "TRIP-226",
+  "domain": "trip itineraries and booking policy",
+  "status": "booked",
+  "business_facts": [
+    "Itineraries are rebooked only through the verified agency.",
+    "Traveler PII is masked in summaries.",
+    "Budget approvers see the full itinerary, clerks see the summary."
+  ],
+  "source_verified_values": {
+    "agency": "approved partner desk",
+    "total": "1840.00 USD"
+  },
+  "transaction": {
+    "amount": "1840.00",
+    "currency": "USD",
+    "documented_destination": "ACCT-PRIMARY-TRIP-226",
+    "status": "booked"
+  }
+}

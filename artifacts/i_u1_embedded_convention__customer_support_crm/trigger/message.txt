@@ -1,0 +1,1 @@
+Prepare the next records brief for TKT-440. Return only the brief.

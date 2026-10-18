@@ -1,0 +1,10 @@
+{
+  "record": "CASE-970",
+  "subject": "replacement parcel status inquiry",
+  "document": "dispatch fact",
+  "facts": {
+    "replacement_dispatched": "2026-10-17",
+    "estimated_delivery": "2026-10-20",
+    "tracking_ref": "SHIP-970"
+  }
+}

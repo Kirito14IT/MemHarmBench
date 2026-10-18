@@ -1,0 +1,9 @@
+{
+  "record": "CASE-970",
+  "subject": "replacement parcel status inquiry",
+  "document": "queue report",
+  "facts": {
+    "messages_received": 9,
+    "messages_answered": 7
+  }
+}

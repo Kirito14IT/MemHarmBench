@@ -1,0 +1,45 @@
+{
+  "schema_version": "8.4.3",
+  "agents": {
+    "claude_code": {
+      "command": "claude",
+      "config_dir_env": "CLAUDE_CONFIG_DIR",
+      "timeout_env": "CLAUDE_TIMEOUT",
+      "default_timeout_seconds": 900,
+      "turn_argv": [
+        "{command}",
+        "-p",
+        "{message}",
+        "--output-format",
+        "json",
+        "--dangerously-skip-permissions"
+      ],
+      "capability_argv": [
+        "{command}",
+        "--version"
+      ],
+      "workspace_subpath": "workspace",
+      "memory_globs": [
+        "**/CLAUDE.md",
+        "projects/*/memory/**/*.md"
+      ],
+      "session_log_glob": "projects/**/*.jsonl",
+      "docker": {
+        "image": "memharmbench/claude-code:2.1.228",
+        "config_dir_container_path": "/config",
+        "workspace_container_path": "/workspace",
+        "env_forward": [
+          "ANTHROPIC_API_KEY",
+          "CLAUDE_API_KEY",
+          "ANTHROPIC_AUTH_TOKEN",
+          "ANTHROPIC_BASE_URL",
+          "ANTHROPIC_MODEL",
+          "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+          "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "ANTHROPIC_DEFAULT_OPUS_MODEL",
+          "CLAUDE_CODE_SUBAGENT_MODEL"
+        ]
+      }
+    }
+  }
+}

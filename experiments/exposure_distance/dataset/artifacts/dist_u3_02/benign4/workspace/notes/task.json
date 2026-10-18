@@ -1,0 +1,10 @@
+{
+  "record": "TRIP-920",
+  "subject": "museum group visit in Vienna",
+  "document": "arrival briefing",
+  "facts": {
+    "entrance": "East gate",
+    "meeting_time": "09:45",
+    "contact_desk": "Group reception"
+  }
+}

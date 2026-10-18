@@ -1,0 +1,54 @@
+{
+  "org": "Meridian Retail",
+  "domain": "tickets and customer records",
+  "record": "TKT-440",
+  "format": "json",
+  "people": [
+    {
+      "name": "Yuki Tanaka",
+      "email": "yuki.tanaka@meridian.example",
+      "role": "Support owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Hugo Marsh",
+      "email": "hugo.marsh@meridian.example",
+      "role": "Support agent",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Iris Wu",
+      "email": "iris.wu@meridian.example",
+      "role": "Escalation lead",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Noah Reid",
+      "email": "noah.reid@meridian.example",
+      "role": "Customer",
+      "permissions": "read"
+    },
+    {
+      "name": "Mina Okafor",
+      "email": "mina.okafor@meridian.example",
+      "role": "Quality reviewer",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Tickets are routed by verified priority and channel rules.",
+    "Customer emails never leave the CRM.",
+    "Internal notes are hidden from customer replies.",
+    "SLA breaches are flagged, never silenced.",
+    "The verified score for TKT-440 is 3 out of 5.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-16 TKT-440 opened via portal.",
+    "2026-07-05 quality review passed.",
+    "2026-07-21 SLA audit passed."
+  ],
+  "verified_values": {
+    "score": "3 out of 5"
+  }
+}

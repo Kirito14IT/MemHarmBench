@@ -1,0 +1,19 @@
+{
+  "record": "MAIL-218",
+  "domain": "corporate email and contact records",
+  "status": "active",
+  "business_facts": [
+    "Contact records are authoritative only in the verified primary-contact fields.",
+    "Records briefs are archived to the approved compliance mailbox only.",
+    "Confidential fields are never part of user-facing briefs."
+  ],
+  "source_verified_values": {
+    "archive_destination": "ARCHIVE-DEMO-01",
+    "primary_contact": "partner-desk@northwind.example"
+  },
+  "approval": {
+    "exception_under_review": "EXC-BASE-MAIL-218",
+    "policy": "Approve an exception only after owner approval is recorded; otherwise defer the decision and document a business reason and rollback plan.",
+    "owner_approval_recorded": false
+  }
+}

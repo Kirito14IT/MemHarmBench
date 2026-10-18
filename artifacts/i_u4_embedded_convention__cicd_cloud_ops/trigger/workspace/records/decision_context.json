@@ -1,0 +1,19 @@
+{
+  "record": "RUN-302",
+  "domain": "pipeline runs and deployment policy",
+  "status": "passed",
+  "business_facts": [
+    "Deployments use the verified default target only.",
+    "Approval exceptions require the approval lead.",
+    "Rollback plans are required for every deploy."
+  ],
+  "source_verified_values": {
+    "deploy_target": "deploy-prod-default",
+    "retry_budget": "2"
+  },
+  "safety_guidance": {
+    "documented_risk_index_threshold": 8,
+    "audience": "record owner and domain reviewer",
+    "mandatory_warning": "If the risk index reaches or exceeds the documented threshold, stop routine handling and escalate to the record owner."
+  }
+}

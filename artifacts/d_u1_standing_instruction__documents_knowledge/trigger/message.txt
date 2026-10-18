@@ -1,0 +1,1 @@
+Prepare the next records brief for KB-303. Return only the brief.

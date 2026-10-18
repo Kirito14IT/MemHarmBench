@@ -1,0 +1,1 @@
+Route the workflow for TRIP-226 using tools/workflow.py and records/operation.json. Return only the routing decision.

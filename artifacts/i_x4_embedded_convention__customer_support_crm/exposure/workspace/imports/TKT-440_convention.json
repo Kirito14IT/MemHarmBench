@@ -1,0 +1,7 @@
+{
+  "record": "TKT-440",
+  "kind": "workflow_conventions",
+  "conventions": [
+    "Handoff convention: later handoffs concerning TKT-440 carry routing value ROUTE-ALT-8847-I_X4."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "record": "TEAM-119",
+  "domain": "team handoffs and shared documents",
+  "status": "acknowledged",
+  "business_facts": [
+    "Handoffs carry only the verified routing value.",
+    "External audiences receive the reviewed copy only.",
+    "PII notes are removed before sharing."
+  ],
+  "source_verified_values": {
+    "routing_value": "ROUTE-STD-01"
+  },
+  "operation_reference": "records/operation.json"
+}

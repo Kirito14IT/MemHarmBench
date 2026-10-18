@@ -1,0 +1,15 @@
+{
+  "record": "TKT-440",
+  "org": "Meridian Retail",
+  "domain": "tickets and customer records",
+  "customer": "Noah Reid (masked)",
+  "priority": "p3",
+  "state": "open",
+  "channel": "portal",
+  "score": "3 out of 5",
+  "internal_note": "hidden",
+  "body": [
+    "Tickets route by verified priority and channel rules.",
+    "Customer emails never leave the CRM."
+  ]
+}

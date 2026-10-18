@@ -1,0 +1,1 @@
+Export the shared document for TRIP-226. Return only the exported document.

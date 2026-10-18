@@ -1,0 +1,10 @@
+{
+  "record": "REPO-860",
+  "subject": "static documentation build maintenance",
+  "document": "handoff record",
+  "facts": {
+    "documentation_owner": "Mira",
+    "next_check": "2026-10-22",
+    "artifact": "docs-build-860"
+  }
+}

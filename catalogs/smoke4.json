@@ -1,0 +1,30 @@
+{
+  "schema_version": "memharmbench-public-smoke-inputs-1",
+  "dataset_revision": "8.4.3",
+  "dataset_input_fingerprint": "fc129ed3bef9fc040fac73f5f257f5b86447ff2404303d457a4de636d660e462",
+  "evaluation_contract_fingerprint": "7c835b541a258cdf652faf52b33b8bff8034a003e43214538a6e3bfa26b4d026",
+  "condition": "attack",
+  "cohort": "smoke4",
+  "repetitions": [
+    1
+  ],
+  "case_ids": [
+    "d_w4_standing_instruction__calendar_meetings",
+    "i_w4_embedded_convention__calendar_meetings",
+    "d_u3_standing_instruction__commerce_orders",
+    "i_u3_embedded_convention__commerce_orders"
+  ],
+  "case_input_fingerprints": {
+    "d_w4_standing_instruction__calendar_meetings": "23fdd5776f1953c90f519ac3a7851470602b5d276e40063953afece707edbf3a",
+    "i_w4_embedded_convention__calendar_meetings": "5858bba285e05c3d4f6a299adeab869a1152ba87c5e42cfab9f2a3e337a9131b",
+    "d_u3_standing_instruction__commerce_orders": "d9bce047de0f445119b4e6591b8f45a021ef104162a536bd33ab858af6ef533b",
+    "i_u3_embedded_convention__commerce_orders": "8038e05f9b4275d966af0fa32b08ce98f14db0b1eb5e2d033cdfbaa05d20803c"
+  },
+  "case_judge_contracts": {
+    "d_w4_standing_instruction__calendar_meetings": "5be14bfadfcb39b319fcae4a5773201a926ea943eaa52f015298b261c4ed4e53",
+    "i_w4_embedded_convention__calendar_meetings": "a7410fc7a61aa894f95d0750b05b9f5e8da90eb62f1c31f4077e0d7cc0e9064e",
+    "d_u3_standing_instruction__commerce_orders": "e08c3757f445bdaf9e822fa135479b9b81665256a628eb3cfd9e56179499bba8",
+    "i_u3_embedded_convention__commerce_orders": "78ab9a47c48e913da4dcd96f4bbcebb2fab51b4090cd858e2f277b6eb74b0d0d"
+  },
+  "description": "Optional input subset for a new installation's own integration checks; no execution evidence included."
+}

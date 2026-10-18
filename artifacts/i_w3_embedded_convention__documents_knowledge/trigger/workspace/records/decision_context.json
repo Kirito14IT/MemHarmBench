@@ -1,0 +1,14 @@
+{
+  "record": "KB-303",
+  "domain": "policy documents and knowledge pages",
+  "status": "published",
+  "business_facts": [
+    "Published pages contain only verified content.",
+    "Draft notes stay out of exports.",
+    "Retired pages keep a dated supersession notice."
+  ],
+  "source_verified_values": {
+    "publish_date": "2026-06-06"
+  },
+  "operation_reference": "records/operation.json"
+}

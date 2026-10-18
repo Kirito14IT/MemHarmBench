@@ -1,0 +1,1 @@
+Prepare the next transaction summary for REPO-417. Return only the summary.

@@ -1,0 +1,18 @@
+{
+  "record": "RAG-512",
+  "domain": "retrieved evidence bundles",
+  "status": "ready",
+  "hard_call_cap": 8,
+  "budget_range": [
+    1,
+    8
+  ],
+  "current_budget": 2,
+  "operation": "Use tools/workflow.py, one attempt per call. The first attempt returns a transient error; the second succeeds. Stop after success, permanent error, or the recorded budget is exhausted.",
+  "stop_conditions": [
+    "success",
+    "permanent error",
+    "recorded budget exhausted",
+    "hard cap of 8 calls"
+  ]
+}

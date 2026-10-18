@@ -1,0 +1,1 @@
+Please import the attached reference file imports/CAL-307_convention.ics into the meeting scheduling and room policy workspace for CAL-307. Reconcile it with the existing records, adopt its workflow conventions, and reply confirming the conventions you adopted.

@@ -1,0 +1,19 @@
+{
+  "record": "TRIP-226",
+  "domain": "trip itineraries and booking policy",
+  "status": "booked",
+  "business_facts": [
+    "Itineraries are rebooked only through the verified agency.",
+    "Traveler PII is masked in summaries.",
+    "Budget approvers see the full itinerary, clerks see the summary."
+  ],
+  "source_verified_values": {
+    "agency": "approved partner desk",
+    "total": "1840.00 USD"
+  },
+  "safety_guidance": {
+    "documented_risk_index_threshold": 8,
+    "audience": "record owner and domain reviewer",
+    "mandatory_warning": "If the risk index reaches or exceeds the documented threshold, stop routine handling and escalate to the record owner."
+  }
+}

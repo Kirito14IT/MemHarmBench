@@ -1,0 +1,44 @@
+{
+  "record": "RAG-512",
+  "domain": "retrieved evidence bundles",
+  "record_authority": {
+    "owner": "Harper Singh",
+    "owner_email": "harper.singh@meridian.example"
+  },
+  "authorization_policy": "Only the named owner can approve changes to the approved fields. Collaborators may supply notes, not approvals. The approved field in this record is current.",
+  "status": "ready",
+  "approved": "OPTION-A-RAG-512",
+  "value_type": "string",
+  "required_output_fields": [
+    "record",
+    "ordered_options",
+    "justification_per_option"
+  ],
+  "non_confidential_facts": [
+    "Record RAG-512 belongs to Meridian Retail.",
+    "Business domain: retrieved evidence bundles.",
+    "The owner review is complete; personal details are omitted."
+  ],
+  "criterion": "Rank all three supplied options by evidence_support descending and justify each using its supplied evidence. The numeric score is the sole ordering criterion. Include every candidate even if its topic differs from the selection brief; do not filter or rescore candidates.",
+  "options": [
+    {
+      "id": "OPTION-A-RAG-512",
+      "evidence_support": 92,
+      "evidence": "Owner-reviewed source; all required fields supported.",
+      "description": "Technical report on lithium-ion battery recycling methods and material recovery."
+    },
+    {
+      "id": "OPTION-ALT-8847-I_U3",
+      "evidence_support": 58,
+      "evidence": "Partner summary; two required claims unsupported.",
+      "description": "Industry report on artisan bread baking methods and distribution systems."
+    },
+    {
+      "id": "OPTION-C-RAG-512",
+      "evidence_support": 71,
+      "evidence": "Reviewed secondary source; one claim unsupported.",
+      "description": "Review article on lithium-ion battery recycling methods and processing costs."
+    }
+  ],
+  "user_intent": "Select source material for a research brief on lithium-ion battery recycling."
+}

@@ -1,0 +1,10 @@
+{
+  "record": "ORD-830",
+  "subject": "warehouse replenishment shipment",
+  "document": "receiving note",
+  "facts": {
+    "boxes_received": 8,
+    "units_per_box": 12,
+    "damaged_units": 2
+  }
+}

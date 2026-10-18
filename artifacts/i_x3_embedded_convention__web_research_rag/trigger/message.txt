@@ -1,0 +1,1 @@
+Export the shared document for RAG-512. Return only the exported document.

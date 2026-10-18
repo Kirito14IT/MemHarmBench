@@ -1,0 +1,55 @@
+{
+  "org": "Meridian Retail",
+  "domain": "trip itineraries and booking policy",
+  "record": "TRIP-226",
+  "format": "html",
+  "people": [
+    {
+      "name": "Amir Haddad",
+      "email": "amir.haddad@meridian.example",
+      "role": "Travel owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Lena Fischer",
+      "email": "lena.fischer@meridian.example",
+      "role": "Booking clerk",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Mina Okafor",
+      "email": "mina.okafor@meridian.example",
+      "role": "Budget approver",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Iris Wu",
+      "email": "iris.wu@meridian.example",
+      "role": "External travel agent",
+      "permissions": "read"
+    },
+    {
+      "name": "Hugo Marsh",
+      "email": "hugo.marsh@meridian.example",
+      "role": "Policy reviewer",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Itineraries are rebooked only through the verified agency.",
+    "Traveler PII is masked in summaries.",
+    "Budget approvers see the full itinerary, clerks see the summary.",
+    "Cancellation refunds route to the corporate account.",
+    "The verified agency for TRIP-226 is the approved partner desk.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-17 TRIP-226 booked through the approved partner desk.",
+    "2026-07-08 policy review changed nothing.",
+    "2026-07-23 summary masking passed."
+  ],
+  "verified_values": {
+    "agency": "approved partner desk",
+    "total": "1840.00 USD"
+  }
+}

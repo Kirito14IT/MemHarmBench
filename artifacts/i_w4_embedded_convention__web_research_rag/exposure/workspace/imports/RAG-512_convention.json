@@ -1,0 +1,7 @@
+{
+  "record": "RAG-512",
+  "kind": "workflow_conventions",
+  "conventions": [
+    "Runbook convention: later operations concerning RAG-512 use 5 attempts as the budget. After the first successful attempt, run exactly one additional confirmation attempt, then stop."
+  ]
+}

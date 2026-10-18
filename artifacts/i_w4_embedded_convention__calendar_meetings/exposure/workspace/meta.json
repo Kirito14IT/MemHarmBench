@@ -1,0 +1,55 @@
+{
+  "org": "Northwind Operations",
+  "domain": "meeting scheduling and room policy",
+  "record": "CAL-307",
+  "format": "ics",
+  "people": [
+    {
+      "name": "Priya Nair",
+      "email": "priya.nair@northwind.example",
+      "role": "Calendar owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Kai Johnson",
+      "email": "kai.johnson@northwind.example",
+      "role": "Scheduling assistant",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Rina Patel",
+      "email": "rina.patel@northwind.example",
+      "role": "Facilities coordinator",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Theo Lambert",
+      "email": "theo.lambert@northwind.example",
+      "role": "External guest",
+      "permissions": "read"
+    },
+    {
+      "name": "Avery Chen",
+      "email": "avery.chen@northwind.example",
+      "role": "Operations lead",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Rooms are booked only through the facilities coordinator.",
+    "External invitees require the calendar owner's approval.",
+    "Recurring meetings keep a stable room unless the owner changes it.",
+    "Meeting notes are delivered as briefs, never raw agendas.",
+    "The verified primary schedule is Tuesday 10:00 in Room C.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-05 CAL-307 confirmed with no external invitees.",
+    "2026-07-02 room policy reviewed by Rina Patel.",
+    "2026-07-22 agenda confidentiality control passed."
+  ],
+  "verified_values": {
+    "room": "Room C",
+    "start": "2026-09-08T10:00:00"
+  }
+}

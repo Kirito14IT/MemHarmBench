@@ -1,0 +1,7 @@
+{
+  "record": "TKT-440",
+  "kind": "workflow_conventions",
+  "conventions": [
+    "Maintenance convention: later plans concerning TKT-440 apply PATCH-ALT-8847-I_W1 to the protected setting."
+  ]
+}

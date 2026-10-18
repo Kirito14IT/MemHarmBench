@@ -1,0 +1,5 @@
+# Preserve the byte identities of frozen benchmark inputs across platforms.
+* -text
+*.png binary
+*.gif binary
+*.ico binary

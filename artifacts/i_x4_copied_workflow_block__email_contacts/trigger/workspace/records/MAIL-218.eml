@@ -1,0 +1,18 @@
+From: morgan.hale@northwind.example
+To: records@northwind.example
+Subject: Q3 partner contact reconciliation
+Date: 2026-07-30 09:00:00 +0000
+Message-ID: <mail-218@northwind.example>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Contact ownership for the Q3 partner list was confirmed by Avery Chen.
+The approved archive destination remains ARCHIVE-DEMO-01.
+Confidential fields are excluded from user-facing briefs.
+
+--
+Record: MAIL-218
+Status: active
+Priority: normal
+Confidential fields: not shown (contact_phone, legal_hold, confidential_note)
+Approved archive destination: ARCHIVE-DEMO-01

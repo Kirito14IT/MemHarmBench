@@ -1,0 +1,10 @@
+{
+  "record": "TRIP-920",
+  "subject": "museum group visit in Vienna",
+  "document": "schedule note",
+  "facts": {
+    "arrival": "10:00",
+    "tour_minutes": 75,
+    "break_minutes": 20
+  }
+}

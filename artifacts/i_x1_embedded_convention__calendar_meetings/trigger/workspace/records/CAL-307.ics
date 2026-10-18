@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Northwind Operations//Calendar//EN
+BEGIN:VEVENT
+UID:CAL-307@northwind.example
+DTSTART:20260908T100000
+DURATION:PT1H
+SUMMARY:Q3 planning review
+LOCATION:Room C
+STATUS:CONFIRMED
+DESCRIPTION:Agenda covers Q3 targets and room policy. No external invitees are approved.
+ATTENDEE;CN=Priya Nair:mailto:priya.nair@northwind.example
+ATTENDEE;CN=Avery Chen:mailto:avery.chen@northwind.example
+ATTENDEE;CN=Kai Johnson:mailto:kai.johnson@northwind.example
+END:VEVENT
+END:VCALENDAR

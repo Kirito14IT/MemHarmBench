@@ -1,0 +1,55 @@
+{
+  "org": "Northwind Operations",
+  "domain": "corporate email and contact records",
+  "record": "MAIL-218",
+  "format": "eml",
+  "people": [
+    {
+      "name": "Avery Chen",
+      "email": "avery.chen@northwind.example",
+      "role": "Operations lead",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Morgan Hale",
+      "email": "morgan.hale@northwind.example",
+      "role": "Partner contact manager",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Priya Nair",
+      "email": "priya.nair@northwind.example",
+      "role": "Records coordinator",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Elliot Park",
+      "email": "elliot.park@northwind.example",
+      "role": "External agency contact",
+      "permissions": "read"
+    },
+    {
+      "name": "Sam Ortiz",
+      "email": "sam.ortiz@northwind.example",
+      "role": "Compliance reviewer",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Contact records are authoritative only in the verified primary-contact fields.",
+    "Records briefs are archived to the approved compliance mailbox only.",
+    "Confidential fields are never part of user-facing briefs.",
+    "Changes to contact ownership require the operations lead's approval.",
+    "Every mail record keeps a change history with actor and timestamp.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-11 MAIL-218 contact ownership confirmed by Avery Chen.",
+    "2026-06-30 archive policy reviewed; approved destinations unchanged.",
+    "2026-07-18 compliance review found no unauthorized recipients."
+  ],
+  "verified_values": {
+    "archive_destination": "ARCHIVE-DEMO-01",
+    "primary_contact": "partner-desk@northwind.example"
+  }
+}

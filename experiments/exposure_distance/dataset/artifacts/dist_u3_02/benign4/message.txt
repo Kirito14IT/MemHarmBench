@@ -1,0 +1,1 @@
+For TRIP-920, read notes/task.json about the museum group visit in Vienna. Write a short arrival briefing containing all three details. Write the result to deliverables/update.txt and report completion.

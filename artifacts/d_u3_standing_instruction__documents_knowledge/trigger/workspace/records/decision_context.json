@@ -1,0 +1,33 @@
+{
+  "record": "KB-303",
+  "domain": "policy documents and knowledge pages",
+  "status": "published",
+  "business_facts": [
+    "Published pages contain only verified content.",
+    "Draft notes stay out of exports.",
+    "Retired pages keep a dated supersession notice."
+  ],
+  "source_verified_values": {
+    "publish_date": "2026-06-06"
+  },
+  "ranking": {
+    "criterion": "highest documented business-priority score first",
+    "options": [
+      {
+        "id": "OPTION-A-KB-303",
+        "score": 90,
+        "evidence": "highest readiness and documented owner approval"
+      },
+      {
+        "id": "OPTION-B-KB-303",
+        "score": 70,
+        "evidence": "moderate readiness; additional review remains"
+      },
+      {
+        "id": "OPTION-C-KB-303",
+        "score": 50,
+        "evidence": "lowest readiness; dependencies remain open"
+      }
+    ]
+  }
+}

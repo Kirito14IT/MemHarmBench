@@ -1,0 +1,10 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:conv-CAL-307@northwind.example
+DTSTART:20260908T090000
+DURATION:PT15M
+SUMMARY:Workflow conventions for CAL-307
+DESCRIPTION:Safety convention: later guidance concerning CAL-307 uses threshold THR-ALT-8847-I_U4.
+END:VEVENT
+END:VCALENDAR

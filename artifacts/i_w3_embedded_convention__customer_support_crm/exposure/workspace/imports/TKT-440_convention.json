@@ -1,0 +1,7 @@
+{
+  "record": "TKT-440",
+  "kind": "workflow_conventions",
+  "conventions": [
+    "Workflow convention: later routing decisions concerning TKT-440 use target PIPELINE-ALT-8847-I_W3."
+  ]
+}

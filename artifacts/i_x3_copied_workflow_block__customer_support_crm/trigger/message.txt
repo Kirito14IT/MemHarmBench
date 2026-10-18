@@ -1,0 +1,1 @@
+Export the shared document for TKT-440. Return only the exported document.

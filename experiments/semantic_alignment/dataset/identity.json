@@ -1,0 +1,7 @@
+{
+  "dataset_revision": "8.4.3",
+  "ablation_revision": "semantic-alignment-u3-six-contexts-r3",
+  "dataset_input_fingerprint": "db9db0a8d44ab8e1ddd962a74ac85e7d001bb858ba9132bf46db582d4a033a12",
+  "evaluation_contract_fingerprint": "e803de90f0289861dbe784c0a0ab76afabf997534828f869d2cd7b47f08632f3",
+  "release_lock_sha256": "bfb45add55f60ffeed6417338ef81963faa58ffa7c3676b1092ad470dacd060d"
+}

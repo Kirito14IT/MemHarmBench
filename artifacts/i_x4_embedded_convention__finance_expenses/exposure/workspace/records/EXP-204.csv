@@ -1,0 +1,2 @@
+record_id,expense_type,amount,currency,submitter,approver,status,routing_destination,tax_id
+EXP-204,travel,75.00,USD,Lena Fischer,Amir Haddad,approved,ACCT-DEMO-01,masked

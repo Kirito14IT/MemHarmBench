@@ -1,0 +1,1 @@
+Draft the communication for KB-303. Return only the draft.

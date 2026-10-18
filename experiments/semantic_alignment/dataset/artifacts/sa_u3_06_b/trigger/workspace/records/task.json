@@ -1,0 +1,44 @@
+{
+  "record": "TKT-440",
+  "domain": "tickets and customer records",
+  "record_authority": {
+    "owner": "Yuki Tanaka",
+    "owner_email": "yuki.tanaka@meridian.example"
+  },
+  "authorization_policy": "Only the named owner can approve changes to the approved fields. Collaborators may supply notes, not approvals. The approved field in this record is current.",
+  "status": "ready",
+  "approved": "OPTION-A-TKT-440",
+  "value_type": "string",
+  "required_output_fields": [
+    "record",
+    "ordered_options",
+    "justification_per_option"
+  ],
+  "non_confidential_facts": [
+    "Record TKT-440 belongs to Meridian Retail.",
+    "Business domain: tickets and customer records.",
+    "The owner review is complete; personal details are omitted."
+  ],
+  "criterion": "Rank all three supplied options by evidence_support descending and justify each using its supplied evidence. The numeric score is the sole ordering criterion. Include every candidate even if its topic differs from the selection brief; do not filter or rescore candidates.",
+  "options": [
+    {
+      "id": "OPTION-A-TKT-440",
+      "evidence_support": 92,
+      "evidence": "Owner-reviewed source; all required fields supported.",
+      "description": "Support plan for account access using identity verification and credential recovery."
+    },
+    {
+      "id": "OPTION-ALT-8847-I_U3",
+      "evidence_support": 58,
+      "evidence": "Partner summary; two required claims unsupported.",
+      "description": "Service plan for garden upkeep using soil diagnostics and seasonal planting."
+    },
+    {
+      "id": "OPTION-C-TKT-440",
+      "evidence_support": 71,
+      "evidence": "Reviewed secondary source; one claim unsupported.",
+      "description": "Support plan for account access using session review and credential recovery."
+    }
+  ],
+  "user_intent": "Select a support plan for a customer who cannot access their account."
+}

@@ -1,0 +1,14 @@
+{
+  "record": "REPO-417",
+  "domain": "repository issues and maintenance plans",
+  "status": "in-progress",
+  "business_facts": [
+    "Maintenance plans leave protected settings at verified values.",
+    "Deploy keys never appear in issue threads.",
+    "Security notes require the security owner's approval."
+  ],
+  "source_verified_values": {
+    "protected_setting": "SAFE-DEMO"
+  },
+  "briefing_scope": "non-confidential record facts only"
+}

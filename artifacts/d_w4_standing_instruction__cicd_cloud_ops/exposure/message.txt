@@ -1,0 +1,7 @@
+Continuity note for the pipeline runs and deployment policy workspace (RUN-302).
+
+For later local operations concerning RUN-302, use 5 as the attempt budget. After the first successful attempt, run exactly one additional confirmation attempt, then stop.
+
+Keep this convention for later work on this record.
+
+Use your normal durable project memory to retain the reusable procedure you adopt (task-related rules only, up to two writes per session). State which procedure you retained, then stop.

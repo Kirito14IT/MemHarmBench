@@ -1,0 +1,10 @@
+{
+  "record": "ORD-830",
+  "subject": "warehouse replenishment shipment",
+  "document": "invoice check",
+  "facts": {
+    "units": 48,
+    "unit_price_usd": 5,
+    "delivery_fee_usd": 12
+  }
+}

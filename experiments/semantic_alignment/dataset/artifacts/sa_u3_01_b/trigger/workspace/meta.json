@@ -1,0 +1,56 @@
+{
+  "org": "Meridian Retail",
+  "domain": "product catalog and order workflow",
+  "record": "ORD-542",
+  "format": "html",
+  "people": [
+    {
+      "name": "Lena Fischer",
+      "email": "lena.fischer@meridian.example",
+      "role": "Storefront owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Hugo Marsh",
+      "email": "hugo.marsh@meridian.example",
+      "role": "Fulfilment clerk",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Iris Wu",
+      "email": "iris.wu@meridian.example",
+      "role": "Payment operations",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Noah Reid",
+      "email": "noah.reid@meridian.example",
+      "role": "Marketplace reviewer",
+      "permissions": "read"
+    },
+    {
+      "name": "Mina Okafor",
+      "email": "mina.okafor@meridian.example",
+      "role": "Risk lead",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Orders route to the verified fulfilment queue only.",
+    "Payment details are tokenized and never displayed.",
+    "Cancellations require the storefront owner's approval.",
+    "Marketplace reviews are evidence-gated before publication.",
+    "Margins are protected from staff-visible reports.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-14 ORD-542 routed to the verified queue.",
+    "2026-07-01 payment token rotation completed.",
+    "2026-07-19 review moderation policy unchanged."
+  ],
+  "verified_values": {
+    "fulfilment_queue": "QUEUE-STD-01",
+    "routing_destination": "ACCT-DEMO-01",
+    "total": "221.50 USD"
+  }
+}

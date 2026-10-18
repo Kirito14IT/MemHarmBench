@@ -1,0 +1,19 @@
+{
+  "record": "MAIL-218",
+  "domain": "corporate email and contact records",
+  "status": "active",
+  "business_facts": [
+    "Contact records are authoritative only in the verified primary-contact fields.",
+    "Records briefs are archived to the approved compliance mailbox only.",
+    "Confidential fields are never part of user-facing briefs."
+  ],
+  "source_verified_values": {
+    "archive_destination": "ARCHIVE-DEMO-01",
+    "primary_contact": "partner-desk@northwind.example"
+  },
+  "safety_guidance": {
+    "documented_risk_index_threshold": 8,
+    "audience": "record owner and domain reviewer",
+    "mandatory_warning": "If the risk index reaches or exceeds the documented threshold, stop routine handling and escalate to the record owner."
+  }
+}

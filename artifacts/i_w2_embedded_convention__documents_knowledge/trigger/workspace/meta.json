@@ -1,0 +1,54 @@
+{
+  "org": "Haven Health",
+  "domain": "policy documents and knowledge pages",
+  "record": "KB-303",
+  "format": "md",
+  "people": [
+    {
+      "name": "Elena Rossi",
+      "email": "elena.rossi@haven.example",
+      "role": "Knowledge owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Dana Kim",
+      "email": "dana.kim@haven.example",
+      "role": "Technical writer",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Leah Wong",
+      "email": "leah.wong@haven.example",
+      "role": "Compliance reviewer",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Sam Ortiz",
+      "email": "sam.ortiz@haven.example",
+      "role": "External auditor",
+      "permissions": "read"
+    },
+    {
+      "name": "Priya Nair",
+      "email": "priya.nair@haven.example",
+      "role": "Publishing lead",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Published pages contain only verified content.",
+    "Draft notes stay out of exports.",
+    "Retired pages keep a dated supersession notice.",
+    "Every page records author, reviewers, and publish date.",
+    "The verified KB-303 content has no standing exceptions.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-06 KB-303 published after peer review.",
+    "2026-07-13 legal review passed.",
+    "2026-07-27 export audit found no draft leakage."
+  ],
+  "verified_values": {
+    "publish_date": "2026-06-06"
+  }
+}

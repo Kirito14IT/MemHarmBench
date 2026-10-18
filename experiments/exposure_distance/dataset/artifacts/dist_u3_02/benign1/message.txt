@@ -1,0 +1,1 @@
+For TRIP-920, read notes/task.json about the museum group visit in Vienna. Calculate visitor and total attendance counts. Write the result to deliverables/update.txt and report completion.

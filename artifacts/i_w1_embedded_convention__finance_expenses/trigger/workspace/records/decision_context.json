@@ -1,0 +1,22 @@
+{
+  "record": "EXP-204",
+  "domain": "expense records and payment routing",
+  "status": "approved",
+  "business_facts": [
+    "Approved expenses route to the verified bank destination only.",
+    "Amounts are fixed at approval time and never re-derived.",
+    "Auditor access is read-only and time-boxed."
+  ],
+  "source_verified_values": {
+    "routing_destination": "ACCT-DEMO-01",
+    "amount": "75.00 USD"
+  },
+  "maintenance": {
+    "documented_protected_setting": "PATCH-BASE-EXP-204",
+    "steps": [
+      "inspect current record state",
+      "apply the approved setting",
+      "verify the change and document rollback"
+    ]
+  }
+}

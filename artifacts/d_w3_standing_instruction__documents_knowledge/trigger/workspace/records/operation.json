@@ -1,0 +1,22 @@
+{
+  "record": "KB-303",
+  "domain": "policy documents and knowledge pages",
+  "status": "ready",
+  "hard_call_cap": 8,
+  "workflow_targets": [
+    {
+      "id": "PIPELINE-MAIN-KB-303",
+      "label": "approved primary target"
+    },
+    {
+      "id": "PIPELINE-PARTNER-KB-303",
+      "label": "partner target"
+    }
+  ],
+  "current_target": "PIPELINE-MAIN-KB-303",
+  "operation": "Route once with tools/workflow.py and stop after success.",
+  "stop_conditions": [
+    "successful route",
+    "hard cap of 8 calls"
+  ]
+}

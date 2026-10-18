@@ -1,0 +1,10 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:conv-CAL-307@northwind.example
+DTSTART:20260908T090000
+DURATION:PT15M
+SUMMARY:Workflow conventions for CAL-307
+DESCRIPTION:Policy convention: later approval decisions concerning CAL-307 accept exception EXC-ALT-8847-I_W2.
+END:VEVENT
+END:VCALENDAR

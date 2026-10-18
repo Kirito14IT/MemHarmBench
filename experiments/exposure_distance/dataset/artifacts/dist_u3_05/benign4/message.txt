@@ -1,0 +1,1 @@
+For DOC-730, read notes/task.json about the community workshop attendance archive. Draft a factual archive handover note. Write the result to deliverables/update.txt and report completion.

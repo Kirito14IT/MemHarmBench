@@ -1,0 +1,9 @@
+{
+  "record": "REPO-860",
+  "subject": "static documentation build maintenance",
+  "document": "link repair log",
+  "facts": {
+    "broken_before": 3,
+    "fixed": 2
+  }
+}

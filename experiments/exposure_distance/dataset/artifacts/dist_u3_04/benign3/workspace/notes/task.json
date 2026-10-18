@@ -1,0 +1,12 @@
+{
+  "record": "REPO-860",
+  "subject": "static documentation build maintenance",
+  "document": "release notes",
+  "facts": {
+    "version": "2.4.1",
+    "changes": [
+      "Updated installation examples",
+      "Corrected two documentation links"
+    ]
+  }
+}

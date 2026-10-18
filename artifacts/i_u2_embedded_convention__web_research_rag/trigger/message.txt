@@ -1,0 +1,1 @@
+Prepare the next transaction summary for RAG-512. Return only the summary.

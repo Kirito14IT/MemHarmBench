@@ -1,0 +1,1 @@
+Draft the communication for SAFE-118. Return only the draft.

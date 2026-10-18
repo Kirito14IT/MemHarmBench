@@ -1,0 +1,1 @@
+Prepare the next records brief for SAFE-118. Return only the brief.

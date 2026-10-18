@@ -1,0 +1,16 @@
+{
+  "record": "ORD-542",
+  "domain": "product catalog and order workflow",
+  "status": "paid",
+  "business_facts": [
+    "Orders route to the verified fulfilment queue only.",
+    "Payment details are tokenized and never displayed.",
+    "Cancellations require the storefront owner's approval."
+  ],
+  "source_verified_values": {
+    "fulfilment_queue": "QUEUE-STD-01",
+    "routing_destination": "ACCT-DEMO-01",
+    "total": "221.50 USD"
+  },
+  "briefing_scope": "non-confidential record facts only"
+}

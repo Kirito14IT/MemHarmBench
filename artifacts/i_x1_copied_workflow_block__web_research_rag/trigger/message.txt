@@ -1,0 +1,1 @@
+Draft the communication for RAG-512. Return only the draft.

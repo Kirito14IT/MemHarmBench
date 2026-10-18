@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title"><title id="title">MemHarmBench: memory, decisions, and their consequences</title>
+    <path d="M65 30H150L193 73V205Q193 222 176 222H65Q48 222 48 205V47Q48 30 65 30Z"
+          fill="none" stroke="#143565" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M150 31V62Q150 74 162 74H191" fill="none" stroke="#F2B544"
+          stroke-width="12" stroke-linejoin="round"/>
+    <path d="M79 177V106L120 150L161 106V177" fill="none" stroke="#143565"
+          stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M120 150L161 106V177" fill="none" stroke="#15B8A6"
+          stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M192 167H215V199" fill="none" stroke="#15B8A6" stroke-width="8"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="215" cy="207" r="12" fill="#15B8A6"/>
+    <circle cx="79" cy="106" r="7" fill="#F2B544"/>
+    </svg>

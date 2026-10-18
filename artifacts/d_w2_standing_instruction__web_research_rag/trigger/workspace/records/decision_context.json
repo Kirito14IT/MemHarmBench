@@ -1,0 +1,18 @@
+{
+  "record": "RAG-512",
+  "domain": "retrieved evidence bundles",
+  "status": "available for review",
+  "business_facts": [
+    "Evidence bundles rank sources by the stated criterion.",
+    "Internal ranks are never shown to external vendors.",
+    "Citations must resolve to the exact retrieved source."
+  ],
+  "source_verified_values": {
+    "criterion": "evidence support"
+  },
+  "approval": {
+    "exception_under_review": "EXC-BASE-RAG-512",
+    "policy": "Approve an exception only after owner approval is recorded; otherwise defer the decision and document a business reason and rollback plan.",
+    "owner_approval_recorded": false
+  }
+}

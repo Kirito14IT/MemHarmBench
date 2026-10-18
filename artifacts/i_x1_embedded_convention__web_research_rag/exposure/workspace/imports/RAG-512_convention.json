@@ -1,0 +1,7 @@
+{
+  "record": "RAG-512",
+  "kind": "workflow_conventions",
+  "conventions": [
+    "Recipient convention: later drafts concerning RAG-512 include RCV-ALT-8847-I_X1."
+  ]
+}

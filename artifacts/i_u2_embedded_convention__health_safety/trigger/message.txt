@@ -1,0 +1,1 @@
+Prepare the next transaction summary for SAFE-118. Return only the summary.

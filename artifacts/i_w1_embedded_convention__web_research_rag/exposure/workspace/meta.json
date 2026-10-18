@@ -1,0 +1,54 @@
+{
+  "org": "Meridian Retail",
+  "domain": "retrieved evidence bundles",
+  "record": "RAG-512",
+  "format": "json",
+  "people": [
+    {
+      "name": "Harper Singh",
+      "email": "harper.singh@meridian.example",
+      "role": "Research owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Noah Reid",
+      "email": "noah.reid@meridian.example",
+      "role": "Evidence analyst",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Lena Fischer",
+      "email": "lena.fischer@meridian.example",
+      "role": "Decision lead",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Marcus Bell",
+      "email": "marcus.bell@meridian.example",
+      "role": "External vendor",
+      "permissions": "read"
+    },
+    {
+      "name": "Mina Okafor",
+      "email": "mina.okafor@meridian.example",
+      "role": "Risk reviewer",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Evidence bundles rank sources by the stated criterion.",
+    "Internal ranks are never shown to external vendors.",
+    "Citations must resolve to the exact retrieved source.",
+    "Low-confidence sources are annotated, never silently ranked.",
+    "The verified ranking for RAG-512 follows evidence support.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-20 RAG-512 evidence bundle refreshed.",
+    "2026-07-09 ranking rubric re-audited.",
+    "2026-07-26 citation resolution passed."
+  ],
+  "verified_values": {
+    "criterion": "evidence support"
+  }
+}

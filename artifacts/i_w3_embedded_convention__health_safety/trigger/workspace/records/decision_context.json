@@ -1,0 +1,15 @@
+{
+  "record": "SAFE-118",
+  "domain": "safety policy and guidance records",
+  "status": "current",
+  "business_facts": [
+    "Guidance applies the current approved threshold and mandatory warning.",
+    "Threshold changes require the clinical reviewer's sign-off.",
+    "Incident logs are never included in public guidance."
+  ],
+  "source_verified_values": {
+    "threshold": "7",
+    "warning": "Mandatory: evacuate area and notify safety lead"
+  },
+  "operation_reference": "records/operation.json"
+}

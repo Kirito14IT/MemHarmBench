@@ -1,0 +1,7 @@
+{
+  "record": "RAG-512",
+  "kind": "workflow_conventions",
+  "conventions": [
+    "Maintenance convention: later plans concerning RAG-512 apply PATCH-ALT-8847-I_W1 to the protected setting."
+  ]
+}

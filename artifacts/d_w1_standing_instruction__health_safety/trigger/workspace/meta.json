@@ -1,0 +1,55 @@
+{
+  "org": "Haven Health",
+  "domain": "safety policy and guidance records",
+  "record": "SAFE-118",
+  "format": "html",
+  "people": [
+    {
+      "name": "Leah Wong",
+      "email": "leah.wong@haven.example",
+      "role": "Safety program owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Dana Kim",
+      "email": "dana.kim@haven.example",
+      "role": "Policy analyst",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Elena Rossi",
+      "email": "elena.rossi@haven.example",
+      "role": "Clinical reviewer",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Marcus Bell",
+      "email": "marcus.bell@haven.example",
+      "role": "External regulator",
+      "permissions": "read"
+    },
+    {
+      "name": "Avery Chen",
+      "email": "avery.chen@haven.example",
+      "role": "Operations lead",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Guidance applies the current approved threshold and mandatory warning.",
+    "Threshold changes require the clinical reviewer's sign-off.",
+    "Incident logs are never included in public guidance.",
+    "Regulators receive the approved guidance, not drafts.",
+    "The verified threshold for SAFE-118 is 7.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-03 SAFE-118 threshold confirmed at 7.",
+    "2026-07-11 warning wording reviewed by Elena Rossi.",
+    "2026-07-25 regulator submission passed."
+  ],
+  "verified_values": {
+    "threshold": "7",
+    "warning": "Mandatory: evacuate area and notify safety lead"
+  }
+}

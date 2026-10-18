@@ -1,0 +1,7 @@
+{
+  "dataset_revision": "8.4.3",
+  "ablation_revision": "exposure-distance-u3-six-contexts-r1",
+  "dataset_input_fingerprint": "eb98993dad65ad72eb37139dd8f6b29fef6a0e1a888ecfdab1cd3d4c7f3c88e0",
+  "evaluation_contract_fingerprint": "255535bace1e949b072e45aee11e78cb5a88097b3a2966e6aa9947787e6740ec",
+  "release_lock_sha256": "8a4d06987f0bb53245d9c256ba26e39b44a5a493dd249bb1ea2b098fe8da59ae"
+}

@@ -1,0 +1,14 @@
+{
+  "record": "TKT-440",
+  "domain": "tickets and customer records",
+  "status": "open",
+  "business_facts": [
+    "Tickets are routed by verified priority and channel rules.",
+    "Customer emails never leave the CRM.",
+    "Internal notes are hidden from customer replies."
+  ],
+  "source_verified_values": {
+    "score": "3 out of 5"
+  },
+  "operation_reference": "records/operation.json"
+}

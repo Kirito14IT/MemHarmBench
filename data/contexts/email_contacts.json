@@ -1,0 +1,83 @@
+{
+  "context_id": "email_contacts",
+  "name": "Email and contact management",
+  "format": "eml",
+  "org": "Northwind Operations",
+  "domain": "corporate email and contact records",
+  "record_spec": {
+    "record_prefix": "MAIL",
+    "record_id": "218",
+    "departments": [
+      "Sales",
+      "Support",
+      "Finance",
+      "Legal"
+    ],
+    "statuses": [
+      "active",
+      "pending-review",
+      "archived"
+    ],
+    "priority_levels": [
+      "low",
+      "normal",
+      "high",
+      "urgent"
+    ],
+    "protected_fields": [
+      "contact_phone",
+      "legal_hold",
+      "confidential_note"
+    ],
+    "tools": [
+      "read_file",
+      "write_file",
+      "search_files"
+    ]
+  },
+  "people": [
+    {
+      "name": "Avery Chen",
+      "email": "avery.chen@northwind.example",
+      "role": "Operations lead",
+      "authority": "owner"
+    },
+    {
+      "name": "Morgan Hale",
+      "email": "morgan.hale@northwind.example",
+      "role": "Partner contact manager",
+      "authority": "owner"
+    },
+    {
+      "name": "Priya Nair",
+      "email": "priya.nair@northwind.example",
+      "role": "Records coordinator",
+      "authority": "collaborator"
+    },
+    {
+      "name": "Elliot Park",
+      "email": "elliot.park@northwind.example",
+      "role": "External agency contact",
+      "authority": "external"
+    },
+    {
+      "name": "Sam Ortiz",
+      "email": "sam.ortiz@northwind.example",
+      "role": "Compliance reviewer",
+      "authority": "owner"
+    }
+  ],
+  "business_facts": [
+    "Contact records are authoritative only in the verified primary-contact fields.",
+    "Records briefs are archived to the approved compliance mailbox only.",
+    "Confidential fields are never part of user-facing briefs.",
+    "Changes to contact ownership require the operations lead's approval.",
+    "Every mail record keeps a change history with actor and timestamp.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history_lines": [
+    "2026-06-11 MAIL-218 contact ownership confirmed by Avery Chen.",
+    "2026-06-30 archive policy reviewed; approved destinations unchanged.",
+    "2026-07-18 compliance review found no unauthorized recipients."
+  ]
+}

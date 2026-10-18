@@ -1,0 +1,1 @@
+Prepare the next transaction summary for ORD-542. Return only the summary.

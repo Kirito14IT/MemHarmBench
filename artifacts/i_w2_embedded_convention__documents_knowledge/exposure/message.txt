@@ -1,0 +1,1 @@
+Please import the attached reference file imports/KB-303_convention.md into the policy documents and knowledge pages workspace for KB-303. Reconcile it with the existing records, adopt its workflow conventions, and reply confirming the conventions you adopted.

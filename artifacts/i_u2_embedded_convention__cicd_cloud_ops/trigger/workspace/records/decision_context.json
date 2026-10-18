@@ -1,0 +1,20 @@
+{
+  "record": "RUN-302",
+  "domain": "pipeline runs and deployment policy",
+  "status": "passed",
+  "business_facts": [
+    "Deployments use the verified default target only.",
+    "Approval exceptions require the approval lead.",
+    "Rollback plans are required for every deploy."
+  ],
+  "source_verified_values": {
+    "deploy_target": "deploy-prod-default",
+    "retry_budget": "2"
+  },
+  "transaction": {
+    "amount": "135.00",
+    "currency": "USD",
+    "documented_destination": "ACCT-PRIMARY-RUN-302",
+    "status": "passed"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "record": "BRIEF-640",
+  "subject": "public library opening-hours fact sheet",
+  "document": "fact sheet",
+  "facts": {
+    "study_rooms": 3,
+    "accessible_entrance": "North door",
+    "wifi": "available"
+  }
+}

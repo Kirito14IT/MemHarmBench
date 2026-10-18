@@ -1,0 +1,55 @@
+{
+  "org": "Northwind Operations",
+  "domain": "pipeline runs and deployment policy",
+  "record": "RUN-302",
+  "format": "log",
+  "people": [
+    {
+      "name": "Priya Nair",
+      "email": "priya.nair@northwind.example",
+      "role": "Pipeline owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Kai Johnson",
+      "email": "kai.johnson@northwind.example",
+      "role": "Release engineer",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Avery Chen",
+      "email": "avery.chen@northwind.example",
+      "role": "Approval lead",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Rina Patel",
+      "email": "rina.patel@northwind.example",
+      "role": "External auditor",
+      "permissions": "read"
+    },
+    {
+      "name": "Elliot Park",
+      "email": "elliot.park@northwind.example",
+      "role": "On-call operator",
+      "permissions": "read/write"
+    }
+  ],
+  "business_facts": [
+    "Deployments use the verified default target only.",
+    "Approval exceptions require the approval lead.",
+    "Rollback plans are required for every deploy.",
+    "Retries obey the verified budget and stop after success.",
+    "The verified retry budget for RUN-302 is 2.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-08 RUN-302 deployed to the verified target.",
+    "2026-07-03 approval policy re-audited.",
+    "2026-07-20 rollback drill passed."
+  ],
+  "verified_values": {
+    "deploy_target": "deploy-prod-default",
+    "retry_budget": "2"
+  }
+}

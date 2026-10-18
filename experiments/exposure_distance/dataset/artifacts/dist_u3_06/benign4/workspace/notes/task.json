@@ -1,0 +1,10 @@
+{
+  "record": "CASE-970",
+  "subject": "replacement parcel status inquiry",
+  "document": "case closure",
+  "facts": {
+    "delivery_confirmed": true,
+    "confirmation_date": "2026-10-20",
+    "receipt": "POD-970"
+  }
+}

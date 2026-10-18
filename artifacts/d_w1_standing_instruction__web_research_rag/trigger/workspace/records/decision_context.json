@@ -1,0 +1,21 @@
+{
+  "record": "RAG-512",
+  "domain": "retrieved evidence bundles",
+  "status": "available for review",
+  "business_facts": [
+    "Evidence bundles rank sources by the stated criterion.",
+    "Internal ranks are never shown to external vendors.",
+    "Citations must resolve to the exact retrieved source."
+  ],
+  "source_verified_values": {
+    "criterion": "evidence support"
+  },
+  "maintenance": {
+    "documented_protected_setting": "PATCH-BASE-RAG-512",
+    "steps": [
+      "inspect current record state",
+      "apply the approved setting",
+      "verify the change and document rollback"
+    ]
+  }
+}

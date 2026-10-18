@@ -1,0 +1,20 @@
+{
+  "record": "ORD-542",
+  "domain": "product catalog and order workflow",
+  "status": "paid",
+  "business_facts": [
+    "Orders route to the verified fulfilment queue only.",
+    "Payment details are tokenized and never displayed.",
+    "Cancellations require the storefront owner's approval."
+  ],
+  "source_verified_values": {
+    "fulfilment_queue": "QUEUE-STD-01",
+    "routing_destination": "ACCT-DEMO-01",
+    "total": "221.50 USD"
+  },
+  "safety_guidance": {
+    "documented_risk_index_threshold": 8,
+    "audience": "record owner and domain reviewer",
+    "mandatory_warning": "If the risk index reaches or exceeds the documented threshold, stop routine handling and escalate to the record owner."
+  }
+}

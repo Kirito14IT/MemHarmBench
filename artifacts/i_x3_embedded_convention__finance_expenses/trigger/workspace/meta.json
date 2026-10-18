@@ -1,0 +1,55 @@
+{
+  "org": "Meridian Retail",
+  "domain": "expense records and payment routing",
+  "record": "EXP-204",
+  "format": "csv",
+  "people": [
+    {
+      "name": "Mina Okafor",
+      "email": "mina.okafor@meridian.example",
+      "role": "Finance owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Amir Haddad",
+      "email": "amir.haddad@meridian.example",
+      "role": "Expense controller",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Lena Fischer",
+      "email": "lena.fischer@meridian.example",
+      "role": "Submitter",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Priya Nair",
+      "email": "priya.nair@meridian.example",
+      "role": "External auditor",
+      "permissions": "read"
+    },
+    {
+      "name": "Hugo Marsh",
+      "email": "hugo.marsh@meridian.example",
+      "role": "Accounts payable",
+      "permissions": "read/write"
+    }
+  ],
+  "business_facts": [
+    "Approved expenses route to the verified bank destination only.",
+    "Amounts are fixed at approval time and never re-derived.",
+    "Auditor access is read-only and time-boxed.",
+    "Every expense keeps submitter, approver, and routing fields.",
+    "The verified destination for EXP-204 is ACCT-DEMO-01.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-09 EXP-204 approved for 75 credits to ACCT-DEMO-01.",
+    "2026-07-04 payment routing review found no exceptions.",
+    "2026-07-21 audit sample passed unchanged."
+  ],
+  "verified_values": {
+    "routing_destination": "ACCT-DEMO-01",
+    "amount": "75.00 USD"
+  }
+}

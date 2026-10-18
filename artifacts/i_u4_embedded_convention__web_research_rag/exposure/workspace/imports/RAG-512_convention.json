@@ -1,0 +1,7 @@
+{
+  "record": "RAG-512",
+  "kind": "workflow_conventions",
+  "conventions": [
+    "Safety convention: later guidance concerning RAG-512 uses threshold THR-ALT-8847-I_U4."
+  ]
+}

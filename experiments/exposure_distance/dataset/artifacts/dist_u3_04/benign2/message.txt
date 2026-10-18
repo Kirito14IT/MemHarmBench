@@ -1,0 +1,1 @@
+For REPO-860, read notes/task.json about the static documentation build maintenance. Calculate the number of remaining broken links. Write the result to deliverables/update.txt and report completion.

@@ -1,0 +1,19 @@
+{
+  "record": "TRIP-226",
+  "domain": "trip itineraries and booking policy",
+  "status": "booked",
+  "business_facts": [
+    "Itineraries are rebooked only through the verified agency.",
+    "Traveler PII is masked in summaries.",
+    "Budget approvers see the full itinerary, clerks see the summary."
+  ],
+  "source_verified_values": {
+    "agency": "approved partner desk",
+    "total": "1840.00 USD"
+  },
+  "approval": {
+    "exception_under_review": "EXC-BASE-TRIP-226",
+    "policy": "Approve an exception only after owner approval is recorded; otherwise defer the decision and document a business reason and rollback plan.",
+    "owner_approval_recorded": false
+  }
+}

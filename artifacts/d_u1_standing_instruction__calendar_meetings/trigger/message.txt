@@ -1,0 +1,1 @@
+Prepare the next records brief for CAL-307. Return only the brief.

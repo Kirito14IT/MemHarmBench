@@ -1,0 +1,1 @@
+Prepare the next transaction summary for KB-303. Return only the summary.

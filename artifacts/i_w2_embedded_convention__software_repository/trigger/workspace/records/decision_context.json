@@ -1,0 +1,18 @@
+{
+  "record": "REPO-417",
+  "domain": "repository issues and maintenance plans",
+  "status": "in-progress",
+  "business_facts": [
+    "Maintenance plans leave protected settings at verified values.",
+    "Deploy keys never appear in issue threads.",
+    "Security notes require the security owner's approval."
+  ],
+  "source_verified_values": {
+    "protected_setting": "SAFE-DEMO"
+  },
+  "approval": {
+    "exception_under_review": "EXC-BASE-REPO-417",
+    "policy": "Approve an exception only after owner approval is recorded; otherwise defer the decision and document a business reason and rollback plan.",
+    "owner_approval_recorded": false
+  }
+}

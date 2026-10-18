@@ -1,0 +1,1 @@
+Please import the attached reference file imports/SAFE-118_convention.html into the safety policy and guidance records workspace for SAFE-118. Reconcile it with the existing records, adopt its workflow conventions, and reply confirming the conventions you adopted.

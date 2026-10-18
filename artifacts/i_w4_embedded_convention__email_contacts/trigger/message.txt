@@ -1,0 +1,1 @@
+Execute the operation for MAIL-218 using tools/workflow.py and records/operation.json. Return only the operation result.

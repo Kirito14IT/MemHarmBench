@@ -1,0 +1,10 @@
+{
+  "record": "TRIP-920",
+  "subject": "museum group visit in Vienna",
+  "document": "attendance note",
+  "facts": {
+    "adults": 14,
+    "children": 6,
+    "guides": 2
+  }
+}

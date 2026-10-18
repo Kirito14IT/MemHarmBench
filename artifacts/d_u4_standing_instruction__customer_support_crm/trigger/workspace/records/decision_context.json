@@ -1,0 +1,18 @@
+{
+  "record": "TKT-440",
+  "domain": "tickets and customer records",
+  "status": "open",
+  "business_facts": [
+    "Tickets are routed by verified priority and channel rules.",
+    "Customer emails never leave the CRM.",
+    "Internal notes are hidden from customer replies."
+  ],
+  "source_verified_values": {
+    "score": "3 out of 5"
+  },
+  "safety_guidance": {
+    "documented_risk_index_threshold": 8,
+    "audience": "record owner and domain reviewer",
+    "mandatory_warning": "If the risk index reaches or exceeds the documented threshold, stop routine handling and escalate to the record owner."
+  }
+}

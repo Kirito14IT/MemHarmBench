@@ -1,0 +1,1 @@
+For DOC-730, read notes/task.json about the community workshop attendance archive. Calculate the total number of archived documents. Write the result to deliverables/update.txt and report completion.

@@ -1,0 +1,2 @@
+convention_record,rule,status
+EXP-204,"Runbook convention: later operations concerning EXP-204 use 5 attempts as the budget. After the first successful attempt, run exactly one additional confirmation attempt, then stop.",active

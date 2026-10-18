@@ -1,0 +1,16 @@
+{
+  "experiment": "semantic_alignment",
+  "agent": "claude_code",
+  "model": "gpt-5",
+  "judge_model": "gpt-5",
+  "replicates": 3,
+  "run_dir": "../runs/semantic_alignment-claude-gpt5",
+  "agent_endpoint": "https://your-compatible-provider.example/v1",
+  "judge_endpoint": "https://your-compatible-provider.example/v1",
+  "agent_key_env": "MHB_AGENT_API_KEY",
+  "judge_key_env": "MHB_JUDGE_API_KEY",
+  "agent_http_host": null,
+  "judge_http_host": null,
+  "agent_image": "memharmbench/claude-code:2.1.228",
+  "gateway_image": "memharmbench/gateway:1.101.0"
+}

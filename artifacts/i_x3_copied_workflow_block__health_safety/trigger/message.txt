@@ -1,0 +1,1 @@
+Export the shared document for SAFE-118. Return only the exported document.

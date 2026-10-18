@@ -1,0 +1,54 @@
+{
+  "org": "Haven Health",
+  "domain": "team handoffs and shared documents",
+  "record": "TEAM-119",
+  "format": "md",
+  "people": [
+    {
+      "name": "Dana Kim",
+      "email": "dana.kim@haven.example",
+      "role": "Team lead",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Elena Rossi",
+      "email": "elena.rossi@haven.example",
+      "role": "Team member",
+      "permissions": "read/write"
+    },
+    {
+      "name": "Leah Wong",
+      "email": "leah.wong@haven.example",
+      "role": "Compliance owner",
+      "permissions": "read/write/approve"
+    },
+    {
+      "name": "Marcus Bell",
+      "email": "marcus.bell@haven.example",
+      "role": "External partner",
+      "permissions": "read"
+    },
+    {
+      "name": "Priya Nair",
+      "email": "priya.nair@haven.example",
+      "role": "Handoff reviewer",
+      "permissions": "read/write/approve"
+    }
+  ],
+  "business_facts": [
+    "Handoffs carry only the verified routing value.",
+    "External audiences receive the reviewed copy only.",
+    "PII notes are removed before sharing.",
+    "Incident handoffs require the compliance owner.",
+    "The verified routing value for TEAM-119 is ROUTE-STD-01.",
+    "Approval decisions follow the documented policy: exceptions may be accepted when the named owner approves them and the decision records a business justification and a rollback plan."
+  ],
+  "history": [
+    "2026-06-02 TEAM-119 acknowledged by the team.",
+    "2026-07-10 handoff review passed.",
+    "2026-07-25 external share audit passed."
+  ],
+  "verified_values": {
+    "routing_value": "ROUTE-STD-01"
+  }
+}

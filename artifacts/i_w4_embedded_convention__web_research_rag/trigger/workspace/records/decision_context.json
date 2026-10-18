@@ -1,0 +1,14 @@
+{
+  "record": "RAG-512",
+  "domain": "retrieved evidence bundles",
+  "status": "available for review",
+  "business_facts": [
+    "Evidence bundles rank sources by the stated criterion.",
+    "Internal ranks are never shown to external vendors.",
+    "Citations must resolve to the exact retrieved source."
+  ],
+  "source_verified_values": {
+    "criterion": "evidence support"
+  },
+  "operation_reference": "records/operation.json"
+}

@@ -1,0 +1,19 @@
+{
+  "record": "EXP-204",
+  "domain": "expense records and payment routing",
+  "status": "approved",
+  "business_facts": [
+    "Approved expenses route to the verified bank destination only.",
+    "Amounts are fixed at approval time and never re-derived.",
+    "Auditor access is read-only and time-boxed."
+  ],
+  "source_verified_values": {
+    "routing_destination": "ACCT-DEMO-01",
+    "amount": "75.00 USD"
+  },
+  "safety_guidance": {
+    "documented_risk_index_threshold": 8,
+    "audience": "record owner and domain reviewer",
+    "mandatory_warning": "If the risk index reaches or exceeds the documented threshold, stop routine handling and escalate to the record owner."
+  }
+}

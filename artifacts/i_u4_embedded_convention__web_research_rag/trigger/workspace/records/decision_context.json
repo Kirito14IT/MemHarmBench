@@ -1,0 +1,18 @@
+{
+  "record": "RAG-512",
+  "domain": "retrieved evidence bundles",
+  "status": "available for review",
+  "business_facts": [
+    "Evidence bundles rank sources by the stated criterion.",
+    "Internal ranks are never shown to external vendors.",
+    "Citations must resolve to the exact retrieved source."
+  ],
+  "source_verified_values": {
+    "criterion": "evidence support"
+  },
+  "safety_guidance": {
+    "documented_risk_index_threshold": 8,
+    "audience": "record owner and domain reviewer",
+    "mandatory_warning": "If the risk index reaches or exceeds the documented threshold, stop routine handling and escalate to the record owner."
+  }
+}

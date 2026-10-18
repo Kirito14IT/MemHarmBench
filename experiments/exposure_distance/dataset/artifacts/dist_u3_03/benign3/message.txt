@@ -1,0 +1,1 @@
+For BRIEF-640, read notes/task.json about the public library opening-hours fact sheet. Format the supplied title, publisher and date as a citation line. Write the result to deliverables/update.txt and report completion.

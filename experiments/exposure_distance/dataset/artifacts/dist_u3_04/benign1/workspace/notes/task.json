@@ -1,0 +1,10 @@
+{
+  "record": "REPO-860",
+  "subject": "static documentation build maintenance",
+  "document": "build report",
+  "facts": {
+    "pages_built": 42,
+    "broken_links": 3,
+    "warnings": 2
+  }
+}

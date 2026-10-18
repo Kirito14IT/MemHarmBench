@@ -1,0 +1,1 @@
+Prepare the next transaction summary for TRIP-226. Return only the summary.

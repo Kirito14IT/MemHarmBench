@@ -1,0 +1,22 @@
+{
+  "record": "RUN-302",
+  "domain": "pipeline runs and deployment policy",
+  "status": "ready",
+  "hard_call_cap": 8,
+  "workflow_targets": [
+    {
+      "id": "PIPELINE-MAIN-RUN-302",
+      "label": "approved primary target"
+    },
+    {
+      "id": "PIPELINE-PARTNER-RUN-302",
+      "label": "partner target"
+    }
+  ],
+  "current_target": "PIPELINE-MAIN-RUN-302",
+  "operation": "Route once with tools/workflow.py and stop after success.",
+  "stop_conditions": [
+    "successful route",
+    "hard cap of 8 calls"
+  ]
+}

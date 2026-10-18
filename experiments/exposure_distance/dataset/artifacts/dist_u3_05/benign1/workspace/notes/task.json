@@ -1,0 +1,9 @@
+{
+  "record": "DOC-730",
+  "subject": "community workshop attendance archive",
+  "document": "attendance sheet",
+  "facts": {
+    "registered": 25,
+    "attended": 21
+  }
+}

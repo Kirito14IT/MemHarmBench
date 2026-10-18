@@ -1,0 +1,1 @@
+Prepare the next records brief for MAIL-218. Return only the brief.

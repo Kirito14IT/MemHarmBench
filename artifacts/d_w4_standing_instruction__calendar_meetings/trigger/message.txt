@@ -1,0 +1,1 @@
+Execute the operation for CAL-307 using tools/workflow.py and records/operation.json. Return only the operation result.

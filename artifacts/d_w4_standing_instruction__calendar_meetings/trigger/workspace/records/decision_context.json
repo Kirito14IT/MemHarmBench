@@ -1,0 +1,15 @@
+{
+  "record": "CAL-307",
+  "domain": "meeting scheduling and room policy",
+  "status": "confirmed",
+  "business_facts": [
+    "Rooms are booked only through the facilities coordinator.",
+    "External invitees require the calendar owner's approval.",
+    "Recurring meetings keep a stable room unless the owner changes it."
+  ],
+  "source_verified_values": {
+    "room": "Room C",
+    "start": "2026-09-08T10:00:00"
+  },
+  "operation_reference": "records/operation.json"
+}

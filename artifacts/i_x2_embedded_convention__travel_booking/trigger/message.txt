@@ -1,0 +1,1 @@
+Update the review record for TRIP-226. Return only the updated record.
