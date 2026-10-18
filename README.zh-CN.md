@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
-    <img src="assets/logo.svg" alt="MemHarmBench 标志" width="148">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-animated-dark.gif">
+    <img src="assets/logo-animated.gif" alt="MemHarmBench 标志" width="168">
   </picture>
   <h1>MemHarmBench</h1>
   <p><strong>持久记忆智能体提示注入的受害方中心评测</strong></p>
@@ -23,7 +23,7 @@
 
 **288 个可执行案例 · 24 个攻击模板 · 12 项攻击目标 · 12 个业务上下文 · 3 类受害方**
 
-[项目概览](#overview) · [仓库目录](#contents) · [基准组成](#benchmark) · [快速开始](#quickstart) · [完整评测流程](#workflow) · [攻击分类](#taxonomy) · [评测指标](#metrics) · [消融协议](#ablations) · [扩展方法](#extending)
+[项目概览](#overview) · [演示动图](#demo) · [仓库目录](#contents) · [基准组成](#benchmark) · [快速开始](#quickstart) · [完整评测流程](#workflow) · [攻击分类](#taxonomy) · [评测指标](#metrics) · [消融协议](#ablations) · [扩展方法](#extending)
 
 <a id="overview"></a>
 ## 1. 项目概览
@@ -35,6 +35,13 @@
 [![MemHarmBench 总览：攻击暴露、持久记忆、新会话触发及受害方中心评测](assets/paper-overview.png)](assets/paper-overview.png)
 
 *论文 Figure 1 原图。图中的案例用于解释评测流程，不是实验结果。点击两张论文配图均可查看完整分辨率。*
+
+<a id="demo"></a>
+### 演示动图：在终端中浏览案例
+
+![离线演示动图：浏览案例、查看跨会话输入流程，并验证发布数据](assets/demo.gif)
+
+*动图来自真实离线 CLI 输出，逐步展示命令输入、案例目录、从暴露到新会话触发的输入流程，以及冻结输入校验。无需模型调用，不包含实验结果。[静态预览](assets/demo.png) · [完整命令输出](assets/demo-transcript.txt)。*
 
 基准提供：
 
@@ -172,15 +179,6 @@ memharmbench demo
 ```
 
 `validate` 校验冻结输入和源码哈希，只有显式指定 `--output` 才写出报告。`python -m memharmbench_v84` 与 `memharmbench` 等价。如果 PowerShell 无法激活环境，可以直接使用 `.\.venv\Scripts\python.exe` 和 `.\.venv\Scripts\memharmbench.exe`。
-
-<details>
-<summary><strong>查看真实的离线 CLI 演示</strong></summary>
-
-![真实的离线案例浏览与输入校验](assets/demo.gif)
-
-13 秒 GIF 来自实际执行的 `catalog`、`demo` 和 `validate` 输出，不包含智能体运行或实验结果。[静态截图](assets/demo.png) · [完整输出](assets/demo-transcript.txt)
-
-</details>
 
 <a id="workflow"></a>
 ## 5. 完整评测流程

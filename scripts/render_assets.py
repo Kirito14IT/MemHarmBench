@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import math
 import os
 from pathlib import Path
 import re
@@ -201,17 +202,59 @@ def capture(command: list[str]) -> str:
     return output
 
 
+def build_animated_logos() -> None:
+    """Rasterize the original mark with a seamless float and node signal."""
+    import io
+    import resvg_py
+    from PIL import Image
+
+    for dark in (False, True):
+        matte = "#0D1117" if dark else "#FFFFFF"
+        ring = "#286B68" if dark else "#BDEAE3"
+        orbit = "#709CA1" if dark else "#89CFC5"
+        source = logo(dark)
+        body = source.split("</title>", 1)[1].rsplit("</svg>", 1)[0]
+        frames = []
+        for index in range(80):
+            phase = index / 80
+            lift = -8 * math.sin(phase * math.tau)
+            pulse = (phase * 2) % 1
+            radius = 15 + 13 * pulse
+            signal = f'<circle cx="215" cy="207" r="{radius:.2f}" fill="none" stroke="{ring}" stroke-width="{2.5 * (1-pulse):.2f}"/>'
+            # One signal travels around the page; the original drawing is intact.
+            x = 130 + 115 * math.cos(phase * math.tau)
+            y = 127 + 112 * math.sin(phase * math.tau)
+            detail = (f'<circle cx="{x:.2f}" cy="{y:.2f}" r="3" fill="{orbit}"/>'
+                      f'<path d="M222 40v10m-5-5h10" stroke="{GOLD}" stroke-width="2.5" stroke-linecap="round"/>')
+            drawing = (f'<ellipse cx="160" cy="294" rx="{57+4*math.sin(phase*math.tau):.2f}" ry="4" fill="{ring}"/>'
+                       f'<g transform="translate(16 {10+lift:.3f}) scale(1.1)">{signal}{body}{detail}</g>')
+            png = resvg_py.svg_to_bytes(svg_string=svg_document(drawing, 320, 320, "Floating MemHarmBench logo"), zoom=2)
+            rgba = Image.open(io.BytesIO(png)).convert("RGBA").resize((320, 320), Image.Resampling.LANCZOS)
+            rgb = Image.new("RGBA", rgba.size, matte)
+            rgb.alpha_composite(rgba)
+            frame = rgb.convert("RGB").quantize(colors=255, method=Image.Quantize.MEDIANCUT)
+            # Reserve a dedicated palette index for transparency in every frame.
+            mask = rgba.getchannel("A").point(lambda alpha: 255 if alpha < 128 else 0)
+            frame.paste(255, mask=mask)
+            frame.info["transparency"] = 255
+            frames.append(frame)
+        target = ASSETS / ("logo-animated-dark.gif" if dark else "logo-animated.gif")
+        frames[0].save(target, save_all=True, append_images=frames[1:], duration=40,
+                       loop=0, disposal=2, transparency=255, optimize=False)
+
+
 def build_demo():
     from PIL import Image, ImageDraw, ImageFont
     commands = [["catalog", "--limit", "6"], ["demo"], ["validate"]]
     captures = [("memharmbench " + " ".join(cmd), capture(cmd)) for cmd in commands]
     transcript = "\n\n".join(f"$ {command}\n{output}" for command, output in captures) + "\n"
-    (ASSETS / "demo-transcript.txt").write_text(transcript, encoding="utf-8")
+    (ASSETS / "demo-transcript.txt").write_text(transcript, encoding="utf-8", newline="\n")
     mono_path, sans_path = font_file(True), font_file(False)
     mono = ImageFont.truetype(mono_path, 17) if mono_path else ImageFont.load_default(size=17)
     title = ImageFont.truetype(sans_path, 19) if sans_path else ImageFont.load_default(size=19)
     small = ImageFont.truetype(sans_path, 15) if sans_path else ImageFont.load_default(size=15)
     frames = []
+    durations = []
     for n, (command, output) in enumerate(captures):
         lines = []
         for line in output.splitlines():
@@ -236,17 +279,43 @@ def build_demo():
         draw.text((42, 645), "REAL CLI OUTPUT  ·  NO MODEL CALLS  ·  INPUT DATA ONLY", font=small, fill="#9BB2CD")
         for i in range(3):
             draw.rounded_rectangle((1104+i*29, 650, 1123+i*29, 656), 3, fill=TEAL if i == n else "#405671")
-        frames.append(frame)
-    frames[1].save(ASSETS / "demo.png")
+        if n == 1:
+            frame.save(ASSETS / "demo.png")
+        # Reveal only text actually emitted by the CLI, then leave time to read.
+        def append_frame(visible: int, typed: int, duration: int) -> None:
+            animated = frame.copy()
+            overlay = ImageDraw.Draw(animated)
+            overlay.rectangle((64, 91, 1200, 123), fill="#111F33")
+            overlay.text((65, 95), command[:typed], font=mono, fill="#E5F0FF")
+            if typed < len(command):
+                cursor = 65 + overlay.textlength(command[:typed], font=mono)
+                overlay.rectangle((cursor+2, 97, cursor+10, 114), fill=TEAL)
+            if visible < len(lines):
+                overlay.rectangle((40, 133+visible*23, 1200, 625), fill="#111F33")
+            progress = (n + visible / max(1, len(lines))) / 3
+            overlay.line((40, 616, 1200, 616), fill="#30435B", width=3)
+            overlay.line((40, 616, 40+1160*progress, 616), fill=TEAL, width=3)
+            frames.append(animated)
+            durations.append(duration)
+
+        for typed in range(0, len(command), 3):
+            append_frame(0, typed, 60)
+        for visible in range(0, len(lines)+1, 2):
+            append_frame(visible, len(command), 90)
+        append_frame(len(lines), len(command), [3000, 5000, 3500][n])
     frames[0].save(ASSETS / "demo.gif", save_all=True, append_images=frames[1:],
-                   duration=[4000, 5000, 4000], loop=0, optimize=True, disposal=2)
+                   duration=durations, loop=0, optimize=True, disposal=2)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--vectors-only", action="store_true", help="Skip the installed-CLI recording.")
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--vectors-only", action="store_true", help="Skip the installed-CLI recording.")
+    modes.add_argument("--animations-only", action="store_true", help="Rebuild animated logos and the offline CLI GIF only.")
     args = parser.parse_args()
-    build_vectors()
+    if not args.animations_only:
+        build_vectors()
+    build_animated_logos()
     if not args.vectors_only:
         build_demo()
     print("Presentation assets generated in assets/ (no model calls).")

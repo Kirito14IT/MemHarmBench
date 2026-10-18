@@ -45,6 +45,6 @@ $ memharmbench validate
   "dataset_revision": "8.4.3",
   "dataset_input_fingerprint": "fc129ed3bef9fc040fac73f5f257f5b86447ff2404303d457a4de636d660e462",
   "evaluation_contract_fingerprint": "7c835b541a258cdf652faf52b33b8bff8034a003e43214538a6e3bfa26b4d026",
-  "release_lock_sha256": "55f4717e2d12c48e12a72eaa2c2c188aac2c84edef92810a3389d3cfcc5a6066",
+  "release_lock_sha256": "6c3494a0da8515b16ce11af921a8009e5a91c70695d01bd65bf03c25162decc4",
   "model_requests": 0
 }

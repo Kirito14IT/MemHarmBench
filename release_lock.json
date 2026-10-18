@@ -1101,7 +1101,7 @@
     "scripts/audit_release.py": "a9ca66910852ee71f08527bbf68dbcdfa1474e500faa2f6dcbfec36aaba2858a",
     "scripts/build_release_manifest.py": "81a4fb00651f04f14eadbfa8604ac6bf1538e4b143b1fb9f252bba74e62c86bb",
     "scripts/experiment.py": "753bdf360d49092689d443116de932aad835164c57e110c2610e29bc01c33a1b",
-    "scripts/render_assets.py": "a241d05078fec1bac3d1a0702479c9200b37846cd00efb34a2d70d2681894c4f",
+    "scripts/render_assets.py": "85ba044beaeaf9c800f1ad02b395211fe4ba76fbdac07576b6580ab221179f3e",
     "scripts/validate_public.py": "5ffb375ce50bd4bf11d8013a2d6b6961337c2f34a2ee6d958077de94e58c3498",
     "src/memharmbench_v84/__init__.py": "adb0bf005f1c6ce09f85f79c185ca2d44451dc9b5fb38e7c19c46d8dc3cef741",
     "src/memharmbench_v84/__main__.py": "50fd328dfe5b5339a9958444940e9ce45b9764dbb7b130cc25f3a966ccb706a8",
@@ -1509,5 +1509,5 @@
     "actual_model_policy": "Each campaign verifies its configured exact model; no fallback."
   },
   "publication_boundary": "Source code and input data only; no experiment results or model qualification receipts.",
-  "release_lock_sha256": "55f4717e2d12c48e12a72eaa2c2c188aac2c84edef92810a3389d3cfcc5a6066"
+  "release_lock_sha256": "6c3494a0da8515b16ce11af921a8009e5a91c70695d01bd65bf03c25162decc4"
 }

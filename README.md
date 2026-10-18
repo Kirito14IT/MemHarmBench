@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
-    <img src="assets/logo.svg" alt="MemHarmBench logo" width="148">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-animated-dark.gif">
+    <img src="assets/logo-animated.gif" alt="MemHarmBench logo" width="168">
   </picture>
   <h1>MemHarmBench</h1>
   <p><strong>Victim-Centric Evaluation of Prompt Injection in Persistent-Memory Agents</strong></p>
@@ -23,7 +23,7 @@
 
 **288 executable cases · 24 attack templates · 12 objectives · 12 operational contexts · 3 victim classes**
 
-[Overview](#overview) · [Repository contents](#contents) · [Benchmark summary](#benchmark) · [Quickstart](#quickstart) · [Evaluation workflow](#workflow) · [Attack taxonomy](#taxonomy) · [Metrics](#metrics) · [Ablations](#ablations) · [Extension guide](#extending)
+[Overview](#overview) · [Demo](#demo) · [Repository contents](#contents) · [Benchmark summary](#benchmark) · [Quickstart](#quickstart) · [Evaluation workflow](#workflow) · [Attack taxonomy](#taxonomy) · [Metrics](#metrics) · [Ablations](#ablations) · [Extension guide](#extending)
 
 <a id="overview"></a>
 ## 1. Overview
@@ -35,6 +35,13 @@ Persistent memory lets an agent carry preferences and workflow conventions into 
 [![MemHarmBench overview: exposure, persistent memory, fresh-session triggering, and victim-centric evaluation](assets/paper-overview.png)](assets/paper-overview.png)
 
 *Figure 1 from the manuscript. The example illustrates the evaluation protocol; it is not an experimental result. Click either paper figure to view it at full resolution.*
+
+<a id="demo"></a>
+### Demo: explore a case in the terminal
+
+![Animated offline walkthrough: browse cases, inspect the cross-session input flow, and validate the release](assets/demo.gif)
+
+*Actual offline CLI output with animated command entry and line-by-line reveal. Browse the case catalog, follow an example from exposure to fresh-session triggering, and verify the frozen inputs. No model calls or experimental outcomes. [Static view](assets/demo.png) · [Complete captured output](assets/demo-transcript.txt).*
 
 The benchmark provides:
 
@@ -172,15 +179,6 @@ memharmbench demo
 ```
 
 `validate` verifies the frozen inputs and source hashes. It writes no report unless `--output` is supplied. `python -m memharmbench_v84` is equivalent to `memharmbench`. If PowerShell activation is unavailable, use `.\.venv\Scripts\python.exe` and `.\.venv\Scripts\memharmbench.exe` directly.
-
-<details>
-<summary><strong>Watch the actual offline CLI walkthrough</strong></summary>
-
-![Actual offline case browsing and input validation](assets/demo.gif)
-
-The 13-second GIF captures the real `catalog`, `demo`, and `validate` outputs. It contains no agent run or experiment outcome. [Static view](assets/demo.png) · [Complete captured output](assets/demo-transcript.txt)
-
-</details>
 
 <a id="workflow"></a>
 ## 5. Full evaluation workflow
