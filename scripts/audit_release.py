@@ -1,0 +1,119 @@
+"""Audit the public source tree without reading or displaying credential values.
+
+This is a publication boundary check, not an experiment or model evaluation.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import re
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[1]
+GENERATED = {'.git', '.venv', '__pycache__', '.pytest_cache', 'build', 'dist'}
+FORBIDDEN_DIRS = {
+    'outputs', 'results', 'reports', 'logs', 'runs', 'state', 'qualification',
+    'judge_cache', 'worklogs', 'recovery', 'supervision', 'private',
+}
+FORBIDDEN_SUFFIXES = {'.pdf', '.tex', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pem', '.key'}
+FORBIDDEN_NAMES = {
+    'tokens.json', 'campaign_lock.json', 'gateway_image_lock.json',
+    'bridge_config_snapshot.json', 'chain_result.json', 'launch_verification.json',
+    'timing_basis.json', 'route_resolution.json', 'offline_check.json',
+    'task_plan.md', 'notes.md', 'session.md',
+}
+SECRET_PATTERNS = {
+    'OpenAI/Anthropic key': re.compile(r'\bsk-(?:proj-|ant-)?[A-Za-z0-9_-]{24,}\b'),
+    'GitHub token': re.compile(r'\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,})\b'),
+    'Google API key': re.compile(r'\bAIza[0-9A-Za-z_-]{30,}\b'),
+    'private key block': re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
+}
+LOCAL_PATTERNS = {
+    'personal Windows home': re.compile(r'(?i)\b[A-Z]:[\\/]Users[\\/](?!Public\b|YOUR_USERNAME\b|<)[^\s"<>]+'),
+    'research checkout path': re.compile(r'(?i)\b[A-Z]:[\\/]github[\\/]paper[\\/]'),
+    'private provider route': re.compile(r'api\.(?:quickrouter\.ai|tpkcur\.xyz|crazyrouter\.com)'),
+}
+
+
+def tracked_or_source_files(root: Path) -> list[Path]:
+    """Check Git's entire index when available, otherwise source candidates."""
+    if (root / '.git').exists():
+        result = subprocess.run(['git', '-C', str(root), 'ls-files', '-z'],
+                                capture_output=True, check=True)
+        names = result.stdout.decode('utf-8').split('\0')
+        if any(names):
+            return [root / name for name in names if name]
+    return sorted(p for p in root.rglob('*') if p.is_file()
+                  and not any(part in GENERATED or part.endswith('.egg-info')
+                              for part in p.relative_to(root).parts))
+
+
+def inspect_file(path: Path, root: Path) -> list[dict[str, str | int]]:
+    relative = path.relative_to(root).as_posix()
+    parts = set(path.relative_to(root).parts)
+    issues: list[dict[str, str | int]] = []
+    def add(reason: str, line: int = 0) -> None:
+        issues.append({'file': relative, 'line': line, 'reason': reason})
+    if parts & FORBIDDEN_DIRS:
+        add('experiment output or internal directory')
+    if path.suffix.lower() in FORBIDDEN_SUFFIXES or path.name in FORBIDDEN_NAMES:
+        add('excluded document, credential, checkpoint or internal record')
+    if path.name.startswith('.env') and path.name != '.env.example':
+        add('non-example environment file')
+    if path.is_symlink():
+        add('symlink requires explicit review'); return issues
+    if path.stat().st_size > 10 * 1024 * 1024:
+        add('asset exceeds 10 MiB publication budget')
+    if path.suffix.lower() in {'.png', '.gif', '.ico', '.webp', '.jpg', '.jpeg'}:
+        return issues
+    try:
+        content = path.read_text('utf-8')
+    except UnicodeDecodeError:
+        add('unexpected binary file'); return issues
+    # Audit signatures themselves contain example private names and regex tokens.
+    if relative == 'scripts/audit_release.py':
+        return issues
+    for index, line in enumerate(content.splitlines(), 1):
+        for reason, pattern in {**SECRET_PATTERNS, **LOCAL_PATTERNS}.items():
+            if pattern.search(line):
+                add(reason, index)
+    if path.suffix == '.json' and 'tests' not in parts:
+        try:
+            value = json.loads(content)
+        except json.JSONDecodeError:
+            add('invalid JSON'); return issues
+        def walk(item: object) -> None:
+            if isinstance(item, dict):
+                if 'final_pmir' in item and isinstance(item['final_pmir'], (int, float)):
+                    add('observed exposure result in JSON')
+                if {'finished_at', 'state', 'distances'} <= item.keys():
+                    add('completed chain result in JSON')
+                if {'requested_model', 'actual_model_verified'} <= item.keys():
+                    add('runtime model audit record in JSON')
+                if {'trajectory', 'memory_before', 'memory_after', 'session_id'} <= item.keys():
+                    add('native execution evidence in JSON')
+                for child in item.values(): walk(child)
+            elif isinstance(item, list):
+                for child in item: walk(child)
+        walk(value)
+    return issues
+
+
+def audit(root: Path) -> dict[str, object]:
+    paths = tracked_or_source_files(root)
+    issues = [issue for path in paths for issue in inspect_file(path, root)]
+    return {'passed': not issues, 'files_checked': len(paths), 'issues': issues}
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=ROOT)
+    args = parser.parse_args()
+    report = audit(args.root.resolve())
+    print(json.dumps(report, indent=2))
+    return 0 if report['passed'] else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

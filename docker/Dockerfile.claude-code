@@ -1,0 +1,6 @@
+FROM ghcr.io/openclaw/openclaw@sha256:2f5ce8848a1a69b3c460622e566cb9395da9fd18d7ef7b038cd8e2c4f195decf
+USER root
+RUN npm install -g @anthropic-ai/claude-code@2.1.228
+USER node
+WORKDIR /workspace
+ENTRYPOINT ["claude"]

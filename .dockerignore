@@ -1,0 +1,7 @@
+.git
+.venv
+runs
+**/__pycache__
+**/.pytest_cache
+**/*.local.json
+**/*.local.yaml

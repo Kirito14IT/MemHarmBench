@@ -1,0 +1,50 @@
+# Locally generated execution evidence and analysis
+/runs/
+/outputs/
+/reports/
+/logs/
+/state/
+/qualification/
+/private/
+**/judge_cache/
+**/upstream_audit.jsonl
+**/campaign_lock.json
+**/bridge_config_snapshot.json
+**/gateway_image_lock.json
+
+# Credentials and local configuration (only the empty example is public)
+.env
+.env.*
+!.env.example
+tokens.json
+*.pem
+*.key
+*.local.json
+*.local.yaml
+
+# Python and build caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest_*/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Editor and platform files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Publication is source and input data only; no paper documents
+*.pdf
+*.tex
+*.doc
+*.docx
+*.xlsx
+*.pptx
