@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/logo-animated-dark.gif">
-    <img src="assets/logo-animated.gif" alt="MemHarmBench logo" width="168">
+    <img src="assets/logo-animated.gif" alt="MemHarmBench logo" width="196">
   </picture>
   <h1>MemHarmBench</h1>
   <p><strong>Victim-Centric Evaluation of Prompt Injection in Persistent-Memory Agents</strong></p>
@@ -14,7 +14,6 @@
     <a href="#benchmark"><img src="https://img.shields.io/badge/Templates-24-8B5CF6" alt="24 templates"></a>
     <a href="#benchmark"><img src="https://img.shields.io/badge/Contexts-12-E9A72E" alt="12 contexts"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-143565" alt="MIT License"></a>
-    <a href="https://github.com/Kirito14IT/MemHarmBench/actions/workflows/ci.yml"><img src="https://github.com/Kirito14IT/MemHarmBench/actions/workflows/ci.yml/badge.svg" alt="Offline CI"></a>
   </p>
   <p><a href="#quickstart">Quickstart</a> · <a href="#workflow">Run an evaluation</a> · <a href="docs/protocols.md">Protocols &amp; metrics</a> · <a href="docs/extending.md">Extend the benchmark</a></p>
 </div>
@@ -32,9 +31,35 @@ Persistent memory lets an agent carry preferences and workflow conventions into 
 
 **MemHarmBench** evaluates this path in deployable agents. It connects **what the agent retains**, **what it later adopts**, and **whose interests the resulting decision affects**. A transaction summary, for example, may contain every requested field yet use an attacker-selected destination. Task completion and attack success therefore need separate measurements.
 
-[![MemHarmBench overview: exposure, persistent memory, fresh-session triggering, and victim-centric evaluation](assets/paper-overview.png)](assets/paper-overview.png)
+### Figure 1 · A complete summary can hide a compromised recipient
 
-*Figure 1 from the manuscript. The example illustrates the evaluation protocol; it is not an experimental result. Click either paper figure to view it at full resolution.*
+An imported note changes a remembered reimbursement rule. After the note is removed, a fresh-session summary contains every required field yet names the attacker-selected recipient.
+
+<p align="center">
+  <a href="assets/paper-figure-1-en.png"><img src="assets/paper-figure-1-en.png" alt="Figure 1: an illustrative user–agent dialogue in which a retained external rule changes the recipient in a later complete summary" width="540"></a>
+</p>
+
+*Illustrative dialogue, not a recorded experimental outcome. [Full-resolution PNG](assets/paper-figure-1-en.png) · [Selectable-text PDF](assets/paper-figure-1-en.pdf).*
+
+### Figure 2 · Agents often follow retained injections
+
+The manuscript reports conditional target adoption (C-ASR) of **75.00% / 76.39%** for OpenClaw with GPT-5 / Gemini-2.5-Flash, and **62.50% / 59.38%** for Claude Code with the same backbones. Each configuration pools eligible IPI triggers over three repetitions. These rates are conditional on confirmed retention and valid trigger-stage judgments; they are not rates over all scheduled cases.
+
+<p align="center">
+  <a href="assets/paper-figure-2-en.png"><img src="assets/paper-figure-2-en.png" alt="Figure 2: conditional target-adoption rates of 75.00, 76.39, 62.50, and 59.38 percent for the four agent–backbone configurations" width="720"></a>
+</p>
+
+*Aggregate experimental results from the manuscript. [Full-resolution PNG](assets/paper-figure-2-en.png) · [Selectable-text PDF](assets/paper-figure-2-en.pdf). See [the denominator rules](#metrics) before interpreting C-ASR.*
+
+### Figure 3 · Authority, retention, and adoption are distinct
+
+A user-authorized preference, an external rule retained but unused, and an external rule adopted in a later decision represent different evaluation conditions. Remembering a rule alone does not establish that the agent followed it.
+
+<p align="center">
+  <a href="assets/paper-figure-3-en.png"><img src="assets/paper-figure-3-en.png" alt="Figure 3: illustrative cases distinguish an authorized preference, retention without adoption, and unauthorized adoption" width="720"></a>
+</p>
+
+*Conceptual illustration, not measured frequencies. [Full-resolution PNG](assets/paper-figure-3-en.png) · [Selectable-text PDF](assets/paper-figure-3-en.pdf).*
 
 <a id="demo"></a>
 ### Demo: explore a case in the terminal
@@ -50,9 +75,9 @@ The benchmark provides:
 - **Four complementary measurements.** PMIR measures retained rules; C-ASR measures later target adoption; UTDR measures formal task deviation; ATAR measures native trajectory anomalies.
 - **Executable inputs and native adapters.** Frozen business records, templates, case-specific rubrics, Docker recipes, Claude Code and OpenClaw adapters, and checkpointed controllers are included.
 
-**Attack channels.** IPI (`indirect_content`) places the rule in an untrusted business artifact. DPI-U (`direct_instruction`) delivers it through the authorized-user message channel as a standing instruction. This channel is a distinct authority condition; the contributor roles in the overview do not turn DPI-U into a low-privilege message interface. Neither attack interface directly edits the agent's memory.
+**Attack channels.** IPI (`indirect_content`) places the rule in an untrusted business artifact. DPI-U (`direct_instruction`) delivers it through the authorized-user message channel as a standing instruction. This channel is a distinct authority condition. Neither attack interface directly edits the agent's memory.
 
-This repository releases **code, benchmark inputs, protocols, and illustrative figures**. Historical trajectories, judged outcomes, experiment tables, and paper documents are not distributed.
+This repository releases **code, benchmark inputs, protocols, and the manuscript’s first three figures**, including the aggregate experimental results in Figure 2. Historical per-episode trajectories, raw Judge records, complete result tables, and the full manuscript are not distributed.
 
 <a id="contents"></a>
 ## 2. Repository contents
@@ -357,7 +382,7 @@ MemHarmBench classifies an attack by the **party whose protected interest is tar
 
 [![MemHarmBench taxonomy: three victim classes, twelve objectives, and their protected interests](assets/paper-taxonomy.png)](assets/paper-taxonomy.png)
 
-*Figure 2 from the manuscript. The two views connect victim categories with privacy, autonomy, integrity, authorization, availability, and external interests.*
+*Taxonomy illustration. The two views connect victim categories with privacy, autonomy, integrity, authorization, availability, and external interests.*
 
 ### 6.1 User-targeted objectives
 
@@ -470,4 +495,4 @@ Keep released inputs frozen. Do not edit a running campaign's protocol, delete u
 
 Original MemHarmBench code, benchmark inputs, documentation, and project artwork are released under the [MIT License](LICENSE). Third-party agents, libraries, and images retain their own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-We acknowledge [StakeBench](https://github.com/StakeBench/SBC) for its stakeholder-oriented perspective and reproducibility-oriented repository organization. This guide follows that progression from overview and data organization to execution, taxonomy, and metrics, with MemHarmBench's own inputs and cross-session protocols. The two overview/taxonomy images are the original figures used by the MemHarmBench manuscript; their source and the offline demo are described in [the asset guide](docs/assets.md).
+We acknowledge [StakeBench](https://github.com/StakeBench/SBC) for its stakeholder-oriented perspective and reproducibility-oriented repository organization. This guide follows that progression from overview and data organization to execution, taxonomy, and metrics, with MemHarmBench's own inputs and cross-session protocols. The overview reproduces Figures 1–3 from the current manuscript in English; [the Chinese guide](README.zh-CN.md) uses the corresponding Chinese figures. Figure sources and checksums are recorded in [the asset provenance](assets/README.md); presentation and offline-demo details are in [the asset guide](docs/assets.md).

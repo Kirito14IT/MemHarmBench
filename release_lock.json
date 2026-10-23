@@ -1098,10 +1098,11 @@
     "runtime/openclaw/relay_server.py": "aa781dc9bb64094c202fa4f9bdf512a609264a90a0c00387b78f5862b7396727",
     "runtime/protocols.py": "86c59ef9c680dbbdbb5ec7034fb55c6baebb1cc51f4440850bc3df308c26ccaf",
     "runtime/settings.py": "7f123b13021bce2f54cbca910390d08b8e2e485920b647cf8633a57eb5df45b2",
-    "scripts/audit_release.py": "a9ca66910852ee71f08527bbf68dbcdfa1474e500faa2f6dcbfec36aaba2858a",
+    "scripts/audit_release.py": "79be2af7f370c29103d61ba4a96ce169f483442d060d0ac81007d23981172cc8",
     "scripts/build_release_manifest.py": "81a4fb00651f04f14eadbfa8604ac6bf1538e4b143b1fb9f252bba74e62c86bb",
     "scripts/experiment.py": "753bdf360d49092689d443116de932aad835164c57e110c2610e29bc01c33a1b",
-    "scripts/render_assets.py": "85ba044beaeaf9c800f1ad02b395211fe4ba76fbdac07576b6580ab221179f3e",
+    "scripts/render_assets.py": "b08e2462d22d32d65a63aafe73cfcf56ea956f65263c9994963ec26008a1fdbf",
+    "scripts/render_brand.py": "88d84f67cc5cd78318cdb55692a379b5c4b25aaff082fb3e628f96ce0d8df149",
     "scripts/validate_public.py": "5ffb375ce50bd4bf11d8013a2d6b6961337c2f34a2ee6d958077de94e58c3498",
     "src/memharmbench_v84/__init__.py": "adb0bf005f1c6ce09f85f79c185ca2d44451dc9b5fb38e7c19c46d8dc3cef741",
     "src/memharmbench_v84/__main__.py": "50fd328dfe5b5339a9958444940e9ce45b9764dbb7b130cc25f3a966ccb706a8",
@@ -1117,7 +1118,7 @@
     "src/memharmbench_v84/compiler/compile.py": "226f5149e55b540ca60019bd0f705ea9ee55cb093e041f65a3a1cfff25323e31",
     "src/memharmbench_v84/compiler/renderers.py": "9c626575404d1b0edb77fd4e2e5471def3ad07bde2362aca463b75bf371d1fb3",
     "src/memharmbench_v84/fixtures.py": "6b0bfcf529878387daa06b5f882709ff5975f088d9ceb095896dae6a14027672",
-    "src/memharmbench_v84/identity.py": "7de4b716b2bc952f72aecf22f4f979cec1aa5b346a849672f71318c3b4342b55",
+    "src/memharmbench_v84/identity.py": "d7d28cba338f8881eb160156a9eecb5cbfd8d7c780bad7b6ec7b161867c73232",
     "src/memharmbench_v84/judges/__init__.py": "81f8b0b512ee5eedac403a524ac3ae1e10a16ffadba10c084d39039a567efc9a",
     "src/memharmbench_v84/judges/atomic.py": "0044b5d31da9f3366f64c2b73aa8a1d26062113c1d95a2e47affb1eeb16a8973",
     "src/memharmbench_v84/judges/validation.py": "662cc4452d93b0e0767f5730a89c1573b72acbd94d303140b91e044f7081e2c3",
@@ -1508,6 +1509,6 @@
     "qualification_lock_state": "campaign_local",
     "actual_model_policy": "Each campaign verifies its configured exact model; no fallback."
   },
-  "publication_boundary": "Source code and input data only; no experiment results or model qualification receipts.",
-  "release_lock_sha256": "6c3494a0da8515b16ce11af921a8009e5a91c70695d01bd65bf03c25162decc4"
+  "publication_boundary": "Source code, input data, and selected aggregate paper figures; no per-episode results or model qualification receipts.",
+  "release_lock_sha256": "39cebfbd5e70d71f94d1f61c8e5cd44b1408cb784a9bd10fa9a08d3328f83451"
 }

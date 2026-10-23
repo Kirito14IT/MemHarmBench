@@ -1,4 +1,4 @@
-"""Build the original vector identity and an offline CLI walkthrough.
+"""Rebuild the project identity, optional diagrams, and offline CLI walkthrough.
 
 Optional presentation dependencies: pip install pillow resvg-py
 Run from a checkout with the package installed: python scripts/render_assets.py
@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import argparse
 import html
-import math
 import os
 from pathlib import Path
 import re
@@ -27,25 +26,6 @@ def svg_document(body: str, width: int, height: int, title: str) -> str:
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
             f'viewBox="0 0 {width} {height}" role="img" aria-labelledby="title">'
             f'<title id="title">{html.escape(title)}</title>{body}</svg>\n')
-
-
-def logo(dark: bool = False) -> str:
-    ink = "#DDEAFF" if dark else NAVY
-    body = f'''
-    <path d="M65 30H150L193 73V205Q193 222 176 222H65Q48 222 48 205V47Q48 30 65 30Z"
-          fill="none" stroke="{ink}" stroke-width="12" stroke-linejoin="round"/>
-    <path d="M150 31V62Q150 74 162 74H191" fill="none" stroke="{GOLD}"
-          stroke-width="12" stroke-linejoin="round"/>
-    <path d="M79 177V106L120 150L161 106V177" fill="none" stroke="{ink}"
-          stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M120 150L161 106V177" fill="none" stroke="{TEAL}"
-          stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M192 167H215V199" fill="none" stroke="{TEAL}" stroke-width="8"
-          stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="215" cy="207" r="12" fill="{TEAL}"/>
-    <circle cx="79" cy="106" r="7" fill="{GOLD}"/>
-    '''
-    return svg_document(body, 256, 256, "MemHarmBench: memory, decisions, and their consequences")
 
 
 def framework(dark: bool = False) -> str:
@@ -179,17 +159,15 @@ def font_file(mono: bool = False, bold: bool = False) -> str | None:
 
 def build_vectors():
     import resvg_py
-    from PIL import Image
+    from render_brand import build_static
     ASSETS.mkdir(parents=True, exist_ok=True)
-    for name, builder in (("logo", logo), ("framework", framework), ("framework-mobile", framework_mobile)):
+    build_static()
+    for name, builder in (("framework", framework), ("framework-mobile", framework_mobile)):
         for dark in (False, True):
             stem = f"{name}{'-dark' if dark else ''}"
             source = builder(dark)
             (ASSETS / f"{stem}.svg").write_text(source, encoding="utf-8")
             (ASSETS / f"{stem}.png").write_bytes(resvg_py.svg_to_bytes(svg_string=source, zoom=2))
-    icon = Image.open(ASSETS / "logo.png").convert("RGBA")
-    icon.resize((64, 64), Image.Resampling.LANCZOS).save(ASSETS / "icon.png")
-    icon.save(ASSETS / "icon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64)])
 
 
 def capture(command: list[str]) -> str:
@@ -203,44 +181,9 @@ def capture(command: list[str]) -> str:
 
 
 def build_animated_logos() -> None:
-    """Rasterize the original mark with a seamless float and node signal."""
-    import io
-    import resvg_py
-    from PIL import Image
-
-    for dark in (False, True):
-        matte = "#0D1117" if dark else "#FFFFFF"
-        ring = "#286B68" if dark else "#BDEAE3"
-        orbit = "#709CA1" if dark else "#89CFC5"
-        source = logo(dark)
-        body = source.split("</title>", 1)[1].rsplit("</svg>", 1)[0]
-        frames = []
-        for index in range(80):
-            phase = index / 80
-            lift = -8 * math.sin(phase * math.tau)
-            pulse = (phase * 2) % 1
-            radius = 15 + 13 * pulse
-            signal = f'<circle cx="215" cy="207" r="{radius:.2f}" fill="none" stroke="{ring}" stroke-width="{2.5 * (1-pulse):.2f}"/>'
-            # One signal travels around the page; the original drawing is intact.
-            x = 130 + 115 * math.cos(phase * math.tau)
-            y = 127 + 112 * math.sin(phase * math.tau)
-            detail = (f'<circle cx="{x:.2f}" cy="{y:.2f}" r="3" fill="{orbit}"/>'
-                      f'<path d="M222 40v10m-5-5h10" stroke="{GOLD}" stroke-width="2.5" stroke-linecap="round"/>')
-            drawing = (f'<ellipse cx="160" cy="294" rx="{57+4*math.sin(phase*math.tau):.2f}" ry="4" fill="{ring}"/>'
-                       f'<g transform="translate(16 {10+lift:.3f}) scale(1.1)">{signal}{body}{detail}</g>')
-            png = resvg_py.svg_to_bytes(svg_string=svg_document(drawing, 320, 320, "Floating MemHarmBench logo"), zoom=2)
-            rgba = Image.open(io.BytesIO(png)).convert("RGBA").resize((320, 320), Image.Resampling.LANCZOS)
-            rgb = Image.new("RGBA", rgba.size, matte)
-            rgb.alpha_composite(rgba)
-            frame = rgb.convert("RGB").quantize(colors=255, method=Image.Quantize.MEDIANCUT)
-            # Reserve a dedicated palette index for transparency in every frame.
-            mask = rgba.getchannel("A").point(lambda alpha: 255 if alpha < 128 else 0)
-            frame.paste(255, mask=mask)
-            frame.info["transparency"] = 255
-            frames.append(frame)
-        target = ASSETS / ("logo-animated-dark.gif" if dark else "logo-animated.gif")
-        frames[0].save(target, save_all=True, append_images=frames[1:], duration=40,
-                       loop=0, disposal=2, transparency=255, optimize=False)
+    """Reuse the saved generated identity; no generation service is called."""
+    from render_brand import build_animations
+    build_animations()
 
 
 def build_demo():

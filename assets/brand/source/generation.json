@@ -1,0 +1,16 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-23",
+  "use_case": "logo-brand",
+  "light": {
+    "file": "logo-light.png",
+    "prompt": "Use case: logo-brand\nAsset type: a polished, original transparent project emblem for the GitHub README of MemHarmBench, a scientific benchmark about malicious instructions persisting in AI agent memory across sessions and affecting different stakeholders.\nPrimary request: redesign an uninspired document icon into a memorable and technically meaningful logo. Design one single logo mark, no text, on genuinely transparent background.\nSubject and composition: a compact friendly-but-serious AI agent face embedded in a rounded memory microchip; two interlocking orbital arcs wrap around the head and imply an instruction surviving across sessions. The orbit has exactly three distinct small rounded nodes that stand for user, workspace owner, and external stakeholder. A single coral/red data shard enters the orbit, implying the prompt-injection risk under study. Integrate these forms into one balanced emblem with strong silhouette and negative space. It must read as one logo, not an infographic or collage. No sheet-of-paper silhouette.\nStyle/medium: precise flat vector-like graphic, monoline outlines with controlled solid filled areas, smoothly rounded corners; professional research-tool identity, recognizable at 64px, centered with generous transparent margin.\nColor palette: deep navy #143565 for structure, teal #15B8A6 for agent and persistent path, purple #7350B0 for memory, gold #F2B544 for a node, muted coral #EF6C64 for the injection cue. At most these five solid colors plus white. No gradients, no photographic shading, no textures, no glow, no drop shadows.\nConstraints: one front-facing integrated mark only; no wordmark, no letters or numbers, no watermark, no padlock or shield that would imply this benchmark itself prevents attacks; do not resemble an existing company logo. Preserve alpha transparency."
+  },
+  "dark": {
+    "file": "logo-dark.png",
+    "prompt": "Edit the light emblem for dark-theme readability. Change only deep navy outer contours, chip pins, and dark orbital ring to pale slate-blue #CCDDF4. Preserve geometry, teal, purple, gold, coral, white, expression, three stakeholder nodes, injection diamond, bounds, and alpha. No backdrop, halo, glow, shadow, text, or extra objects."
+  },
+  "processing": "Original generated alpha PNGs are retained unchanged. render_brand.py crops the display viewport and resizes for presentation, embeds original raster bytes into self-contained SVG containers, and renders node pulses and floating motion as GIF. SVG containers are not editable vector traces.",
+  "semantics": "Robot/microchip: agent memory. Interlocking orbits: persistence across sessions. Three nodes: potential victims. Coral shard: injected instruction. Symbolic identity only; it does not report results or promise protection.",
+  "license": "Repository MIT License"
+}

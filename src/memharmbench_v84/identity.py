@@ -516,7 +516,7 @@ def build_release_lock(
             "qualification_lock_state": "campaign_local",
             "actual_model_policy": "Each campaign verifies its configured exact model; no fallback.",
         },
-        "publication_boundary": "Source code and input data only; no experiment results or model qualification receipts.",
+        "publication_boundary": "Source code, input data, and selected aggregate paper figures; no per-episode results or model qualification receipts.",
     }
     lock["release_lock_sha256"] = compute_release_lock_sha256(lock)
     return lock

@@ -5,6 +5,7 @@ This is a publication boundary check, not an experiment or model evaluation.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -17,6 +18,16 @@ FORBIDDEN_DIRS = {
     'judge_cache', 'worklogs', 'recovery', 'supervision', 'private',
 }
 FORBIDDEN_SUFFIXES = {'.pdf', '.tex', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pem', '.key'}
+# Only these author-approved, standalone figures may cross the document boundary.
+# Full manuscripts and other research documents remain excluded.
+APPROVED_FIGURE_PDFS = {
+    'assets/paper-figure-1-en.pdf': 'a05c286bf1a60bec2779d3d6f0b71f278240dab423d5ef13eab63b03cc80c2dc',
+    'assets/paper-figure-1-zh.pdf': '3ae8d3cc037d7397e20b92decc17b2f6b06dfc5b0fbbd95e200e8c01ae2bd4f7',
+    'assets/paper-figure-2-en.pdf': '02a03b3aa23bbf3641555dc49e232f05fdf800ef928909ca6aeca203b9246373',
+    'assets/paper-figure-2-zh.pdf': '24bc0a5e9ade039c81cfdf117d19bee5829e2d29de00155974d520811fe9b6bd',
+    'assets/paper-figure-3-en.pdf': '33404a8a07d29c7779d68c517c5052d2e39aa8e031f33573efb03d7be3677871',
+    'assets/paper-figure-3-zh.pdf': '55f82316332315e11e7b3ce2d3b2cb6d85329303c3699d86077715c4d806ae66',
+}
 FORBIDDEN_NAMES = {
     'tokens.json', 'campaign_lock.json', 'gateway_image_lock.json',
     'bridge_config_snapshot.json', 'chain_result.json', 'launch_verification.json',
@@ -57,7 +68,8 @@ def inspect_file(path: Path, root: Path) -> list[dict[str, str | int]]:
         issues.append({'file': relative, 'line': line, 'reason': reason})
     if parts & FORBIDDEN_DIRS:
         add('experiment output or internal directory')
-    if path.suffix.lower() in FORBIDDEN_SUFFIXES or path.name in FORBIDDEN_NAMES:
+    approved_figure = relative in APPROVED_FIGURE_PDFS
+    if (path.suffix.lower() in FORBIDDEN_SUFFIXES and not approved_figure) or path.name in FORBIDDEN_NAMES:
         add('excluded document, credential, checkpoint or internal record')
     if path.name.startswith('.env') and path.name != '.env.example':
         add('non-example environment file')
@@ -65,6 +77,11 @@ def inspect_file(path: Path, root: Path) -> list[dict[str, str | int]]:
         add('symlink requires explicit review'); return issues
     if path.stat().st_size > 10 * 1024 * 1024:
         add('asset exceeds 10 MiB publication budget')
+    if approved_figure:
+        content = path.read_bytes()
+        if not content.startswith(b'%PDF-') or hashlib.sha256(content).hexdigest() != APPROVED_FIGURE_PDFS[relative]:
+            add('paper figure differs from the approved public asset')
+        return issues
     if path.suffix.lower() in {'.png', '.gif', '.ico', '.webp', '.jpg', '.jpeg'}:
         return issues
     try:

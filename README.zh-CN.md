@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/logo-animated-dark.gif">
-    <img src="assets/logo-animated.gif" alt="MemHarmBench 标志" width="168">
+    <img src="assets/logo-animated.gif" alt="MemHarmBench 标志" width="196">
   </picture>
   <h1>MemHarmBench</h1>
   <p><strong>持久记忆智能体提示注入的受害方中心评测</strong></p>
@@ -14,7 +14,6 @@
     <a href="#benchmark"><img src="https://img.shields.io/badge/Templates-24-8B5CF6" alt="24 个模板"></a>
     <a href="#benchmark"><img src="https://img.shields.io/badge/Contexts-12-E9A72E" alt="12 个上下文"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-143565" alt="MIT 许可"></a>
-    <a href="https://github.com/Kirito14IT/MemHarmBench/actions/workflows/ci.yml"><img src="https://github.com/Kirito14IT/MemHarmBench/actions/workflows/ci.yml/badge.svg" alt="离线 CI"></a>
   </p>
   <p><a href="#quickstart">快速开始</a> · <a href="#workflow">运行评测</a> · <a href="docs/protocols.md">协议与指标</a> · <a href="docs/extending.md">扩展基准</a></p>
 </div>
@@ -32,9 +31,35 @@
 
 **MemHarmBench** 面向可部署的智能体评估这一过程，将**智能体保留了什么**、**后续采纳了什么**以及**决策影响了谁的利益**联系起来。例如，一份交易摘要可以包含所有必需字段，却使用攻击者指定的目的地。因此，任务完成与攻击成功需要分别测量。
 
-[![MemHarmBench 总览：攻击暴露、持久记忆、新会话触发及受害方中心评测](assets/paper-overview.png)](assets/paper-overview.png)
+### 图 1 · 完整摘要也可能隐藏被操纵的收款方
 
-*论文 Figure 1 原图。图中的案例用于解释评测流程，不是实验结果。点击两张论文配图均可查看完整分辨率。*
+导入的外部说明改变了智能体记住的报销规则。说明被移除后，新会话生成的摘要仍包含全部必需字段，却使用了攻击者指定的收款方。
+
+<p align="center">
+  <a href="assets/paper-figure-1-zh.png"><img src="assets/paper-figure-1-zh.png" alt="图 1：用户与智能体的示意对话，保留的外部规则使后续完整摘要使用被篡改的收款方" width="540"></a>
+</p>
+
+*对话用于解释机制，不是实际实验记录。[完整分辨率 PNG](assets/paper-figure-1-zh.png) · [文字可复制的 PDF](assets/paper-figure-1-zh.pdf)。*
+
+### 图 2 · 智能体经常遵循保留的注入规则
+
+论文报告的条件目标采纳率（C-ASR）为：OpenClaw 搭配 GPT-5／Gemini-2.5-Flash 时分别为 **75.00%／76.39%**，Claude Code 搭配相同骨干时分别为 **62.50%／59.38%**。每种配置汇总三次重复中的合格 IPI 触发回合。这些比例以确认保留、且触发阶段判分有效的回合为条件，并非所有计划案例中的成功率。
+
+<p align="center">
+  <a href="assets/paper-figure-2-zh.png"><img src="assets/paper-figure-2-zh.png" alt="图 2：四种智能体与骨干模型配置的条件目标采纳率分别为 75.00%、76.39%、62.50% 和 59.38%" width="720"></a>
+</p>
+
+*论文中的汇总实验结果。[完整分辨率 PNG](assets/paper-figure-2-zh.png) · [文字可复制的 PDF](assets/paper-figure-2-zh.pdf)。解读 C-ASR 时请同时参阅[分母规则](#metrics)。*
+
+### 图 3 · 权限、保留与采纳是不同的维度
+
+用户授权的偏好、保留但未使用的外部规则，以及在后续决策中被采纳的外部规则，对应不同的评测情境。仅记住一条规则，不能证明智能体已经遵循了它。
+
+<p align="center">
+  <a href="assets/paper-figure-3-zh.png"><img src="assets/paper-figure-3-zh.png" alt="图 3：示意情境区分用户授权的偏好、保留规则但未采纳，以及未经授权的采纳" width="720"></a>
+</p>
+
+*概念示意，不代表实测频率。[完整分辨率 PNG](assets/paper-figure-3-zh.png) · [文字可复制的 PDF](assets/paper-figure-3-zh.pdf)。*
 
 <a id="demo"></a>
 ### 演示动图：在终端中浏览案例
@@ -50,9 +75,9 @@
 - **四项互补指标。** PMIR 衡量规则保留，C-ASR 衡量后续目标采纳，UTDR 衡量正式任务偏离，ATAR 衡量原生执行轨迹异常。
 - **可执行输入与原生适配器。** 提供冻结业务材料、模板、案例级判据、Docker 构建配置、Claude Code 与 OpenClaw 适配器，以及支持检查点恢复的控制器。
 
-**攻击通道。** IPI（`indirect_content`）将规则放入不可信业务材料；DPI-U（`direct_instruction`）通过授权用户消息通道提交持久化指令。两者的来源权限条件不同；总览图中的业务贡献者身份不表示 DPI-U 是一个低权限消息接口。两种攻击接口都不直接修改智能体记忆。
+**攻击通道。** IPI（`indirect_content`）将规则放入不可信业务材料；DPI-U（`direct_instruction`）通过授权用户消息通道提交持久化指令。两者的来源权限条件不同。两种攻击接口都不直接修改智能体记忆。
 
-公开仓库包含**代码、基准输入、协议及示意图**，不包含历史轨迹、判分结果、实验统计图表或论文文档。
+公开仓库包含**代码、基准输入、协议和论文前三张图**，其中图 2 包含汇总实验结果。不公开历史逐回合轨迹、Judge 原始记录、完整结果表或论文全文。
 
 <a id="contents"></a>
 ## 2. 仓库目录
@@ -357,7 +382,7 @@ MemHarmBench 依据**攻击所针对的受保护利益及其承受方**分类，
 
 [![MemHarmBench 分类体系：三类受害方、十二项目标及其受保护利益](assets/paper-taxonomy.png)](assets/paper-taxonomy.png)
 
-*论文 Figure 2 原图。受害方视角与受保护利益视角相互对应，覆盖隐私、自主性、完整性、授权、可用性和外部利益。*
+*攻击分类示意图。受害方视角与受保护利益视角相互对应，覆盖隐私、自主性、完整性、授权、可用性和外部利益。*
 
 ### 6.1 用户目标
 
@@ -470,4 +495,4 @@ python scripts/audit_release.py
 
 MemHarmBench 的原创代码、基准输入、说明文档及项目配图采用 [MIT 许可](LICENSE)。第三方智能体、库和镜像保留各自条款，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
-感谢 [StakeBench](https://github.com/StakeBench/SBC) 在利益相关方视角与可复现仓库组织方面提供的启发。本说明沿用从项目概览、数据组织到执行、分类和指标的讲解顺序，内容对应 MemHarmBench 自身的输入与跨会话协议。两张总览／分类图均为 MemHarmBench 论文当前使用的原图，来源与离线演示说明见[视觉资产指南](docs/assets.md)。
+感谢 [StakeBench](https://github.com/StakeBench/SBC) 在利益相关方视角与可复现仓库组织方面提供的启发。本说明沿用从项目概览、数据组织到执行、分类和指标的讲解顺序，内容对应 MemHarmBench 自身的输入与跨会话协议。项目概览使用当前论文的中文图 1–3，[英文说明](README.md)使用对应英文版本。配图来源及校验值见[资产来源记录](assets/README.md)，展示与离线演示说明见[视觉资产指南](docs/assets.md)。

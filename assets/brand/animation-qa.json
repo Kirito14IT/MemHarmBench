@@ -1,0 +1,16 @@
+{
+  "logo-animated.gif": {
+    "frames": 72,
+    "duration_ms": 3600,
+    "all_frames_clear_of_edge": true,
+    "minimum_edge_margin_px": 18,
+    "sha256": "302e537c9f9d65d3244c52ef74b5a2cbe803a36e51706bdffba5c7a28fabe154"
+  },
+  "logo-animated-dark.gif": {
+    "frames": 72,
+    "duration_ms": 3600,
+    "all_frames_clear_of_edge": true,
+    "minimum_edge_margin_px": 18,
+    "sha256": "4296c7369fe96f4937717096958db451028815ba0fc6e40f05152cc00ad3f97d"
+  }
+}
