@@ -1,0 +1,33 @@
+{
+  "source": "Built-in image_gen; source PNGs retained without modification",
+  "themes": {
+    "logo": {
+      "png_size": [
+        512,
+        512
+      ],
+      "has_alpha": true,
+      "transparent_corners": true,
+      "gif_frames": 72,
+      "gif_duration_ms": 3600,
+      "gif_loop": 0,
+      "frames_differ": true,
+      "gif_bytes": 2266491,
+      "passed": true
+    },
+    "logo-dark": {
+      "png_size": [
+        512,
+        512
+      ],
+      "has_alpha": true,
+      "transparent_corners": true,
+      "gif_frames": 72,
+      "gif_duration_ms": 3600,
+      "gif_loop": 0,
+      "frames_differ": true,
+      "gif_bytes": 2169394,
+      "passed": true
+    }
+  }
+}

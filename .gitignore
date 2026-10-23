@@ -41,8 +41,14 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Publication is source and input data only; no paper documents
+# Full paper documents remain private; only six approved figure PDFs are public.
 *.pdf
+!assets/paper-figure-1-en.pdf
+!assets/paper-figure-1-zh.pdf
+!assets/paper-figure-2-en.pdf
+!assets/paper-figure-2-zh.pdf
+!assets/paper-figure-3-en.pdf
+!assets/paper-figure-3-zh.pdf
 *.tex
 *.doc
 *.docx

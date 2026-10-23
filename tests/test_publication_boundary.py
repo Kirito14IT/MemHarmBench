@@ -35,3 +35,23 @@ def test_runtime_json_is_not_public_input(tmp_path):
     path = tmp_path / 'input.json'
     path.write_text('{"final_pmir": 1}', encoding='utf-8')
     assert any('observed' in issue['reason'] for issue in audit.inspect_file(path, tmp_path))
+
+
+def test_approved_standalone_figures_are_public():
+    root = _path.parents[1]
+    for relative in audit.APPROVED_FIGURE_PDFS:
+        assert audit.inspect_file(root / relative, root) == []
+
+
+def test_figure_exception_does_not_allow_other_pdfs(tmp_path):
+    path = tmp_path / 'assets' / 'full-paper.pdf'
+    path.parent.mkdir()
+    path.write_bytes(b'%PDF-1.7\nSynthetic document')
+    assert any('excluded document' in issue['reason'] for issue in audit.inspect_file(path, tmp_path))
+
+
+def test_approved_filename_does_not_allow_replaced_content(tmp_path):
+    path = tmp_path / next(iter(audit.APPROVED_FIGURE_PDFS))
+    path.parent.mkdir()
+    path.write_bytes(b'%PDF-1.7\nUnapproved replacement')
+    assert any('differs from the approved' in issue['reason'] for issue in audit.inspect_file(path, tmp_path))
