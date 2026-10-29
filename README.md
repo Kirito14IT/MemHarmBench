@@ -493,6 +493,8 @@ Keep released inputs frozen. Do not edit a running campaign's protocol, delete u
 
 ## 10. License and acknowledgments
 
+We thank [Claude](https://claude.ai/) for assistance during project development.
+
 Original MemHarmBench code, benchmark inputs, documentation, and project artwork are released under the [MIT License](LICENSE). Third-party agents, libraries, and images retain their own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 We acknowledge [StakeBench](https://github.com/StakeBench/SBC) for its stakeholder-oriented perspective and reproducibility-oriented repository organization. This guide follows that progression from overview and data organization to execution, taxonomy, and metrics, with MemHarmBench's own inputs and cross-session protocols. The overview reproduces Figures 1–3 from the current manuscript in English; [the Chinese guide](README.zh-CN.md) uses the corresponding Chinese figures. Figure sources and checksums are recorded in [the asset provenance](assets/README.md); presentation and offline-demo details are in [the asset guide](docs/assets.md).
