@@ -1102,7 +1102,7 @@
     "scripts/build_release_manifest.py": "81a4fb00651f04f14eadbfa8604ac6bf1538e4b143b1fb9f252bba74e62c86bb",
     "scripts/experiment.py": "753bdf360d49092689d443116de932aad835164c57e110c2610e29bc01c33a1b",
     "scripts/render_assets.py": "b08e2462d22d32d65a63aafe73cfcf56ea956f65263c9994963ec26008a1fdbf",
-    "scripts/render_brand.py": "88d84f67cc5cd78318cdb55692a379b5c4b25aaff082fb3e628f96ce0d8df149",
+    "scripts/render_brand.py": "3ed89a561e92936f2f86f991da8b3662450b543180990bd7be32387af7bf09e9",
     "scripts/validate_public.py": "5ffb375ce50bd4bf11d8013a2d6b6961337c2f34a2ee6d958077de94e58c3498",
     "src/memharmbench_v84/__init__.py": "adb0bf005f1c6ce09f85f79c185ca2d44451dc9b5fb38e7c19c46d8dc3cef741",
     "src/memharmbench_v84/__main__.py": "50fd328dfe5b5339a9958444940e9ce45b9764dbb7b130cc25f3a966ccb706a8",
@@ -1510,5 +1510,5 @@
     "actual_model_policy": "Each campaign verifies its configured exact model; no fallback."
   },
   "publication_boundary": "Source code, input data, and selected aggregate paper figures; no per-episode results or model qualification receipts.",
-  "release_lock_sha256": "39cebfbd5e70d71f94d1f61c8e5cd44b1408cb784a9bd10fa9a08d3328f83451"
+  "release_lock_sha256": "318f05f85880576db47de2dd04bb08b9be8054581c3ca93c98b5faf3fa4df4c7"
 }
