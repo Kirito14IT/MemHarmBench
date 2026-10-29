@@ -1,24 +1,28 @@
-"""Package the AI-generated MemHarmBench emblem and animate its memory signal.
+"""Package the AI-generated MemHarmBench emblem and animate its memory signals.
 
 The two alpha PNG originals in assets/brand/source are the source of truth.
-No model calls are made here. SVGs embed that bitmap; they are not vector traces.
+No model calls are made here. The emblem remains raster artwork; moving particles
+are vector geometry. Animated SVGs and offline GIFs share one motion definition.
 Install the optional render dependencies with: pip install pillow resvg-py
 """
 from __future__ import annotations
 
 import base64
+import hashlib
 import html
 import io
 import json
 import math
+import random
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 SOURCE = ASSETS / "brand" / "source"
 SIZE = 320
-FRAMES = 72
+FRAMES = 144
 DURATION = 50
+SECONDS = FRAMES * DURATION / 1000
 
 
 def _source(dark: bool = False):
@@ -72,48 +76,148 @@ def build_static() -> None:
     icon.save(ASSETS / "icon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64)])
 
 
+def _orbit(rx: float, ry: float, angle: float) -> tuple[str, float]:
+    """Use real path lengths so browser animation and offline frames agree."""
+    a = math.radians(angle)
+    points = []
+    for i in range(241):
+        t = math.tau * i / 240
+        x, y = rx * math.cos(t), ry * math.sin(t)
+        points.append((160 + x * math.cos(a) - y * math.sin(a),
+                       160 + x * math.sin(a) + y * math.cos(a)))
+    length = sum(math.dist(p, q) for p, q in zip(points, points[1:]))
+    path = 'M' + 'L'.join(f'{x:.3f} {y:.3f}' for x, y in points) + 'Z'
+    return path, length
+
+
+def animated_svg(dark: bool = False, phase: float | None = None) -> str:
+    """CSS-only SVG, or a deterministic frozen frame of the same 7.2-second loop.
+
+    The saved 512px emblem is embedded unchanged; particles are vector geometry.
+    No script, external fonts, network requests, or SVG filters are required.
+    """
+    live = phase is None
+    t = 0.0 if live else phase % 1
+    colors = ['#18C9C1', '#4E9EFF', '#A581F3', '#F1B64D', '#F78085']
+    if not dark:
+        colors = ['#00A99C', '#367FDB', '#8C5DCF', '#DA9A24', '#E76A72']
+    orbit_specs = [(145, 126, -24, 1), (134, 115, 34, -1)]
+    defs, rings = [], []
+    for i, (rx, ry, angle, direction) in enumerate(orbit_specs):
+        path, length = _orbit(rx, ry, angle)
+        defs.append(f'<path id="route{i}" d="{path}"/>')
+        rings.append(f'<use href="#route{i}" fill="none" stroke="{colors[i]}" '
+                     f'stroke-width=".7" opacity="{.18 if dark else .13}"/>')
+        for j in range(5):
+            color = colors[(j + i * 2) % len(colors)]
+            start = length * (j / 5 + i * .09)
+            # A broad glow, a bright head and three tapering trail segments.
+            for behind, dash, width, opacity in [
+                (30, 15, 1.3, .16), (18, 12, 1.8, .35), (7, 7, 2.5, .64),
+                (0, .01, 17, .10), (0, .01, 9, .23), (0, .01, 4.7, 1),
+                (0, .01, 1.6, .94),
+            ]:
+                offset = -start + direction * behind
+                current = offset - direction * length * t
+                color_here = '#FFFFFF' if width == 1.6 else color
+                motion = (f'class="travel" style="--start:{offset:.4f};'
+                          f'--end:{offset - direction * length:.4f}"' if live else '')
+                rings.append(f'<use href="#route{i}" {motion} fill="none" '
+                             f'stroke="{color_here}" stroke-width="{width}" '
+                             f'stroke-linecap="round" stroke-dasharray="{dash} {length-dash:.4f}" '
+                             f'stroke-dashoffset="{current:.4f}" opacity="{opacity}"/>')
+    for name, color in [('teal', colors[0]), ('violet', colors[2]), ('gold', colors[3])]:
+        defs.append(f'<radialGradient id="{name}"><stop stop-color="{color}" '
+                    f'stop-opacity="{.32 if dark else .13}"/>'
+                    f'<stop offset="1" stop-color="{color}" stop-opacity="0"/></radialGradient>')
+    glow = ('<ellipse cx="112" cy="153" rx="108" ry="112" fill="url(#teal)"/>'
+            '<ellipse cx="214" cy="174" rx="98" ry="105" fill="url(#violet)"/>'
+            '<ellipse cx="164" cy="81" rx="62" ry="60" fill="url(#gold)"/>')
+    rng = random.Random(288)
+    dust = []
+    for i in range(32):
+        a = math.tau * i / 32 + rng.uniform(-.05, .05)
+        radius = rng.uniform(138, 150)
+        x, y = 160 + radius * math.cos(a), 160 + radius * .94 * math.sin(a)
+        dust.append(f'<circle cx="{x:.3f}" cy="{y:.3f}" r="{rng.uniform(.65,1.5):.2f}" '
+                    f'fill="{colors[i % 5]}" opacity="{rng.uniform(.25,.65):.2f}"/>')
+    dust = (f'<g class="dust" transform="rotate({-360*t:.3f} 160 160)">'
+            + ''.join(dust) + '</g>')
+    # Use an already-rendered transparent mark, keeping the AI-generated source untouched.
+    emblem_bytes = (ASSETS / ('logo-dark.png' if dark else 'logo.png')).read_bytes()
+    encoded = base64.b64encode(emblem_bytes).decode('ascii')
+    dx, dy, tilt = 12 * math.cos(math.tau*t), 10 * math.sin(math.tau*t), 2 * math.sin(math.tau*t)
+    core = (f'<g class="core" transform="translate({dx:.4f} {dy:.4f}) rotate({tilt:.4f} 160 160)">'
+            f'<image x="38" y="38" width="244" height="244" href="data:image/png;base64,{encoded}"/>'
+            '</g>')
+    glints = []
+    for i, (x, y) in enumerate([(48, 88), (267, 109), (79, 268), (243, 249)]):
+        pulse = .38 + .26 * math.sin(math.tau * (2*t + i/4))
+        glints.append(f'<path class="glint" style="animation-delay:-{i*SECONDS/8}s" '
+                      f'd="M{x-3.5} {y}h7M{x} {y-3.5}v7" fill="none" '
+                      f'stroke="{colors[i]}" stroke-width="1.1" stroke-linecap="round" opacity="{pulse:.3f}"/>')
+    css = ''
+    if live:
+        keys = []
+        for i in range(33):
+            a = math.tau * i / 32
+            keys.append(f'{i/32*100:.4f}%{{transform:translate({12*math.cos(a):.4f}px,'
+                        f'{10*math.sin(a):.4f}px) rotate({2*math.sin(a):.4f}deg)}}')
+        css = f'''<style>
+          .core {{transform-origin:160px 160px;animation:drift {SECONDS}s linear infinite}}
+          .travel {{animation:travel {SECONDS}s linear infinite}}
+          .dust {{transform-origin:160px 160px;animation:turn {SECONDS}s linear infinite}}
+          .glint {{animation:glint {SECONDS/2}s ease-in-out infinite}}
+          @keyframes drift {{{''.join(keys)}}}
+          @keyframes travel {{from{{stroke-dashoffset:var(--start)}}to{{stroke-dashoffset:var(--end)}}}}
+          @keyframes turn {{from{{transform:rotate(0deg)}}to{{transform:rotate(-360deg)}}}}
+          @keyframes glint {{0%,100%{{opacity:.2}}50%{{opacity:.7}}}}
+          @media (prefers-reduced-motion:reduce) {{
+            .core,.travel,.dust,.glint {{animation:none}}
+          }}
+        </style>'''
+    return _svg('<desc>A memory agent drifts up, down, left and right inside two '
+                'counter-rotating particle streams. Colored sparks carry fading trails.</desc>'
+                + '<defs>' + ''.join(defs) + '</defs>' + css + glow + ''.join(rings)
+                + dust + core + ''.join(glints), 'MemHarmBench — persistent memory in motion')
+
+
 def build_animations() -> None:
-    """Float the emblem and pass a gentle pulse through its three stakeholder nodes."""
+    """Export crisp CSS SVGs and theme-matched GIF fallbacks with a stable palette."""
     import resvg_py
     from PIL import Image
 
-    colors = ["#F2B544", "#15B8A6", "#9B78CF"]
     for dark in (False, True):
-        matte = "#0D1117" if dark else "#FFFFFF"
-        frames = []
+        stem = 'logo-animated-dark' if dark else 'logo-animated'
+        (ASSETS / f'{stem}.svg').write_text(animated_svg(dark), encoding='utf-8', newline='\n')
+        frames, masks = [], []
         for index in range(FRAMES):
-            phase = index / FRAMES
-            lift = -3.5 * math.sin(math.tau * phase)
-            emblem, nodes, scale = _emblem(dark, lift)
-            halos = []
-            for node_index, ((x, y), color) in enumerate(zip(nodes, colors)):
-                local = (phase * 3 - node_index) % 3
-                if local < 0.9:
-                    radius = (118 + 30 * local / 0.9) * scale
-                    opacity = 0.65 * (1 - local / 0.9)
-                    halos.append(f'<circle cx="{x:.3f}" cy="{y:.3f}" r="{radius:.3f}" '
-                                 f'fill="none" stroke="{color}" stroke-width="2" opacity="{opacity:.4f}"/>')
-            source = _svg("".join(halos) + emblem, "MemHarmBench memory signal")
-            png = resvg_py.svg_to_bytes(svg_string=source, width=SIZE * 2, height=SIZE * 2)
-            rgba = Image.open(io.BytesIO(png)).convert("RGBA").resize((SIZE, SIZE), Image.Resampling.LANCZOS)
-            # GIF has binary alpha. Theme-specific mattes preserve antialiased edges.
-            composite = Image.new("RGBA", rgba.size, matte)
+            source = animated_svg(dark, index / FRAMES)
+            png = resvg_py.svg_to_bytes(svg_string=source, width=SIZE*2, height=SIZE*2)
+            rgba = Image.open(io.BytesIO(png)).convert('RGBA').resize((SIZE,SIZE), Image.Resampling.LANCZOS)
+            composite = Image.new('RGBA', rgba.size, '#0D1117' if dark else '#FFFFFF')
             composite.alpha_composite(rgba)
-            frame = composite.convert("RGB").quantize(colors=127, method=Image.Quantize.MEDIANCUT)
-            mask = rgba.getchannel("A").point(lambda value: 255 if value < 128 else 0)
-            frame.paste(127, mask=mask)
-            frame.info["transparency"] = 127
-            frames.append(frame)
-        path = ASSETS / ("logo-animated-dark.gif" if dark else "logo-animated.gif")
-        frames[0].save(path, save_all=True, append_images=frames[1:], duration=DURATION,
-                       loop=0, disposal=2, transparency=127, optimize=False)
+            frames.append(composite.convert('RGB'))
+            masks.append(rgba.getchannel('A').point(lambda value: 255 if value < 2 else 0))
+        samples = Image.new('RGB', (SIZE*4,SIZE))
+        for i in range(4):
+            samples.paste(frames[i*FRAMES//4], (i*SIZE,0))
+        palette = samples.quantize(colors=255, method=Image.Quantize.MEDIANCUT)
+        quantized = []
+        for frame, mask in zip(frames,masks):
+            output = frame.quantize(palette=palette, dither=Image.Dither.NONE)
+            output.paste(255, mask=mask)
+            quantized.append(output)
+        quantized[0].save(ASSETS / f'{stem}.gif', save_all=True, append_images=quantized[1:],
+                          duration=DURATION, loop=0, disposal=2, transparency=255, optimize=False)
 
 
 def audit() -> dict:
     """Check final alpha, loop metadata, frame variation, and safe viewports."""
-    from PIL import Image, ImageChops
+    from PIL import Image, ImageChops, ImageStat
 
     result = {"source": "Built-in image_gen; source PNGs retained without modification", "themes": {}}
+    animation_qa = {}
     for dark in (False, True):
         stem = "logo-dark" if dark else "logo"
         image = Image.open(ASSETS / f"{stem}.png").convert("RGBA")
@@ -124,17 +228,51 @@ def audit() -> dict:
         gif = Image.open(gif_path)
         first = gif.convert("RGBA")
         gif.seek(FRAMES // 3)
-        changed = ImageChops.difference(first, gif.convert("RGBA")).getbbox() is not None
+        changed = ImageChops.difference(first.convert('RGB'), gif.convert('RGB')).getbbox() is not None
+        import xml.etree.ElementTree as ET
+        svg_path = ASSETS / ('logo-animated-dark.svg' if dark else 'logo-animated.svg')
+        svg_source = svg_path.read_text(encoding='utf-8')
+        ET.fromstring(svg_source)
+        accessible = 'prefers-reduced-motion:reduce' in svg_source
+        self_contained = '<script' not in svg_source and 'href="http' not in svg_source
         valid = (image.size == (512, 512) and transparent and corners and gif.n_frames == FRAMES
-                 and gif.info.get("loop") == 0 and changed)
+                 and gif.info.get("loop") == 0 and changed and accessible and self_contained
+                 and gif_path.stat().st_size < 10*1024*1024)
         result["themes"][stem] = {"png_size": list(image.size), "has_alpha": transparent,
                                   "transparent_corners": corners, "gif_frames": gif.n_frames,
                                   "gif_duration_ms": DURATION * FRAMES,
                                   "gif_loop": gif.info.get("loop"), "frames_differ": changed,
-                                  "gif_bytes": gif_path.stat().st_size, "passed": valid}
+                                  "gif_bytes": gif_path.stat().st_size,
+                                  "svg_bytes": svg_path.stat().st_size,
+                                  "reduced_motion": accessible, "self_contained": self_contained,
+                                  "passed": valid}
         if not valid:
             raise ValueError(f"Brand asset validation failed: {stem}")
+        frames, margins, durations = [], [], []
+        for index in range(gif.n_frames):
+            gif.seek(index)
+            rgba = gif.convert('RGBA')
+            x0, y0, x1, y1 = rgba.getchannel('A').getbbox()
+            margins.append(min(x0, y0, gif.width-x1, gif.height-y1))
+            durations.append(gif.info['duration'])
+            matte = Image.new('RGBA', gif.size, '#0D1117' if dark else '#FFFFFF')
+            matte.alpha_composite(rgba)
+            frames.append(matte.convert('RGB'))
+        differences = [sum(ImageStat.Stat(ImageChops.difference(a,b)).mean)/3
+                       for a,b in zip(frames,frames[1:]+frames[:1])]
+        seam_ratio = differences[-1] / (sum(differences[:-1]) / (len(differences)-1))
+        animation_qa[gif_path.name] = {
+            'frames':gif.n_frames, 'duration_ms':sum(durations),
+            'all_frames_clear_of_edge':min(margins)>0,
+            'minimum_edge_margin_px':min(margins),
+            'loop_seam_to_average_step':round(seam_ratio,4),
+            'sha256':hashlib.sha256(gif_path.read_bytes()).hexdigest(),
+        }
+        if min(margins)<=0 or seam_ratio>2:
+            raise ValueError(f'Clipped or discontinuous animation: {stem}')
     (ASSETS / "brand" / "qa.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n")
+    (ASSETS / 'brand' / 'animation-qa.json').write_text(
+        json.dumps(animation_qa,indent=2)+'\n',encoding='utf-8',newline='\n')
     return result
 
 
