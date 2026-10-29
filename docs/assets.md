@@ -4,7 +4,9 @@
 
 The MemHarmBench emblem combines an AI agent, a memory chip, and two connecting rings. Three nodes represent the parties whose interests may be affected; a coral instruction fragment marks the injection risk. Navy, teal, purple, and gold connect the identity to the paper's figures. Light and dark versions are included.
 
-The original transparent artwork was created with the built-in image generation tool. Its source PNGs and exact prompts are saved in [`assets/brand/source/`](../assets/brand/source/generation.json). The SVG files are self-contained containers embedding those PNGs, **not editable vector traces**. The animation adds a gentle float and sequential node pulses to the saved artwork. It loops every 3.6 seconds and starts with a complete emblem.
+The original transparent artwork was created with the built-in image generation tool. Its source PNGs and exact prompts are saved in [`assets/brand/source/`](../assets/brand/source/generation.json). Static SVGs embed those PNGs; animated SVGs embed the existing 512-pixel presentation marks and add vector particles. The emblem itself is **not an editable vector trace**.
+
+The README animation follows a continuous 7.2-second loop: the emblem travels right, down, left, and up with a small tilt; two particle streams circulate in opposite directions with tapering trails, a rotating field of smaller sparks, and soft colored light. Both light and dark themes are self-contained SVGs with CSS animation, without JavaScript or external requests. The first frame already shows the complete emblem. A reduced-motion preference selects a static mark in both READMEs; the animated SVGs also disable their own motion under that preference. Matching 144-frame GIFs remain available for viewers that do not support animated SVGs.
 
 ## Paper figures
 
@@ -39,7 +41,8 @@ The terminal recording executes the real offline `catalog --limit 6`, `demo`, an
 
 | Asset | Use |
 | --- | --- |
-| `assets/logo-animated.gif`, `logo-animated-dark.gif` | Transparent, 72-frame README animations |
+| `assets/logo-animated.svg`, `logo-animated-dark.svg` | CSS-animated README marks with vector particles and reduced-motion support |
+| `assets/logo-animated.gif`, `logo-animated-dark.gif` | Theme-matched, 144-frame animation fallbacks |
 | `assets/logo.png`, `logo-dark.png` | Transparent static marks |
 | `assets/logo.svg`, `logo-dark.svg` | Self-contained SVG wrappers around the generated PNGs |
 | `assets/brand/source/` | Original artwork and generation prompts |

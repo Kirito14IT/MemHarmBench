@@ -1,7 +1,9 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-animated-dark.gif">
-    <img src="assets/logo-animated.gif" alt="MemHarmBench 标志" width="196">
+    <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/logo.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-animated-dark.svg?v=2">
+    <img src="assets/logo-animated.svg?v=2" alt="MemHarmBench：粒子环绕的记忆智能体" width="256">
   </picture>
   <h1>MemHarmBench</h1>
   <p><strong>持久记忆智能体提示注入的受害方中心评测</strong></p>
