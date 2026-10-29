@@ -495,6 +495,8 @@ python scripts/audit_release.py
 
 ## 10. 许可与致谢
 
+感谢 [Claude](https://claude.ai/) 在项目开发过程中提供的协助。
+
 MemHarmBench 的原创代码、基准输入、说明文档及项目配图采用 [MIT 许可](LICENSE)。第三方智能体、库和镜像保留各自条款，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 感谢 [StakeBench](https://github.com/StakeBench/SBC) 在利益相关方视角与可复现仓库组织方面提供的启发。本说明沿用从项目概览、数据组织到执行、分类和指标的讲解顺序，内容对应 MemHarmBench 自身的输入与跨会话协议。项目概览使用当前论文的中文图 1–3，[英文说明](README.md)使用对应英文版本。配图来源及校验值见[资产来源记录](assets/README.md)，展示与离线演示说明见[视觉资产指南](docs/assets.md)。
