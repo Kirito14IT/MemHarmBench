@@ -8,11 +8,14 @@
       ],
       "has_alpha": true,
       "transparent_corners": true,
-      "gif_frames": 72,
-      "gif_duration_ms": 3600,
+      "gif_frames": 144,
+      "gif_duration_ms": 7200,
       "gif_loop": 0,
       "frames_differ": true,
-      "gif_bytes": 2266491,
+      "gif_bytes": 4367133,
+      "svg_bytes": 261475,
+      "reduced_motion": true,
+      "self_contained": true,
       "passed": true
     },
     "logo-dark": {
@@ -22,11 +25,14 @@
       ],
       "has_alpha": true,
       "transparent_corners": true,
-      "gif_frames": 72,
-      "gif_duration_ms": 3600,
+      "gif_frames": 144,
+      "gif_duration_ms": 7200,
       "gif_loop": 0,
       "frames_differ": true,
-      "gif_bytes": 2169394,
+      "gif_bytes": 4739910,
+      "svg_bytes": 273799,
+      "reduced_motion": true,
+      "self_contained": true,
       "passed": true
     }
   }

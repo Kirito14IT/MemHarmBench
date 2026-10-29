@@ -1,16 +1,18 @@
 {
   "logo-animated.gif": {
-    "frames": 72,
-    "duration_ms": 3600,
+    "frames": 144,
+    "duration_ms": 7200,
     "all_frames_clear_of_edge": true,
-    "minimum_edge_margin_px": 18,
-    "sha256": "302e537c9f9d65d3244c52ef74b5a2cbe803a36e51706bdffba5c7a28fabe154"
+    "minimum_edge_margin_px": 7,
+    "loop_seam_to_average_step": 0.9843,
+    "sha256": "cee5e3d9934361bd82894744b00d690622c0bb999cf379a2328517f7ab476370"
   },
   "logo-animated-dark.gif": {
-    "frames": 72,
-    "duration_ms": 3600,
+    "frames": 144,
+    "duration_ms": 7200,
     "all_frames_clear_of_edge": true,
-    "minimum_edge_margin_px": 18,
-    "sha256": "4296c7369fe96f4937717096958db451028815ba0fc6e40f05152cc00ad3f97d"
+    "minimum_edge_margin_px": 6,
+    "loop_seam_to_average_step": 0.9959,
+    "sha256": "1ba39b814102e622909e462d872e000327260d585eff7cad02ff305c47c89b7d"
   }
 }

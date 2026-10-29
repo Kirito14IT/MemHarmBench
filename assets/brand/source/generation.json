@@ -12,5 +12,13 @@
   },
   "processing": "Original generated alpha PNGs are retained unchanged. render_brand.py crops the display viewport and resizes for presentation, embeds original raster bytes into self-contained SVG containers, and renders node pulses and floating motion as GIF. SVG containers are not editable vector traces.",
   "semantics": "Robot/microchip: agent memory. Interlocking orbits: persistence across sessions. Three nodes: potential victims. Coral shard: injected instruction. Symbolic identity only; it does not report results or promise protection.",
-  "license": "Repository MIT License"
+  "license": "Repository MIT License",
+  "animation_update": {
+    "date": "2026-10-29",
+    "renderer": "scripts/render_brand.py",
+    "source_artwork": "Original source PNGs and static logos unchanged",
+    "motion": "7.2-second four-direction drift with tilt, two counter-rotating particle streams, tapered tails, 32 ambient sparks, and soft light",
+    "delivery": "CSS-animated SVG for the READMEs; theme-matched 144-frame GIF fallbacks; static reduced-motion alternatives",
+    "reference": "CST-MIL README motion treatment; independent implementation around the existing MemHarmBench emblem"
+  }
 }
