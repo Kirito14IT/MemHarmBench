@@ -6,9 +6,9 @@ The MemHarmBench emblem combines an AI agent, a memory chip, and two connecting 
 
 The original transparent artwork was created with the built-in image generation tool. Its source PNGs and exact prompts are saved in [`assets/brand/source/`](../assets/brand/source/generation.json). Static SVGs embed those PNGs; animated SVGs embed the existing 512-pixel presentation marks and add vector particles. The emblem itself is **not an editable vector trace**.
 
-The README animation follows a continuous 7.2-second loop: the emblem travels right, down, left, and up with a small tilt; two particle streams circulate in opposite directions with tapering trails and rotating sparks. A rounded deep-indigo panel adds slowly moving cyan, blue, and magenta auroras, a star field, a subtle perspective grid, and an illuminated rim. The dark neon background is part of the artwork and stays the same on light and dark GitHub pages. The original dark-theme emblem is embedded unchanged.
+The README opens with a 960 × 320 banner displayed at 100% of the content width. A continuous deep-indigo background stretches across the header with cyan, blue, and magenta auroras, a star field, a subtle perspective grid, and an illuminated rim. The original dark-theme emblem stays centered at its original proportions. Its 7.2-second loop combines right/down/left/up drift, a small tilt, two counter-rotating particle streams, tapering trails, and smaller rotating sparks. The dark neon background is part of the artwork and stays the same on light and dark GitHub pages. The project title and navigation remain beneath the banner.
 
-The animation is a self-contained SVG with CSS motion, without JavaScript, SVG filters, or external requests. The first frame already shows the complete emblem. A reduced-motion preference selects `logo-neon.svg`, which preserves the same background and composition without movement; the animated SVG also disables all its motion under that preference. A matching 144-frame GIF remains available for viewers that do not support animated SVGs. The older `logo-animated-dark` filenames are identical compatibility copies.
+The banner is a self-contained SVG with CSS motion, without JavaScript, SVG filters, or external requests. The first frame already shows the complete emblem. A reduced-motion preference selects `banner-static.svg`, which preserves the full-width background and composition without movement; the animated SVG also disables all its motion under that preference. The earlier square SVGs and 144-frame GIFs remain available for avatar-sized placements. The `logo-animated-dark` filenames are identical compatibility copies of those square animations.
 
 ## Paper figures
 
@@ -24,7 +24,7 @@ Each figure has a PNG preview and an original PDF with selectable text. Figure 2
 
 ## Rebuild
 
-Rebuild the original transparent logos and icons, plus the dark neon animation and its still alternative:
+Rebuild the original transparent logos and icons, the square neon animations, and the full-width README banner:
 
 ```bash
 python -m pip install pillow resvg-py
@@ -43,7 +43,9 @@ The terminal recording executes the real offline `catalog --limit 6`, `demo`, an
 
 | Asset | Use |
 | --- | --- |
-| `assets/logo-animated.svg`, `logo-animated-dark.svg` | Dark neon README animation and identical compatibility copy |
+| `assets/banner-animated.svg`, `banner-static.svg` | Full-width 960 × 320 README animation and reduced-motion alternative |
+| `assets/banner-preview.png` | Static preview of the full-width banner |
+| `assets/logo-animated.svg`, `logo-animated-dark.svg` | Square dark neon animation and identical compatibility copy |
 | `assets/logo-animated.gif`, `logo-animated-dark.gif` | Matching 144-frame animation fallback and compatibility copy |
 | `assets/logo-neon.svg`, `logo-neon.png` | Static dark neon alternative for reduced motion, plus a 640-pixel preview |
 | `assets/logo.png`, `logo-dark.png` | Transparent static marks |

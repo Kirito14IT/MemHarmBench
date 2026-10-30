@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 SOURCE = ASSETS / "brand" / "source"
 SIZE = 320
+BANNER_WIDTH = 960
 FRAMES = 144
 DURATION = 50
 SECONDS = FRAMES * DURATION / 1000
@@ -38,9 +39,9 @@ def _source(dark: bool = False):
     return image.size, bbox, encoded
 
 
-def _svg(body: str, title: str, size: int = SIZE) -> str:
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" '
-            f'viewBox="0 0 {SIZE} {SIZE}" role="img" aria-labelledby="title">'
+def _svg(body: str, title: str, size: int = SIZE, *, canvas_width: int = SIZE) -> str:
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{round(size*canvas_width/SIZE)}" height="{size}" '
+            f'viewBox="0 0 {canvas_width} {SIZE}" role="img" aria-labelledby="title">'
             f'<title id="title">{html.escape(title)}</title>{body}</svg>\n')
 
 
@@ -90,9 +91,9 @@ def _orbit(rx: float, ry: float, angle: float) -> tuple[str, float]:
     return path, length
 
 
-def _neon_backdrop(t: float) -> tuple[str, str]:
+def _neon_backdrop(t: float, width: int = SIZE) -> tuple[str, str]:
     """Dark aurora panel, independent of the surrounding page's color scheme."""
-    defs = '''<clipPath id="panel"><rect x="4" y="4" width="312" height="312" rx="28"/></clipPath>
+    defs = f'''<clipPath id="panel"><rect x="4" y="4" width="{width-8}" height="312" rx="28"/></clipPath>
       <linearGradient id="night" x2="1" y2="1">
         <stop stop-color="#091633"/><stop offset=".48" stop-color="#18103D"/>
         <stop offset="1" stop-color="#062C3C"/>
@@ -108,30 +109,30 @@ def _neon_backdrop(t: float) -> tuple[str, str]:
     dx, dy = 7 * math.sin(math.tau*t), 6 * math.cos(math.tau*t)
     opacity = .84 + .12 * math.sin(math.tau*t)
     aurora = (f'<g class="aurora" transform="translate({dx:.4f} {dy:.4f})" opacity="{opacity:.4f}">'
-              '<ellipse cx="56" cy="96" rx="148" ry="178" fill="url(#nebula-cyan)"/>'
-              '<ellipse cx="260" cy="224" rx="160" ry="176" fill="url(#nebula-pink)"/>'
-              '<ellipse cx="172" cy="22" rx="174" ry="143" fill="url(#nebula-blue)"/>'
-              '<ellipse cx="123" cy="305" rx="136" ry="95" fill="url(#nebula-cyan)"/></g>')
+              f'<ellipse cx="{width*.175:g}" cy="96" rx="{width*.4625:g}" ry="178" fill="url(#nebula-cyan)"/>'
+              f'<ellipse cx="{width*.8125:g}" cy="224" rx="{width*.5:g}" ry="176" fill="url(#nebula-pink)"/>'
+              f'<ellipse cx="{width*.5375:g}" cy="22" rx="{width*.54375:g}" ry="143" fill="url(#nebula-blue)"/>'
+              f'<ellipse cx="{width*.384375:g}" cy="305" rx="{width*.425:g}" ry="95" fill="url(#nebula-cyan)"/></g>')
     rng = random.Random(843)
     stars = []
-    for i in range(66):
-        x, y = rng.uniform(14,306), rng.uniform(14,306)
+    for i in range(round(66*width/SIZE)):
+        x, y = rng.uniform(14,width-14), rng.uniform(14,306)
         color = ['#7CEBF8', '#BDA6FF', '#F7A5E6'][i % 3]
         stars.append(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="{rng.uniform(.35,.85):.2f}" '
                      f'fill="{color}" opacity="{rng.uniform(.22,.65):.2f}"/>')
-    grid = ''.join(f'M16 {y}H304' for y in [248,264,280,296])
-    grid += ''.join(f'M160 166L{x} 316' for x in range(-80,401,48))
-    body = ('<rect x="4" y="4" width="312" height="312" rx="28" fill="url(#night)"/>'
+    grid = ''.join(f'M16 {y}H{width-16}' for y in [248,264,280,296])
+    grid += ''.join(f'M{width//2} 166L{x} 316' for x in range(-80,width+81,48))
+    body = (f'<rect x="4" y="4" width="{width-8}" height="312" rx="28" fill="url(#night)"/>'
             '<g clip-path="url(#panel)">' + aurora + ''.join(stars)
             + f'<path d="{grid}" fill="none" stroke="#70B6FA" stroke-width=".5" opacity=".10"/>'
-            '<path d="M20 71V45Q20 20 45 20H71M249 300H275Q300 300 300 275V249" '
+            f'<path d="M20 71V45Q20 20 45 20H71M{width-71} 300H{width-45}Q{width-20} 300 {width-20} 275V249" '
             'fill="none" stroke="url(#rim)" stroke-width="1.2" opacity=".46"/></g>'
-            '<rect x="4.6" y="4.6" width="310.8" height="310.8" rx="27.4" '
+            f'<rect x="4.6" y="4.6" width="{width-9.2:g}" height="310.8" rx="27.4" '
             'fill="none" stroke="url(#rim)" stroke-width="1.2" opacity=".58"/>')
     return defs, body
 
 
-def animated_svg(dark: bool = False, phase: float | None = None) -> str:
+def animated_svg(dark: bool = False, phase: float | None = None, *, canvas_width: int = SIZE) -> str:
     """CSS-only SVG, or a deterministic frozen frame of the same 7.2-second loop.
 
     The saved 512px emblem is embedded unchanged; particles are vector geometry.
@@ -141,7 +142,7 @@ def animated_svg(dark: bool = False, phase: float | None = None) -> str:
     t = 0.0 if live else phase % 1
     # Keep the legacy dark argument for callers; both page themes use the neon panel.
     colors = ['#20E8DB', '#60B9FF', '#BD92FF', '#FFD073', '#FF7CCF']
-    background_defs, backdrop = _neon_backdrop(t)
+    background_defs, backdrop = _neon_backdrop(t, canvas_width)
     orbit_specs = [(145, 126, -24, 1), (134, 115, 34, -1)]
     defs, rings = [], []
     for i, (rx, ry, angle, direction) in enumerate(orbit_specs):
@@ -221,10 +222,23 @@ def animated_svg(dark: bool = False, phase: float | None = None) -> str:
             .core,.travel,.dust,.glint,.aurora {{animation:none}}
           }}
         </style>'''
+    foreground = glow + ''.join(rings) + dust + core + ''.join(glints)
+    if canvas_width != SIZE:
+        foreground = f'<g id="centered-emblem" transform="translate({(canvas_width-SIZE)//2} 0)">{foreground}</g>'
     return _svg('<desc>A memory agent drifts up, down, left and right inside two '
                 'counter-rotating particle streams over a deep indigo aurora with cyan and magenta light.</desc>'
-                + '<defs>' + background_defs + ''.join(defs) + '</defs>' + css + backdrop + glow + ''.join(rings)
-                + dust + core + ''.join(glints), 'MemHarmBench — persistent memory in motion')
+                + '<defs>' + background_defs + ''.join(defs) + '</defs>' + css + backdrop + foreground,
+                'MemHarmBench — persistent memory in motion', canvas_width=canvas_width)
+
+
+def build_banners() -> None:
+    """Full-width README hero: continuous background, unstretched central emblem."""
+    import resvg_py
+
+    still = animated_svg(phase=0, canvas_width=BANNER_WIDTH)
+    (ASSETS / 'banner-animated.svg').write_text(animated_svg(canvas_width=BANNER_WIDTH), encoding='utf-8', newline='\n')
+    (ASSETS / 'banner-static.svg').write_text(still, encoding='utf-8', newline='\n')
+    (ASSETS / 'banner-preview.png').write_bytes(resvg_py.svg_to_bytes(svg_string=still, width=BANNER_WIDTH, height=SIZE))
 
 
 def build_animations() -> None:
@@ -258,6 +272,7 @@ def build_animations() -> None:
                       duration=DURATION, loop=0, disposal=2, transparency=255, optimize=False)
     for suffix in ('svg', 'gif'):
         (ASSETS / f'logo-animated-dark.{suffix}').write_bytes((ASSETS / f'logo-animated.{suffix}').read_bytes())
+    build_banners()
 
 
 def audit() -> dict:
@@ -328,6 +343,22 @@ def audit() -> dict:
     for suffix in ('svg', 'gif'):
         if (ASSETS / f'logo-animated.{suffix}').read_bytes() != (ASSETS / f'logo-animated-dark.{suffix}').read_bytes():
             raise ValueError(f'Page themes have inconsistent neon artwork: {suffix}')
+    banner_live = (ASSETS / 'banner-animated.svg').read_text(encoding='utf-8')
+    banner_still = (ASSETS / 'banner-static.svg').read_text(encoding='utf-8')
+    for source in (banner_live, banner_still):
+        root = ET.fromstring(source)
+        if root.attrib['viewBox'] != f'0 0 {BANNER_WIDTH} {SIZE}' or 'id="centered-emblem"' not in source:
+            raise ValueError('README banner must have a wide background and an unstretched centered emblem')
+        if '<script' in source or 'href="http' in source:
+            raise ValueError('README banner must be self-contained')
+    if '<style>' in banner_still or 'prefers-reduced-motion:reduce' not in banner_live:
+        raise ValueError('README banner reduced-motion support is missing')
+    banner_image = Image.open(ASSETS / 'banner-preview.png').convert('RGBA')
+    if banner_image.size != (BANNER_WIDTH, SIZE) or any(banner_image.getpixel(p)[3] != 255 for p in [(16,160), (944,160)]):
+        raise ValueError('Banner background must cover both sides of the central emblem')
+    result['banner'] = {'size': list(banner_image.size), 'background_spans_width': True,
+                        'reduced_motion': True, 'self_contained': True,
+                        'svg_bytes': (ASSETS / 'banner-animated.svg').stat().st_size, 'passed': True}
     (ASSETS / "brand" / "qa.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n")
     (ASSETS / 'brand' / 'animation-qa.json').write_text(
         json.dumps(animation_qa,indent=2)+'\n',encoding='utf-8',newline='\n')

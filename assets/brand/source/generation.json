@@ -21,5 +21,12 @@
     "background": "Code-rendered deep-indigo rounded panel with cyan, blue, and magenta radial light, 66 stars, a perspective grid, and a neon rim; identical on both GitHub page themes",
     "delivery": "Self-contained CSS-animated SVG; matching 144-frame GIF; static neon reduced-motion alternative; legacy dark filenames retained as identical copies",
     "reference": "CST-MIL README motion treatment; independent implementation around the existing MemHarmBench emblem"
+  },
+  "banner_update": {
+    "date": "2026-10-30",
+    "renderer": "scripts/render_brand.py",
+    "layout": "960x320 full-width README banner; continuous dark neon background, centered original emblem at unchanged proportions",
+    "delivery": "Animated SVG and a matching static reduced-motion SVG, displayed at 100% width in both READMEs",
+    "source_artwork": "Original source PNGs, static logos, and square animation assets unchanged"
   }
 }
