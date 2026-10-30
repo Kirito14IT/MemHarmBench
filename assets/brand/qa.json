@@ -38,5 +38,16 @@
       "dark_neon_panel": true,
       "passed": true
     }
+  },
+  "banner": {
+    "size": [
+      960,
+      320
+    ],
+    "background_spans_width": true,
+    "reduced_motion": true,
+    "self_contained": true,
+    "svg_bytes": 292629,
+    "passed": true
   }
 }

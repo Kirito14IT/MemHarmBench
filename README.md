@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/logo-neon.svg?v=3">
-    <img src="assets/logo-animated.svg?v=3" alt="MemHarmBench: a memory agent and orbiting particles over a dark neon aurora" width="256">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/banner-static.svg?v=4">
+    <img src="assets/banner-animated.svg?v=4" alt="MemHarmBench: a full-width dark neon aurora with a central animated memory agent" width="100%">
   </picture>
   <h1>MemHarmBench</h1>
   <p><strong>Victim-Centric Evaluation of Prompt Injection in Persistent-Memory Agents</strong></p>
