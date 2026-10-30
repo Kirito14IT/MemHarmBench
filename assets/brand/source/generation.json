@@ -14,11 +14,12 @@
   "semantics": "Robot/microchip: agent memory. Interlocking orbits: persistence across sessions. Three nodes: potential victims. Coral shard: injected instruction. Symbolic identity only; it does not report results or promise protection.",
   "license": "Repository MIT License",
   "animation_update": {
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "renderer": "scripts/render_brand.py",
     "source_artwork": "Original source PNGs and static logos unchanged",
-    "motion": "7.2-second four-direction drift with tilt, two counter-rotating particle streams, tapered tails, 32 ambient sparks, and soft light",
-    "delivery": "CSS-animated SVG for the READMEs; theme-matched 144-frame GIF fallbacks; static reduced-motion alternatives",
+    "motion": "7.2-second four-direction drift with tilt, two counter-rotating particle streams, tapered tails, 32 rotating sparks, and slowly moving aurora light",
+    "background": "Code-rendered deep-indigo rounded panel with cyan, blue, and magenta radial light, 66 stars, a perspective grid, and a neon rim; identical on both GitHub page themes",
+    "delivery": "Self-contained CSS-animated SVG; matching 144-frame GIF; static neon reduced-motion alternative; legacy dark filenames retained as identical copies",
     "reference": "CST-MIL README motion treatment; independent implementation around the existing MemHarmBench emblem"
   }
 }

@@ -6,7 +6,9 @@ The MemHarmBench emblem combines an AI agent, a memory chip, and two connecting 
 
 The original transparent artwork was created with the built-in image generation tool. Its source PNGs and exact prompts are saved in [`assets/brand/source/`](../assets/brand/source/generation.json). Static SVGs embed those PNGs; animated SVGs embed the existing 512-pixel presentation marks and add vector particles. The emblem itself is **not an editable vector trace**.
 
-The README animation follows a continuous 7.2-second loop: the emblem travels right, down, left, and up with a small tilt; two particle streams circulate in opposite directions with tapering trails, a rotating field of smaller sparks, and soft colored light. Both light and dark themes are self-contained SVGs with CSS animation, without JavaScript or external requests. The first frame already shows the complete emblem. A reduced-motion preference selects a static mark in both READMEs; the animated SVGs also disable their own motion under that preference. Matching 144-frame GIFs remain available for viewers that do not support animated SVGs.
+The README animation follows a continuous 7.2-second loop: the emblem travels right, down, left, and up with a small tilt; two particle streams circulate in opposite directions with tapering trails and rotating sparks. A rounded deep-indigo panel adds slowly moving cyan, blue, and magenta auroras, a star field, a subtle perspective grid, and an illuminated rim. The dark neon background is part of the artwork and stays the same on light and dark GitHub pages. The original dark-theme emblem is embedded unchanged.
+
+The animation is a self-contained SVG with CSS motion, without JavaScript, SVG filters, or external requests. The first frame already shows the complete emblem. A reduced-motion preference selects `logo-neon.svg`, which preserves the same background and composition without movement; the animated SVG also disables all its motion under that preference. A matching 144-frame GIF remains available for viewers that do not support animated SVGs. The older `logo-animated-dark` filenames are identical compatibility copies.
 
 ## Paper figures
 
@@ -22,7 +24,7 @@ Each figure has a PNG preview and an original PDF with selectable text. Figure 2
 
 ## Rebuild
 
-Rebuild the static logos, icons, and light/dark animations from the saved originals:
+Rebuild the original transparent logos and icons, plus the dark neon animation and its still alternative:
 
 ```bash
 python -m pip install pillow resvg-py
@@ -41,8 +43,9 @@ The terminal recording executes the real offline `catalog --limit 6`, `demo`, an
 
 | Asset | Use |
 | --- | --- |
-| `assets/logo-animated.svg`, `logo-animated-dark.svg` | CSS-animated README marks with vector particles and reduced-motion support |
-| `assets/logo-animated.gif`, `logo-animated-dark.gif` | Theme-matched, 144-frame animation fallbacks |
+| `assets/logo-animated.svg`, `logo-animated-dark.svg` | Dark neon README animation and identical compatibility copy |
+| `assets/logo-animated.gif`, `logo-animated-dark.gif` | Matching 144-frame animation fallback and compatibility copy |
+| `assets/logo-neon.svg`, `logo-neon.png` | Static dark neon alternative for reduced motion, plus a 640-pixel preview |
 | `assets/logo.png`, `logo-dark.png` | Transparent static marks |
 | `assets/logo.svg`, `logo-dark.svg` | Self-contained SVG wrappers around the generated PNGs |
 | `assets/brand/source/` | Original artwork and generation prompts |
