@@ -3,16 +3,16 @@
     "frames": 144,
     "duration_ms": 7200,
     "all_frames_clear_of_edge": true,
-    "minimum_edge_margin_px": 7,
-    "loop_seam_to_average_step": 0.9843,
-    "sha256": "cee5e3d9934361bd82894744b00d690622c0bb999cf379a2328517f7ab476370"
+    "minimum_edge_margin_px": 2,
+    "loop_seam_to_average_step": 1.0183,
+    "sha256": "d08abaae69762b258fb5c4a79adbd4abc5631d5ef669d1719e0f2ae79eee2759"
   },
   "logo-animated-dark.gif": {
     "frames": 144,
     "duration_ms": 7200,
     "all_frames_clear_of_edge": true,
-    "minimum_edge_margin_px": 6,
-    "loop_seam_to_average_step": 0.9959,
-    "sha256": "1ba39b814102e622909e462d872e000327260d585eff7cad02ff305c47c89b7d"
+    "minimum_edge_margin_px": 2,
+    "loop_seam_to_average_step": 1.0184,
+    "sha256": "d08abaae69762b258fb5c4a79adbd4abc5631d5ef669d1719e0f2ae79eee2759"
   }
 }

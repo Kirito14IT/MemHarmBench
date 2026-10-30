@@ -1,5 +1,6 @@
 {
-  "source": "Built-in image_gen; source PNGs retained without modification",
+  "source": "Built-in image_gen emblem; source PNGs retained without modification",
+  "background": "Code-rendered dark neon aurora on both page themes",
   "themes": {
     "logo": {
       "png_size": [
@@ -12,10 +13,11 @@
       "gif_duration_ms": 7200,
       "gif_loop": 0,
       "frames_differ": true,
-      "gif_bytes": 4367133,
-      "svg_bytes": 261475,
+      "gif_bytes": 6145534,
+      "svg_bytes": 282889,
       "reduced_motion": true,
       "self_contained": true,
+      "dark_neon_panel": true,
       "passed": true
     },
     "logo-dark": {
@@ -29,10 +31,11 @@
       "gif_duration_ms": 7200,
       "gif_loop": 0,
       "frames_differ": true,
-      "gif_bytes": 4739910,
-      "svg_bytes": 273799,
+      "gif_bytes": 6145534,
+      "svg_bytes": 282889,
       "reduced_motion": true,
       "self_contained": true,
+      "dark_neon_panel": true,
       "passed": true
     }
   }
