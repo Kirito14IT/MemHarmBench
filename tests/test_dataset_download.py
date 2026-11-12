@@ -195,9 +195,11 @@ class DatasetDownloadTests(unittest.TestCase):
         (self.root / "cases/catalog.json").write_text('{"cases": []}', encoding="utf-8")
         with patch("memharmbench_v84.public_validation.validate_public", return_value={"passed": True}):
             with patch("memharmbench_v84.identity.verify_release_lock", return_value={"code_files": {}, "dataset_manifests": {}}):
-                with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
-                    main(["--root", str(self.root), "validate", "--output",
-                          str(self.root / ".memharmbench/release_lock.json")])
+                for relative in (".memharmbench/release_lock.json",
+                                 "experiments/semantic_alignment/dataset/cases/fixture.json",
+                                 "experiments/exposure_distance/dataset/cases/fixture.json"):
+                    with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+                        main(["--root", str(self.root), "validate", "--output", str(self.root / relative)])
         self.assertFalse((self.root / ".memharmbench/release_lock.json").exists())
 
 

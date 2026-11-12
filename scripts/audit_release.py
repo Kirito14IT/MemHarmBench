@@ -17,7 +17,7 @@ FORBIDDEN_DIRS = {
     'outputs', 'results', 'reports', 'logs', 'runs', 'state', 'qualification',
     'judge_cache', 'worklogs', 'recovery', 'supervision', 'private', '.memharmbench',
 }
-FORBIDDEN_SUFFIXES = {'.pdf', '.tex', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pem', '.key', '.parquet', '.arrow', '.jsonl', '.zip', '.bundle'}
+FORBIDDEN_SUFFIXES = {'.pdf', '.tex', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pem', '.key', '.parquet', '.arrow', '.jsonl', '.zip', '.bundle', '.tar', '.gz', '.tgz', '.7z', '.xz', '.bz2', '.zst'}
 # Only these author-approved, standalone figures may cross the document boundary.
 # Full manuscripts and other research documents remain excluded.
 APPROVED_FIGURE_PDFS = {

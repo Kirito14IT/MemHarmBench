@@ -78,7 +78,8 @@ def main(argv: list[str] | None = None) -> int:
                 protected = set(lock["code_files"]) | set(lock["dataset_manifests"]) | {"release_lock.json"}
                 if destination.is_relative_to(root.resolve()):
                     rel = destination.relative_to(root.resolve()).as_posix()
-                    if rel in protected or rel.startswith(("artifacts/", ".memharmbench/")):
+                    from .dataset_download import installable_path
+                    if rel in protected or installable_path(rel) or rel.startswith(".memharmbench/"):
                         raise ValueError("validation output would overwrite a frozen release file")
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 destination.write_text(payload, encoding="utf-8", newline="\n")

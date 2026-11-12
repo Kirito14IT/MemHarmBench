@@ -16,6 +16,14 @@ def test_dataset_input_is_distributed_only_through_hugging_face(tmp_path):
                for issue in audit.inspect_file(path, tmp_path))
 
 
+def test_dataset_archives_cannot_be_reintroduced_as_text(tmp_path):
+    for suffix in ('.tar', '.tar.gz', '.tgz', '.7z', '.xz', '.bz2', '.zst'):
+        path = tmp_path / ('dataset' + suffix)
+        path.write_text('Synthetic archived benchmark input', encoding='utf-8')
+        assert any('excluded document' in issue['reason']
+                   for issue in audit.inspect_file(path, tmp_path))
+
+
 def test_results_directory_is_excluded(tmp_path):
     path = tmp_path / 'outputs' / 'run.json'
     path.parent.mkdir()
