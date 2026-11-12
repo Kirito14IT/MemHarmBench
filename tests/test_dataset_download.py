@@ -186,7 +186,7 @@ class DatasetDownloadTests(unittest.TestCase):
         with patch.object(download, "download_dataset", return_value={"downloaded": True}) as fetch:
             with contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(main(["--root", str(self.root), "download", "--offline"]), 0)
-            fetch.assert_called_once_with(self.root, force=False, offline=True)
+            fetch.assert_called_once_with(self.root.resolve(), force=False, offline=True)
         with self.assertRaisesRegex(ValueError, "cache is missing"):
             download.download_dataset(self.root, offline=True)
 
