@@ -19,11 +19,13 @@ jobs:
         python: ['3.11', '3.12']
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
       - name: Install source and offline test tools
-        run: python -m pip install -e . pytest
+        run: python -m pip install -e ".[dev,export]"
       - name: Verify frozen public inputs
         run: memharmbench validate
       - name: Run synthetic and offline tests

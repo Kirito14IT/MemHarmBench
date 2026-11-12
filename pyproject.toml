@@ -13,6 +13,7 @@ license = { text = "MIT" }
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]
+export = ["pyarrow==26.0.1", "datasets>=3,<6"]
 
 [project.scripts]
 memharmbench = "memharmbench_v84.cli:main"
