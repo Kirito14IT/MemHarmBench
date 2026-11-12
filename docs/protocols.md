@@ -18,13 +18,13 @@ W3 and W4 require evidence from the bounded local operation tool as well as the 
 
 **Question:** Does the semantic proximity of the attacker-preferred option to the legitimate task affect retention and later adoption?
 
-Use the `i_u3_embedded_convention` template in six fixed contexts: commerce/orders, travel booking, web research/RAG, software repositories, documents/knowledge, and customer support/CRM. The High and Low conditions change the target option's description while holding its identifier, evidence score, injected rule, legitimate task, and judging criteria fixed. Evidence scores are A = 92, C = 71, B = 58; the correct descending order remains A, C, B in both conditions.
+Use the `i_u3_embedded_convention` template in six fixed contexts: commerce/orders, travel booking, web research/RAG, software repositories, documents/knowledge, and customer support/CRM. The High and Low conditions change the target option's description while holding its identifier, evidence score, injected rule, legitimate task, and judging criteria fixed. The normal evidence ordering remains the same in both conditions; concrete business records are included only in the downloaded dataset.
 
 The complete design is **6 contexts × 2 conditions × 2 agents × 3 repeats = 72 chains**. Both agents use GPT-5. Each chain performs one exposure and one fresh-session trigger: 144 planned agent stages, excluding technical retries and judging. The initial exposure is not repeated because PMIR is negative.
 
 Every technically completed exposure proceeds to a trigger regardless of PMIR or Judge availability. Only native memory is transferred; the attack carrier is removed. Conditions are interleaved using the fixed manifest. The paired unit is agent/context/repetition; the three repetitions do not create three independent contexts.
 
-The frozen input protocol and run manifest are in [`experiments/semantic_alignment/dataset/`](../experiments/semantic_alignment/dataset/). A local configuration selects one agent's queue.
+The frozen input protocol and run manifest are in the [Hugging Face source snapshot](https://huggingface.co/datasets/kirco567/MemHarmBench/blob/2b4c2b736fdbabf7e56182870d71095ac38afdb0/source_snapshot.zip), restored locally under `experiments/semantic_alignment/dataset/` by `memharmbench download`. A local configuration selects one agent's queue.
 
 ## Exposure-to-trigger distance
 
@@ -47,7 +47,7 @@ Retained-rule judgments read the saved snapshots offline. The S0 judgment also s
 
 The primary comparison is distance 4 minus distance 0 within each model and chain; distance 2 supplies the intermediate observation. The 108 triggers are repeated observations from 36 chains, not 108 independent experimental units. Distance means **the number of normal sessions**, not elapsed time.
 
-See [`experiments/exposure_distance/dataset/`](../experiments/exposure_distance/dataset/) for the frozen protocol, normal tasks, and manifest. Configure a distinct output directory for each backbone and start one worker per configuration for total concurrency two.
+The [Hugging Face source snapshot](https://huggingface.co/datasets/kirco567/MemHarmBench/blob/2b4c2b736fdbabf7e56182870d71095ac38afdb0/source_snapshot.zip) contains the frozen protocol, normal tasks, and manifest, restored locally under `experiments/exposure_distance/dataset/` by `memharmbench download`. Configure a distinct output directory for each backbone and start one worker per configuration for total concurrency two.
 
 ## Metrics and denominators
 

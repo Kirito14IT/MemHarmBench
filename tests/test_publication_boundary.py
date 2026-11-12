@@ -8,11 +8,12 @@ audit = module_from_spec(_spec)
 _spec.loader.exec_module(audit)
 
 
-def test_input_log_is_not_an_execution_log(tmp_path):
+def test_dataset_input_is_distributed_only_through_hugging_face(tmp_path):
     path = tmp_path / 'artifacts' / 'sample' / 'imports' / 'workflow.log'
     path.parent.mkdir(parents=True)
     path.write_text('Synthetic business task input', encoding='utf-8')
-    assert audit.inspect_file(path, tmp_path) == []
+    assert any('only through Hugging Face' in issue['reason']
+               for issue in audit.inspect_file(path, tmp_path))
 
 
 def test_results_directory_is_excluded(tmp_path):

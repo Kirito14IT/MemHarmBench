@@ -5,16 +5,16 @@
 ## Understand one case first
 
 ```bash
+memharmbench download
 memharmbench catalog --limit 6
 memharmbench inspect i_u3_embedded_convention__commerce_orders
-memharmbench demo
 ```
 
-The authoring layer defines templates, objectives, context packs, and typed slots. Compiled cases resolve these definitions into concrete exposure and trigger inputs, business files, target values, and judging conditions. The released input manifest makes this relationship auditable without historical run artifacts.
+The [Hugging Face dataset](https://huggingface.co/datasets/kirco567/MemHarmBench/tree/2b4c2b736fdbabf7e56182870d71095ac38afdb0) contains the frozen templates, context packs, resolved cases, business files, and judging conditions. Its manifest makes their relationship auditable without historical run artifacts. GitHub provides the loader, schema, evaluation code, and documentation; it does not embed benchmark records or a generator that reconstructs them.
 
 ## Add a context or template
 
-Use `src/memharmbench_v84/catalog.py`, the `compiler/` package, `fixtures.py`, and `schema.py` to understand the authoring contracts. Keep a new dataset revision separate from the frozen public inputs.
+Use `src/memharmbench_v84/schema.py` and the read-only `compiler.load_case_catalog` interface to understand the case contracts. Inspect the downloaded templates and context packs locally. Author extensions as a separate dataset revision; keep their inputs and identity separate from the frozen public release.
 
 - Write a legitimate task with an unambiguous normal completion condition.
 - Specify the harmed party, protected decision, adversarial target, trigger condition, and persistent scope.
@@ -45,6 +45,7 @@ Run the offline checks before contributing:
 
 ```bash
 python -m pip install -e ".[dev]"
+memharmbench download
 memharmbench validate
 python -m pytest
 ```

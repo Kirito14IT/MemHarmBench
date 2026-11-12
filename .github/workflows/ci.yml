@@ -19,18 +19,18 @@ jobs:
         python: ['3.11', '3.12']
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
       - name: Install source and offline test tools
-        run: python -m pip install -e ".[dev,export]"
+        run: python -m pip install -e ".[dev]"
+      - name: Download pinned inputs from Hugging Face
+        run: memharmbench download
       - name: Verify frozen public inputs
         run: memharmbench validate
       - name: Run synthetic and offline tests
         run: python -m pytest tests -q
       - name: Check publication boundary
         run: python scripts/audit_release.py
-      - name: Exercise offline walkthrough
-        run: memharmbench demo
+      - name: Check CLI entry point
+        run: memharmbench --help

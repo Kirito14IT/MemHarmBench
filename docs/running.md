@@ -6,6 +6,16 @@
 
 Install Python 3.11+, the package (`python -m pip install -e .`), and Docker Desktop with Linux containers. The public background control commands target Windows. Offline input inspection and validation do not require Docker or credentials.
 
+Download the frozen inputs before inspecting cases or starting an evaluation:
+
+```bash
+python scripts/download_dataset.py
+# Or, after installation:
+memharmbench download
+```
+
+GitHub distributes the evaluation code and documentation. The dataset is distributed only through [Hugging Face](https://huggingface.co/datasets/kirco567/MemHarmBench/tree/2b4c2b736fdbabf7e56182870d71095ac38afdb0). The downloader verifies the pinned release and restores its input paths locally; downloaded inputs are ignored by Git.
+
 Build the images from the repository root:
 
 ```powershell
@@ -86,4 +96,4 @@ All newly generated material belongs to the configured local output directory: c
 
 Keep partial evidence when diagnosing a failure. A stalled heartbeat, a provider rejection, a model-identity mismatch, and an unresolved semantic label are different conditions. Do not fix them by deleting checkpoints or changing labels. Report technical failures separately from behavioral outcomes when analyzing your own runs.
 
-The published repository contains no historical trajectories or judged results. Reproduction begins from the released inputs and generates fresh evidence under your selected provider configuration.
+The GitHub repository contains evaluation code and documentation. Frozen inputs come from Hugging Face; historical trajectories and judged results are not distributed. Reproduction starts with a dataset download and generates fresh evidence under your selected provider configuration.

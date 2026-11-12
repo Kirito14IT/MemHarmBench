@@ -1,4 +1,16 @@
 # Locally generated execution evidence and analysis
+/cases/
+/artifacts/
+/data/
+/catalogs/
+/experiments/*/dataset/
+/release_lock.json
+/.memharmbench/
+/scripts/export_huggingface.py
+/tests/test_huggingface_export.py
+/assets/demo-transcript.txt
+/assets/demo.png
+/assets/demo.gif
 /runs/
 /outputs/
 /reports/

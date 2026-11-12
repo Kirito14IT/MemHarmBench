@@ -31,15 +31,13 @@ python -m pip install pillow resvg-py
 python scripts/render_brand.py
 ```
 
-To also rebuild the optional framework diagrams and record the terminal demonstration, install this package and run:
+To rebuild the optional static framework diagrams without reading dataset records:
 
 ```bash
-python scripts/render_assets.py
+python scripts/render_assets.py --vectors-only
 ```
 
-`--vectors-only` retains its existing meaning: rebuild static presentation assets and logo animations while skipping the CLI recording. `--animations-only` rebuilds the animated logos and CLI demonstration. These commands do not regenerate the paper figures or call an image or language model service.
-
-The terminal recording executes the real offline `catalog --limit 6`, `demo`, and `validate` commands. It animates command entry and reveals captured output; the full text is in `assets/demo-transcript.txt`. It does not simulate model execution. System fonts are used without redistributing font files.
+These commands do not regenerate the paper figures or call an image or language model service. System fonts are used without redistributing font files.
 
 | Asset | Use |
 | --- | --- |
@@ -54,6 +52,5 @@ The terminal recording executes the real offline `catalog --limit 6`, `demo`, an
 | `assets/icon.png`, `icon.ico` | Small application icons |
 | `assets/paper-figure-{1,2,3}-{en,zh}.{png,pdf}` | The first three manuscript figures in both languages |
 | `assets/paper-taxonomy.png` | Victim-centered taxonomy illustration |
-| `assets/demo.gif`, `demo.png`, `demo-transcript.txt` | Offline CLI demonstration and complete captured output |
 
 The assets and rendering scripts are distributed under the repository's [MIT License](../LICENSE).

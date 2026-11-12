@@ -33,4 +33,4 @@ Eligibility for Figure 2 requires confirmed final rule retention, a successfully
 
 `paper-taxonomy.png` is a retained taxonomy illustration of victim classes and protected interests. It has no current manuscript figure number. `paper-overview.png` is a historical overview retained for asset compatibility; it is not displayed as the current Figure 1.
 
-The [presentation asset guide](../docs/assets.md) documents the logo, animation, and offline terminal demonstration. Original project artwork and these figure assets are distributed under the repository’s [MIT License](../LICENSE).
+The [presentation asset guide](../docs/assets.md) documents the logo, animations, and static presentation assets. Original project artwork and these figure assets are distributed under the repository’s [MIT License](../LICENSE).

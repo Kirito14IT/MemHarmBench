@@ -352,6 +352,8 @@ def contains_placeholder(value: Any) -> bool:
 
 
 def _load_json(path: Path) -> dict[str, Any]:
+    if not _io_path(path).is_file():
+        raise ValueError("Frozen dataset or local identity is missing; run memharmbench download first.")
     try:
         value = json.loads(_io_path(path).read_text(encoding="utf-8"))
     except (OSError, ValueError) as error:
@@ -365,7 +367,7 @@ def dataset_identity(root: Path) -> dict[str, str]:
     """Recompute both V8.4.3 identities and validate catalog, manifest and lock."""
     catalog = _load_json(root / "cases" / "catalog.json")
     manifest = _load_json(root / "artifacts" / "manifest.json")
-    release = _load_json(root / "release_lock.json")
+    release = _load_json(active_release_lock_path(root))
     current = {field: str(catalog.get(field, "")) for field in IDENTITY_FIELDS}
     if current["dataset_revision"] != DATASET_REVISION:
         raise ValueError(f"current dataset must have revision {DATASET_REVISION}")
@@ -465,6 +467,8 @@ def release_code_hashes(root: Path) -> dict[str, str]:
     for dirname in ("src", "workflow_quickrouter", "runtime", "experiments", "scripts", "configs", "docker"):
         directory = root / dirname
         for path in sorted(directory.rglob("*")):
+            if dirname == "experiments" and "dataset" in path.relative_to(directory).parts:
+                continue
             if not path.is_file() or any(part in {"__pycache__", ".venv", "outputs", "logs", "state"} for part in path.relative_to(root).parts):
                 continue
             if ".local." in path.name:
@@ -532,17 +536,27 @@ def seal_release_lock(root: Path, resolved_actual_model: str) -> dict[str, Any]:
     raise ValueError("Public release integrity is immutable. Store model qualification in the new campaign directory.")
 
 
+def active_release_lock_path(root: Path) -> Path:
+    """Use the local code binding after a verified HF download."""
+    if (root / ".memharmbench/dataset_source.json").is_file():
+        return safe_relative_path(root, ".memharmbench/release_lock.json")
+    return root / "release_lock.json"
+
+
 def verify_release_lock(
     root: Path, *, release: Mapping[str, Any] | None = None,
     require_sealed: bool = False, verify_dataset: bool = True,
 ) -> dict[str, Any]:
-    lock = dict(release or _load_json(root / "release_lock.json"))
+    lock = dict(release or _load_json(active_release_lock_path(root)))
     if lock.get("schema_version") != PUBLIC_RELEASE_SCHEMA:
         raise ValueError("expected a public source/input release lock")
     if require_sealed:
         raise ValueError("A public source lock is not model qualification; verify the campaign-local model audit.")
     if lock.get("release_lock_sha256") != compute_release_lock_sha256(lock):
         raise ValueError("release lock self-hash is missing or invalid")
+    if (root / ".memharmbench/dataset_source.json").is_file():
+        from .dataset_download import verify_download_source
+        verify_download_source(root, lock)
     expected = build_release_lock(
         root, lock, case_ids=lock.get("case_order", []),
         case_input_fingerprints=lock.get("case_input_fingerprints", {}),

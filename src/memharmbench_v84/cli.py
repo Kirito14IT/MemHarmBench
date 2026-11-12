@@ -10,16 +10,16 @@ from typing import Any
 DEFAULT_CASE = "i_u3_embedded_convention__commerce_orders"
 
 
-def _root(value: str | None) -> Path:
+def _root(value: str | None, *, require_data: bool = True) -> Path:
     if value:
         root = Path(value).expanduser().resolve()
     elif os.environ.get("MEMHARMBENCH_DATA_ROOT"):
         root = Path(os.environ["MEMHARMBENCH_DATA_ROOT"]).expanduser().resolve()
     else:
         source_root = Path(__file__).resolve().parents[2]
-        root = source_root if (source_root / "cases/catalog.json").is_file() else Path.cwd()
-    if not (root / "cases/catalog.json").is_file():
-        raise ValueError("Run inside the cloned repository, install it with pip install -e ., or provide --root.")
+        root = source_root
+    if require_data and not (root / "cases/catalog.json").is_file():
+        raise ValueError("Dataset is missing. Run memharmbench download (or python scripts/download_dataset.py) first; use --root for the clone/data root.")
     return root
 
 
@@ -46,6 +46,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="memharmbench", description="Explore and validate frozen benchmark inputs without model calls.")
     parser.add_argument("--root", help="Public repository/data root")
     sub = parser.add_subparsers(dest="command", required=True)
+    download = sub.add_parser("download", help="Download and verify the fixed Hugging Face input snapshot")
+    download.add_argument("--force", action="store_true", help="Replace differing dataset files; never overwrite code or license files")
+    download.add_argument("--offline", action="store_true", help="Use only the previously downloaded and verified local cache")
     sub.add_parser("identity", help="Verify and show input/evaluation/source identities")
     validate = sub.add_parser("validate", help="Validate all published inputs and source hashes")
     validate.add_argument("--output", type=Path, help="Explicitly write the validation report to this path")
@@ -57,8 +60,11 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("demo", help="Show a short offline walkthrough of the input release")
     args = parser.parse_args(argv)
     try:
-        root = _root(args.root)
-        if args.command == "identity":
+        root = _root(args.root, require_data=args.command != "download")
+        if args.command == "download":
+            from .dataset_download import download_dataset
+            print(json.dumps(download_dataset(root, force=args.force, offline=args.offline), indent=2))
+        elif args.command == "identity":
             from .identity import dataset_identity
             print(json.dumps(dataset_identity(root), indent=2))
         elif args.command == "validate":
@@ -72,7 +78,7 @@ def main(argv: list[str] | None = None) -> int:
                 protected = set(lock["code_files"]) | set(lock["dataset_manifests"]) | {"release_lock.json"}
                 if destination.is_relative_to(root.resolve()):
                     rel = destination.relative_to(root.resolve()).as_posix()
-                    if rel in protected or rel.startswith("artifacts/"):
+                    if rel in protected or rel.startswith(("artifacts/", ".memharmbench/")):
                         raise ValueError("validation output would overwrite a frozen release file")
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 destination.write_text(payload, encoding="utf-8", newline="\n")

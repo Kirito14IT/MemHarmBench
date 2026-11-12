@@ -15,9 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 GENERATED = {'.git', '.venv', '__pycache__', '.pytest_cache', 'build', 'dist'}
 FORBIDDEN_DIRS = {
     'outputs', 'results', 'reports', 'logs', 'runs', 'state', 'qualification',
-    'judge_cache', 'worklogs', 'recovery', 'supervision', 'private',
+    'judge_cache', 'worklogs', 'recovery', 'supervision', 'private', '.memharmbench',
 }
-FORBIDDEN_SUFFIXES = {'.pdf', '.tex', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pem', '.key'}
+FORBIDDEN_SUFFIXES = {'.pdf', '.tex', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pem', '.key', '.parquet', '.arrow', '.jsonl', '.zip', '.bundle'}
 # Only these author-approved, standalone figures may cross the document boundary.
 # Full manuscripts and other research documents remain excluded.
 APPROVED_FIGURE_PDFS = {
@@ -66,6 +66,10 @@ def inspect_file(path: Path, root: Path) -> list[dict[str, str | int]]:
     issues: list[dict[str, str | int]] = []
     def add(reason: str, line: int = 0) -> None:
         issues.append({'file': relative, 'line': line, 'reason': reason})
+    if (path.relative_to(root).parts[0] in {'cases', 'artifacts', 'data', 'catalogs'}
+            or relative == 'release_lock.json'
+            or (relative.startswith('experiments/') and '/dataset/' in relative)):
+        add('dataset inputs are distributed only through Hugging Face')
     if parts & FORBIDDEN_DIRS:
         add('experiment output or internal directory')
     approved_figure = relative in APPROVED_FIGURE_PDFS
