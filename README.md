@@ -5,6 +5,7 @@
   </picture>
   <h1>MemHarmBench</h1>
   <p>
+    <a href="https://kirito14it.github.io/MemHarmBench/"><img src="https://img.shields.io/badge/Project_Page-Website-BD5A38?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="MemHarmBench project page"></a>
     <a href="https://arxiv.org/abs/2611.01700"><img src="https://img.shields.io/badge/arXiv-2611.01700-B31B1B?style=for-the-badge&amp;logo=arxiv&amp;logoColor=white" alt="Paper on arXiv: 2611.01700"></a>
     <a href="https://arxiv.org/pdf/2611.01700"><img src="https://img.shields.io/badge/Read_Paper-PDF-143565?style=for-the-badge" alt="Read the paper PDF"></a>
     <a href="https://huggingface.co/datasets/kirco567/MemHarmBench"><img src="https://img.shields.io/badge/Hugging_Face-Dataset-FFD21E?style=for-the-badge&amp;logo=huggingface&amp;logoColor=black" alt="MemHarmBench dataset on Hugging Face"></a>
@@ -21,7 +22,7 @@
     <a href="#benchmark"><img src="https://img.shields.io/badge/Contexts-12-E9A72E" alt="12 contexts"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-143565" alt="MIT License"></a>
   </p>
-  <p><a href="#quickstart">Quickstart</a> · <a href="#workflow">Run an evaluation</a> · <a href="docs/protocols.md">Protocols &amp; metrics</a> · <a href="docs/extending.md">Extend the benchmark</a></p>
+  <p><a href="https://kirito14it.github.io/MemHarmBench/">Project page</a> · <a href="#quickstart">Quickstart</a> · <a href="#workflow">Run an evaluation</a> · <a href="docs/protocols.md">Protocols &amp; metrics</a> · <a href="docs/extending.md">Extend the benchmark</a></p>
 </div>
 
 ---

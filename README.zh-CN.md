@@ -5,6 +5,7 @@
   </picture>
   <h1>MemHarmBench</h1>
   <p>
+    <a href="https://kirito14it.github.io/MemHarmBench/"><img src="https://img.shields.io/badge/Project_Page-Website-BD5A38?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="MemHarmBench 项目主页"></a>
     <a href="https://arxiv.org/abs/2611.01700"><img src="https://img.shields.io/badge/arXiv-2611.01700-B31B1B?style=for-the-badge&amp;logo=arxiv&amp;logoColor=white" alt="论文 arXiv 页面：2611.01700"></a>
     <a href="https://arxiv.org/pdf/2611.01700"><img src="https://img.shields.io/badge/Read_Paper-PDF-143565?style=for-the-badge" alt="阅读论文 PDF"></a>
     <a href="https://huggingface.co/datasets/kirco567/MemHarmBench"><img src="https://img.shields.io/badge/Hugging_Face-Dataset-FFD21E?style=for-the-badge&amp;logo=huggingface&amp;logoColor=black" alt="Hugging Face 上的 MemHarmBench 数据集"></a>
@@ -21,7 +22,7 @@
     <a href="#benchmark"><img src="https://img.shields.io/badge/Contexts-12-E9A72E" alt="12 个上下文"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-143565" alt="MIT 许可"></a>
   </p>
-  <p><a href="#quickstart">快速开始</a> · <a href="#workflow">运行评测</a> · <a href="docs/protocols.md">协议与指标</a> · <a href="docs/extending.md">扩展基准</a></p>
+  <p><a href="https://kirito14it.github.io/MemHarmBench/">项目主页</a> · <a href="#quickstart">快速开始</a> · <a href="#workflow">运行评测</a> · <a href="docs/protocols.md">协议与指标</a> · <a href="docs/extending.md">扩展基准</a></p>
 </div>
 
 ---
